@@ -14,7 +14,11 @@ steps:
   inputs:
     command: 'build'
     projects: 'HelpMyStreet.Utils/HelpMyStreet.Utils/HelpMyStreet.Utils.csproj'
-
+    
+- task: NuGetToolInstaller@1
+  inputs:
+    checkLatest: true
+    
 - task: NuGetCommand@2
   inputs:
     command: 'pack'

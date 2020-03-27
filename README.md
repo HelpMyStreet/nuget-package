@@ -8,4 +8,4 @@ TBC
 
 ## Generated Output
 
-The NUPKG File is generated on build of the class library and placedwith the bin/Debug folder. 
+The NUPKG File is generated on build of the class library and placed with the bin/Debug folder. 

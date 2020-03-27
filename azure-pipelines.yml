@@ -24,11 +24,6 @@ steps:
     packagesToPack: 'HelpMyStreet.Utils/HelpMyStreet.Utils/HelpMyStreet.Utils.csproj'    
     versioningScheme: 'off'
     
-- task: NuGetCommand@2
-  inputs:
-    command: 'pack'
-    packagesToPack: ''
-    versioningScheme: 'off'
 
 - task: NuGetCommand@2
   inputs:

@@ -15,19 +15,19 @@ steps:
     command: 'build'
     projects: 'HelpMyStreet.Utils/HelpMyStreet.Utils/HelpMyStreet.Utils.csproj'
     
-- task: NuGetToolInstaller@1
-  inputs:
-    checkLatest: true
-    
-- task: NuGetCommand@2
+       
+- task: DotNetCoreCLI@2
+  displayName: "dotnet pack"
   inputs:
     command: 'pack'
-    packagesToPack: 'HelpMyStreet.Utils/HelpMyStreet.Utils/HelpMyStreet.Utils.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+    packagesToPack: 'HelpMyStreet.Utils/HelpMyStreet.Utils/HelpMyStreet.Utils.csproj'    
     versioningScheme: 'off'
+    
 
 - task: NuGetCommand@2
   inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/HelpMyStreet.Utils/HelpMyStreet.Utils/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    command: 'push'    
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'e5c08e0c-1c28-42ca-815f-5ca90021fd46/9ff815b0-abc7-442a-98cb-d2879666c3bb'

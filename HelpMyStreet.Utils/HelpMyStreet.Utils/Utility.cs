@@ -9,6 +9,11 @@ namespace HelpMyStreet.Utils
             return "Hello world";
         }
 
+        public string HelloWorld2()
+        {
+            return "Hello world 2";
+        }
+
         public void SharedTestFunction()
         {
             throw  new NotImplementedException();

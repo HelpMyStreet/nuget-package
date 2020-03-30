@@ -1,8 +1,8 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
+variables:
+  major: 1
+  minor: 0 
+  patch: $[counter(format('patch.{0}.{1}', variables['major'], variables['minor']),0)]
+  
 trigger:
 - master
 
@@ -23,10 +23,8 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: 'HelpMyStreet.Utils/HelpMyStreet.Utils/HelpMyStreet.Utils.csproj'
-    versioningScheme: 'byPrereleaseNumber'
-    majorVersion: '1'
-    minorVersion: '0'
-    patchVersion: '1'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'nugetVersion'
 
 - task: NuGetCommand@2
   inputs:

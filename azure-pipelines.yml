@@ -1,9 +1,9 @@
 variables:
   major: 1
-  minor: 0 
+  minor: 1
   patch: $[counter(format('patch.{0}.{1}', variables['major'], variables['minor']),0)]
   nugetVersion: $(major).$(minor).$(patch)
-  
+
 trigger:
 - master
 

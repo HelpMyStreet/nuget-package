@@ -17,5 +17,6 @@ namespace HelpMyStreet.Utils.Models
         public bool IsVerified { get; set; }
         public DateTime DateCreated { get; set; }
         public UserPersonalDetails UserPersonalDetails { get; set; }
+        public Dictionary<int, DateTime> RegistrationHistory { get; set; }
     }
 }

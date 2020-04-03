@@ -24,6 +24,6 @@ namespace HelpMyStreet.Utils.Models
 
 
         // Supplied in registration step 3
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
     }
 }

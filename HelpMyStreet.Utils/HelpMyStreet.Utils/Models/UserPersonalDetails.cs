@@ -22,5 +22,9 @@ namespace HelpMyStreet.Utils.Models
 
         // Defaulted to FirstName following step 2
         public string DisplayName { get; set; }
+
+
+        // Supplied in registration step 3
+        public bool? UnderlyingMedicalCondition { get; set; }
     }
 }

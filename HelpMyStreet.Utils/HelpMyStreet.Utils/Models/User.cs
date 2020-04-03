@@ -23,7 +23,6 @@ namespace HelpMyStreet.Utils.Models
         public List<int> SupportActivities { get; set; }
         public float SupportRadiusMiles { get; set; }
         public bool? SupportVolunteersByPhone { get; set; }
-        public bool? UnderlyingMedicalCondition { get; set; }
 
         // Automatically set to true following registration step 3
         public bool? IsVolunteer { get; set; }

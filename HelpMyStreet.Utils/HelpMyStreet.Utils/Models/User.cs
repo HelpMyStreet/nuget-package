@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelpMyStreet.Utils.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,7 +21,7 @@ namespace HelpMyStreet.Utils.Models
 
 
         // Supplied in registration step 3
-        public List<int> SupportActivities { get; set; }
+        public List<SupportActivities> SupportActivities { get; set; }
         public float? SupportRadiusMiles { get; set; }
         public bool? SupportVolunteersByPhone { get; set; }
 

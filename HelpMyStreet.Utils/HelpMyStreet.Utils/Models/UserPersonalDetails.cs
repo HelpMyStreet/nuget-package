@@ -18,12 +18,9 @@ namespace HelpMyStreet.Utils.Models
         public Address Address { get; set; }
         public string MobilePhone { get; set; }
         public string OtherPhone { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         // Defaulted to FirstName following step 2
         public string DisplayName { get; set; }
-
-
-        // Supplied in registration step 3
-        public DateTime? DateOfBirth { get; set; }
     }
 }

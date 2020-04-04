@@ -32,7 +32,7 @@ steps:
   displayName: NuGet pack
   inputs:
     command: 'pack'
-    packagesToPack: 'HelpMyStreet.Utils/HelpMyStreet.Utils/HelpMyStreet.Utils.csproj, HelpMyStreet.Utils/HelpMyStreet.Contracts/HelpMyStreet.Contracts.csproj'
+    packagesToPack: 'HelpMyStreet.Utils/**/*.csproj;!HelpMyStreet.Utils/**/*Tests.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'nugetVersion'
     

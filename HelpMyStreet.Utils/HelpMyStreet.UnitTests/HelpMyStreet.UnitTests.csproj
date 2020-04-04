@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HelpMyStreet.Contracts\HelpMyStreet.Contracts.csproj" />
     <ProjectReference Include="..\HelpMyStreet.Utils\HelpMyStreet.Utils.csproj" />
   </ItemGroup>
 

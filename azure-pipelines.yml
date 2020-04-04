@@ -12,34 +12,32 @@ pool:
 
 steps:
 - task: DotNetCoreCLI@2
+  displayName: DotNetCore build
   inputs:
     command: 'build'
     projects: 'HelpMyStreet.Utils/**/*.csproj'
 
 - task: DotNetCoreCLI@2
+  displayName: DotNetCore test
   inputs:
     command: 'test'
     projects: 'HelpMyStreet.Utils/**/*.csproj'
 
 - task: NuGetToolInstaller@1
+  displayName: NuGet install
   inputs:
     checkLatest: true
     
 - task: NuGetCommand@2
+  displayName: NuGet pack
   inputs:
     command: 'pack'
-    packagesToPack: 'HelpMyStreet.Utils/HelpMyStreet.Utils/HelpMyStreet.Utils.csproj'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'nugetVersion'
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'pack'
-    packagesToPack: 'HelpMyStreet.Utils/HelpMyStreet.Contracts/HelpMyStreet.Contracts.csproj'
+    packagesToPack: 'HelpMyStreet.Utils/HelpMyStreet.Utils/HelpMyStreet.Utils.csproj, HelpMyStreet.Utils/HelpMyStreet.Contracts/HelpMyStreet.Contracts.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'nugetVersion'
     
 - task: NuGetCommand@2
+  displayName: NuGet push
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg;!$(Build.ArtifactStagingDirectory)/*.symbols.nupkg'

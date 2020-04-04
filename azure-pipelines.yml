@@ -16,6 +16,11 @@ steps:
     command: 'build'
     projects: 'HelpMyStreet.Utils/HelpMyStreet.Utils/HelpMyStreet.Utils.csproj'
     
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'HelpMyStreet.Utils/HelpMyStreet.Contracts/HelpMyStreet.Contracts.csproj'
+    
 - task: NuGetToolInstaller@1
   inputs:
     checkLatest: true

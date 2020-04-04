@@ -9,4 +9,8 @@
     <Description>Shared Utilty Class for the HelpMyStreet Project.</Description>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
+
 </Project>

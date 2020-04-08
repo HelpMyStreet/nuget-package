@@ -35,5 +35,8 @@ namespace HelpMyStreet.Utils.Enums
 
         CheckingIn,
         //Reaching out to people in my area to check-in
+
+        Other,
+        //I may be able to help with other tasks. Please check with me.
     }
 }

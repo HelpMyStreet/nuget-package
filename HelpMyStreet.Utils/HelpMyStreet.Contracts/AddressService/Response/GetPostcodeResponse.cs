@@ -8,6 +8,9 @@ namespace HelpMyStreet.Contracts.AddressService.Response
     {
         [DataMember(Name = "postcode")]
         public string Postcode { get; set; }
+        
+        [DataMember(Name = "friendlyName")]
+        public string FriendlyName { get; set; }
 
         [DataMember(Name = "addressDetails")]
         public IReadOnlyList<AddressDetailsResponse> AddressDetails { get; set; }

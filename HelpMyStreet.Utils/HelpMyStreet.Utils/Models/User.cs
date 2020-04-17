@@ -46,6 +46,5 @@ namespace HelpMyStreet.Utils.Models
         public Dictionary<int, DateTime> RegistrationHistory { get; set; }
 
 
-        public virtual List<string> SupportPostcodes { get; set; }
     }
 }

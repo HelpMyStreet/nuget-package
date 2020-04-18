@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using HelpMyStreet.Contracts.AddressService.Response;
 using MediatR;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HelpMyStreet.Contracts.AddressService.Request
 {
@@ -10,7 +11,7 @@ namespace HelpMyStreet.Contracts.AddressService.Request
         public string Postcode { get; set; }
 
         [Required]
-        public List<PostcodeWithRadius> PostcodeWithRadiuses { get; set; }
+        public IEnumerable<PostcodeWithRadius> PostcodeWithRadiuses { get; set; }
 
     }
 }

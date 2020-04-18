@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace HelpMyStreet.Contracts.AddressService.Request
+namespace HelpMyStreet.Contracts.AddressService.Response
 {
     [DataContract(Name = "isPostcodeWithinRadiiResponse")]
     public class IsPostcodeWithinRadiiResponse
     {
         [DataMember(Name = "idsWithinRadius")]
-        public IEnumerable<int> IdsWithinRadius { get; set; }
+        public IReadOnlyList<int> IdsWithinRadius { get; set; }
     }
 }

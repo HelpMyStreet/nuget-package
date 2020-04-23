@@ -7,6 +7,6 @@ namespace HelpMyStreet.Contracts.RequestService.Response
     public class LogRequestResponse
     {
         public int RequestID { get; set; }
-        public bool Fulfillable { get; set; }
+        public Fulfillable Fulfillable { get; set; }
     }
 }

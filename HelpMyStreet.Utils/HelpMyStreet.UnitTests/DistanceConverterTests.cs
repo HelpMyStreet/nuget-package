@@ -22,5 +22,13 @@ namespace HelpMyStreet.UnitTests
 
             Assert.AreEqual(1609, result);
         }
+
+        [Test]
+        public void ConvertMetresToMiles_MetresIsDouble()
+        {
+            double result = DistanceConverter.MetresToMiles(1000d);
+
+            Assert.AreEqual(0.621371, Math.Round(result, 6));
+        }
     }
 }

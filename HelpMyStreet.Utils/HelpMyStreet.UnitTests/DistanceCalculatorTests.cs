@@ -22,12 +22,12 @@ namespace HelpMyStreet.UnitTests
         [TestCase(54.286959, -0.393904, 54.284261, -0.38845, 0.289024183213781)]
         [TestCase(53.402961, -2.995571, 53.406163, -2.991088, 0.288714460109212)]
         [TestCase(53.388313, -1.472253, 53.389387, -1.477352, 0.223501295975255)]
-        public void GetDistanceInMiles(double longitude, double latitude, double otherLongitude, double otherLatitude, double expectedDistanceInMetres)
+        public void GetDistanceInMiles(double longitude, double latitude, double otherLongitude, double otherLatitude, double expectedDistanceInMiles)
         {
             DistanceCalculator distanceCalculator = new DistanceCalculator();
             double result = distanceCalculator.GetDistanceInMiles(longitude, latitude, otherLongitude, otherLatitude);
 
-            Assert.IsTrue(result >= (expectedDistanceInMetres - 0.01) && result <= (expectedDistanceInMetres + 0.01));
+            Assert.IsTrue(result >= (expectedDistanceInMiles - 0.01) && result <= (expectedDistanceInMiles + 0.01));
         }
     }
 }

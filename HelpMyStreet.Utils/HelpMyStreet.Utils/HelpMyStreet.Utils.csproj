@@ -9,4 +9,9 @@
     <Description>Shared Utilty Class for the HelpMyStreet Project.</Description>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Polly.Caching.Memory" Version="3.0.2" />
+    <PackageReference Include="Polly.Contrib.DuplicateRequestCollapser" Version="0.2.0" />
+  </ItemGroup>
+
 </Project>

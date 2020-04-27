@@ -13,5 +13,9 @@ namespace HelpMyStreet.Utils.Utils
         {
             return metres / 1609.344d;
         }
+        public static double MetresToMiles(double metres)
+        {
+            return metres / 1609.344d;
+        }
     }
 }

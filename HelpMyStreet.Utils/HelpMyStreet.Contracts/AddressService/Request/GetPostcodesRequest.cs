@@ -8,5 +8,8 @@ namespace HelpMyStreet.Contracts.AddressService.Request
     {
         [Required]
         public PostcodeList PostcodeList { get; set; }
+
+        [Required]
+        public bool IncludeAddressDetails { get; set; }
     }
 }

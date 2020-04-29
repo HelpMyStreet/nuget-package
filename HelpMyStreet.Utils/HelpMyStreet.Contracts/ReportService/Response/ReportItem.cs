@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.ReportService.Response
 {
-    public class Report
+    public class ReportItem
     {
         public string Section { get; set; }
         public int Last2Hours { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Polly.Retry;
 using Polly.Wrap;
 using System.Net.Http;
+using Polly;
 
 namespace HelpMyStreet.Utils.PollyPolicies
 {
@@ -12,11 +13,11 @@ namespace HelpMyStreet.Utils.PollyPolicies
         /// <summary>
         /// Retries on 408 and 5XX errors.  503 errors have a different config for the pause between retires to allow time for the Azure Function to start up.
         /// </summary>
-        AsyncPolicyWrap<HttpResponseMessage> InternalHttpRetryPolicy { get; }
+        IAsyncPolicy<HttpResponseMessage> InternalHttpRetryPolicy { get; }
 
         /// <summary>
         /// Retries on 408 and 5XX errors.
         /// </summary>
-        AsyncRetryPolicy<HttpResponseMessage> ExternalHttpRetryPolicy { get; }
+        IAsyncPolicy<HttpResponseMessage> ExternalHttpRetryPolicy { get; }
     }
 }

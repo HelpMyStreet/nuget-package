@@ -20,6 +20,7 @@ namespace HelpMyStreet.Utils.CoordinatedResetCache
             _mockableDateTime = mockableDateTime;
         }
 
+        /// <inheritdoc />>
         public async Task<T> GetCachedDataAsync<T>(Func<Task<T>> dataGetter, string key, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
         {
             TimeSpan timeToReset;
@@ -42,6 +43,12 @@ namespace HelpMyStreet.Utils.CoordinatedResetCache
             T result = await _collapserPolicy.WrapAsync(cachePolicy).ExecuteAsync(_ => dataGetter.Invoke(), context);
 
             return result;
+        }
+
+        /// <inheritdoc />>
+        public T GetCachedData<T>(Func<T> dataGetter, string key, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
+        {
+            return GetCachedDataAsync(() => Task.FromResult(dataGetter.Invoke()), key, resetCacheTime).Result;
         }
 
         private TimeSpan GetLengthOfTimeUntilNextHour()

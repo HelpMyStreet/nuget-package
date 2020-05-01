@@ -204,6 +204,40 @@ namespace HelpMyStreet.UnitTests
 
         }
 
+        [Test]
+        public void NonAsyncVersion()
+        {
+            Mock<ITestDataGetter> dataGetter = new Mock<ITestDataGetter>();
+            dataGetter.Setup(x => x.GetData()).Returns("hello");
 
+            Func<string> dataGetterDelegate = () => dataGetter.Object.GetData();
+
+            _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTime(2020, 04, 24, 15, 45, 00, 00, DateTimeKind.Utc));
+
+            Mock<IPollyMemoryCacheProvider> pollyMemoryCacheProvider = new Mock<IPollyMemoryCacheProvider>();
+
+            MemoryCacheProvider memoryCacheProvider = new Polly.Caching.Memory.MemoryCacheProvider(new Microsoft.Extensions.Caching.Memory.MemoryCache(new Microsoft.Extensions.Caching.Memory.MemoryCacheOptions()
+            {
+                Clock = _mockableDateTime.Object
+            }));
+            pollyMemoryCacheProvider.SetupGet(x => x.MemoryCacheProvider).Returns(memoryCacheProvider);
+            
+            CoordinatedResetCache coordinatedResetCache = new CoordinatedResetCache(pollyMemoryCacheProvider.Object, _mockableDateTime.Object);
+
+            string result1 =  coordinatedResetCache.GetCachedData<string>(dataGetterDelegate, "key", CoordinatedResetCacheTime.OnHour);
+            string result2 =  coordinatedResetCache.GetCachedData<string>(dataGetterDelegate, "key", CoordinatedResetCacheTime.OnHour);
+
+            _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTime(2020, 04, 24, 16, 00, 00, 00, DateTimeKind.Utc));
+
+            string result3 = coordinatedResetCache.GetCachedData<string>(dataGetterDelegate, "key", CoordinatedResetCacheTime.OnHour);
+            string result4 = coordinatedResetCache.GetCachedData<string>(dataGetterDelegate, "key", CoordinatedResetCacheTime.OnHour);
+            
+            Assert.AreEqual("hello", result1);
+            Assert.AreEqual("hello", result2);
+            Assert.AreEqual("hello", result3);
+            Assert.AreEqual("hello", result4);
+
+            dataGetter.Verify(x => x.GetData(), Times.Exactly(2));
+        }
     }
 }

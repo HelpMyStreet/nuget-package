@@ -10,7 +10,7 @@ namespace HelpMyStreet.Utils.PollyPolicies
         /// <inheritdoc />>
         public IAsyncPolicy<HttpResponseMessage> InternalHttpRetryPolicy { get; }
 
-        /// <inheritdoc />>
+        /// <inheritdoc />>this
         public IAsyncPolicy<HttpResponseMessage> ExternalHttpRetryPolicy { get; }
 
         public PollyHttpPolicies(IPollyHttpPoliciesConfig pollyHttpPoliciesConfig)

@@ -3,6 +3,7 @@ using Polly;
 using Polly.Caching;
 using Polly.Contrib.DuplicateRequestCollapser;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HelpMyStreet.Utils.CoordinatedResetCache
@@ -21,7 +22,7 @@ namespace HelpMyStreet.Utils.CoordinatedResetCache
         }
 
         /// <inheritdoc />>
-        public async Task<T> GetCachedDataAsync<T>(Func<Task<T>> dataGetter, string key, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
+        public async Task<T> GetCachedDataAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
         {
             TimeSpan timeToReset;
 
@@ -40,17 +41,32 @@ namespace HelpMyStreet.Utils.CoordinatedResetCache
             Context context = new Context($"{nameof(CoordinatedResetCache)}_{key}");
 
             // collapser policy used to prevent concurrent calls retrieving the same data twice
-            T result = await _collapserPolicy.WrapAsync(cachePolicy).ExecuteAsync(_ => dataGetter.Invoke(), context);
+            T result = await _collapserPolicy.WrapAsync(cachePolicy).ExecuteAsync(_ => dataGetter.Invoke(cancellationToken), context);
 
             return result;
         }
 
+        // async without token
+        /// <inheritdoc />>
+        public async Task<T> GetCachedDataAsync<T>(Func<Task<T>> dataGetter, string key, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
+        {
+            return await GetCachedDataAsync(token => dataGetter.Invoke(), key, CancellationToken.None, resetCacheTime);
+        }
+        
+        // sync with token
+        /// <inheritdoc />>
+        public T GetCachedData<T>(Func<CancellationToken, T> dataGetter, string key, CancellationToken cancellationToken, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
+        {
+            return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, cancellationToken, resetCacheTime).Result;
+        }
+
+        // sync without token
         /// <inheritdoc />>
         public T GetCachedData<T>(Func<T> dataGetter, string key, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
         {
             return GetCachedDataAsync(() => Task.FromResult(dataGetter.Invoke()), key, resetCacheTime).Result;
         }
-
+        
         private TimeSpan GetLengthOfTimeUntilNextHour()
         {
             DateTimeOffset timeNow = _mockableDateTime.UtcNow;

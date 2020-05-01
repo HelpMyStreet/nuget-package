@@ -253,17 +253,11 @@ namespace HelpMyStreet.UnitTests
         [Test]
         public async Task AsyncWithoutToken()
         {
-
             Mock<ITestDataGetter> dataGetter1 = new Mock<ITestDataGetter>();
             dataGetter1.Setup(x => x.GetDataAsync()).ReturnsAsync("hello");
 
             Func<Task<string>> dataGetterDelegate1 = () => dataGetter1.Object.GetDataAsync();
-
-            Mock<ITestDataGetter> dataGetter2 = new Mock<ITestDataGetter>();
-            dataGetter2.Setup(x => x.GetDataAsync()).ReturnsAsync("hello");
-
-            Func<Task<string>> dataGetterDelegate2 = () => dataGetter1.Object.GetDataAsync();
-
+            
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTime(2020, 04, 24, 15, 45, 00, 00, DateTimeKind.Utc));
 
             Mock<IPollyMemoryCacheProvider> pollyMemoryCacheProvider = new Mock<IPollyMemoryCacheProvider>();
@@ -282,8 +276,8 @@ namespace HelpMyStreet.UnitTests
 
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTime(2020, 04, 24, 16, 00, 00, 00, DateTimeKind.Utc));
 
-            string result3 = await coordinatedResetCache.GetCachedDataAsync<string>(dataGetterDelegate2, "key", CoordinatedResetCacheTime.OnHour);
-            string result4 = await coordinatedResetCache.GetCachedDataAsync<string>(dataGetterDelegate2, "key", CoordinatedResetCacheTime.OnHour);
+            string result3 = await coordinatedResetCache.GetCachedDataAsync<string>(dataGetterDelegate1, "key", CoordinatedResetCacheTime.OnHour);
+            string result4 = await coordinatedResetCache.GetCachedDataAsync<string>(dataGetterDelegate1, "key", CoordinatedResetCacheTime.OnHour);
 
 
             Assert.AreEqual("hello", result1);
@@ -291,7 +285,7 @@ namespace HelpMyStreet.UnitTests
             Assert.AreEqual("hello", result3);
             Assert.AreEqual("hello", result4);
 
-            _dataGetter1.Verify(x => x.GetDataAsync(), Times.Exactly(2));
+            dataGetter1.Verify(x => x.GetDataAsync(), Times.Exactly(2));
 
         }
 

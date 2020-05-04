@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using Microsoft.Azure.Services.AppAuthentication;
 
-namespace HelpMyStreet.Utils.DBConnection
+namespace HelpMyStreet.Utils.Extensions
 {
     public static class SqlConnectionExtensions
     {

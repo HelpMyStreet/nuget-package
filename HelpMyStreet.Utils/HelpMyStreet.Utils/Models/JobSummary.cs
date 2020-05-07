@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HelpMyStreet.Utils.Models
 {
-    public class Job
+    public class JobSummary
     {
         public int JobID { get; set; }
         public Guid UniqueIdentifier { get; set; }
@@ -14,10 +14,8 @@ namespace HelpMyStreet.Utils.Models
         public int? VolunteerUserID { get; set; }
         public SupportActivities SupportActivity { get; set; }
         public string Details { get; set; }
-        public int DueDays { get; set; }
+        public DateTime DueDate { get; set; }
         public bool Critical { get; set; }
-        public JobPersonalDetails Requestor { get; set; }
-        public JobPersonalDetails Recipient { get; set; }
-
+        public string PostCode { get; set; }
     }
 }

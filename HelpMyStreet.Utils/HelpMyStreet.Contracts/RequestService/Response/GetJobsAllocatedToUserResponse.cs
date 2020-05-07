@@ -7,6 +7,6 @@ namespace HelpMyStreet.Contracts.RequestService.Response
 {
     public class GetJobsAllocatedToUserResponse
     {
-        public List<Job> Jobs { get; set; }
+        public List<JobSummary> JobSummaries { get; set; }
     }
 }

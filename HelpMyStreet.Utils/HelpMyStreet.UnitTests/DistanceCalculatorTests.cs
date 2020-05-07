@@ -10,10 +10,10 @@ namespace HelpMyStreet.UnitTests
         [TestCase(54.286959, -0.393904, 54.284261, -0.38845, 465.13933511)]
         [TestCase(53.402961, -2.995571, 53.406163, -2.991088, 464.64088409)]
         [TestCase(53.388313, -1.472253, 53.389387, -1.477352, 359.69046967)]
-        public void GetDistanceInMetres(double longitude, double latitude, double otherLongitude, double otherLatitude, double expectedDistanceInMetres)
+        public void GetDistanceInMetres(double latitude, double longitude, double otherLatitude, double otherLongitude, double expectedDistanceInMetres)
         {
             DistanceCalculator distanceCalculator = new DistanceCalculator();
-            double result = distanceCalculator.GetDistanceInMetres(longitude, latitude, otherLongitude, otherLatitude);
+            double result = distanceCalculator.GetDistanceInMetres(latitude, longitude, otherLatitude, otherLongitude);
 
             Assert.IsTrue(result >= (expectedDistanceInMetres - 1) && result <= (expectedDistanceInMetres + 1));
         }
@@ -22,10 +22,10 @@ namespace HelpMyStreet.UnitTests
         [TestCase(54.286959, -0.393904, 54.284261, -0.38845, 0.289024183213781)]
         [TestCase(53.402961, -2.995571, 53.406163, -2.991088, 0.288714460109212)]
         [TestCase(53.388313, -1.472253, 53.389387, -1.477352, 0.223501295975255)]
-        public void GetDistanceInMiles(double longitude, double latitude, double otherLongitude, double otherLatitude, double expectedDistanceInMiles)
+        public void GetDistanceInMiles(double latitude, double longitude, double otherLatitude, double otherLongitude, double expectedDistanceInMiles)
         {
             DistanceCalculator distanceCalculator = new DistanceCalculator();
-            double result = distanceCalculator.GetDistanceInMiles(longitude, latitude, otherLongitude, otherLatitude);
+            double result = distanceCalculator.GetDistanceInMiles(latitude, longitude, otherLatitude, otherLongitude);
 
             Assert.IsTrue(result >= (expectedDistanceInMiles - 0.01) && result <= (expectedDistanceInMiles + 0.01));
         }

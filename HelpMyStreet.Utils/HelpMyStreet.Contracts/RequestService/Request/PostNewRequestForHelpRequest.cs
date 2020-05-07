@@ -9,7 +9,7 @@ namespace HelpMyStreet.Contracts.RequestService.Request
 {
     public class PostNewRequestForHelpRequest : IRequest<PostNewRequestForHelpResponse>
     {
-        public Job JobRequest { get; set; }
+        public List<Job> Jobs { get; set; }
         public string CommunicationPreferences { get; set; }
         public string OtherDetails { get; set; }
     }

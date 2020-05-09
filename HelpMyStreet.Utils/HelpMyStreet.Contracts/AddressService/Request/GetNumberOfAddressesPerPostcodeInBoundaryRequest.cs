@@ -16,7 +16,7 @@ namespace HelpMyStreet.Contracts.AddressService.Request
 
         [Required]
         [Range(-90, 90)]
-        public double NeELatitude { get; set; }
+        public double NeLatitude { get; set; }
 
         [Required]
         [Range(-180, 180)]

@@ -4,13 +4,14 @@ using System.Text;
 
 namespace HelpMyStreet.Utils.Models
 {
-    public class JobPersonalDetails
+    public class RequestPersonalDetails
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public Address Address { get; set; }
-        public ContactNumber ContactNumbers { get; set; }
+        public string MobileNumber { get; set; }
+        public string OtherNumber { get; set; }
         public bool ConsentForContact { get; set; }
     }
 }

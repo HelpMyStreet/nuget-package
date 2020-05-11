@@ -10,6 +10,7 @@ namespace HelpMyStreet.Utils.Models
     {
         public int JobID { get; set; }
         public Guid UniqueIdentifier { get; set; }
+        public bool ForRequestor { get; set; }
         public JobStatuses JobStatus { get; set; }
         public int? VolunteerUserID { get; set; }
         public SupportActivities SupportActivity { get; set; }

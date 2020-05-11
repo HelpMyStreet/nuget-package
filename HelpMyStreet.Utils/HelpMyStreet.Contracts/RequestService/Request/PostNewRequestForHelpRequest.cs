@@ -10,6 +10,6 @@ namespace HelpMyStreet.Contracts.RequestService.Request
     public class PostNewRequestForHelpRequest : IRequest<PostNewRequestForHelpResponse>
     {
         public HelpRequest HelpRequest { get; set; }
-        public List<Job> Jobs { get; set; }  
+        public NewJobsRequest NewJobsRequest { get; set; }  
     }
 }

@@ -13,7 +13,7 @@ namespace HelpMyStreet.Utils.Models
         public bool AcceptedTerms { get; set; }
         public RequestPersonalDetails Requestor { get; set; }
         public RequestPersonalDetails Recipient { get; set; }
-        public string CommunicationPreferences { get; set; }
+        public string SpecialCommunicationNeeds { get; set; }
         public string OtherDetails { get; set; }
         public bool ConsentForContact { get; set; }
     }

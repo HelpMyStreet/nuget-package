@@ -12,6 +12,5 @@ namespace HelpMyStreet.Utils.Models
         public Address Address { get; set; }
         public string MobileNumber { get; set; }
         public string OtherNumber { get; set; }
-        public bool ConsentForContact { get; set; }
     }
 }

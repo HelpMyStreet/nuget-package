@@ -7,6 +7,7 @@ namespace HelpMyStreet.Contracts.RequestService.Response
 {
     public class GetJobDetailsResponse
     {
+        public HelpRequest HelpRequest { get; set; }
         public Job Job { get; set; }
     }
 }

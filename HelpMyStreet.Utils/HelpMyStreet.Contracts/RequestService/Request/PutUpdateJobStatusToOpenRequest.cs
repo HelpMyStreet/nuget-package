@@ -9,6 +9,6 @@ namespace HelpMyStreet.Contracts.RequestService.Request
     public class PutUpdateJobStatusToOpenRequest : IRequest<PutUpdateJobStatusToOpenResponse>
     {
         public int JobID { get; set; }
-        public int UserID { get; set; }
+        public int CreatedByUserID { get; set; }
     }
 }

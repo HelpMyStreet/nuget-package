@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HelpMyStreet.Contracts.RequestService.Response
+namespace HelpMyStreet.Utils.Enums
 {
     public enum JobStatuses
     {

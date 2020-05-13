@@ -11,6 +11,6 @@ namespace HelpMyStreet.Contracts.RequestService.Request
     public class GetJobsByFilterRequest : IRequest<GetJobsByFilterResponse>
     { 
         public string Postcode { get; set; }
-        public int Distance { get; set; }
+        public double DistanceInMiles { get; set; }
     }
 }

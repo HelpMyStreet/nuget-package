@@ -17,5 +17,6 @@ namespace HelpMyStreet.Utils.Models
         public DateTime DueDate { get; set; }
         public bool Critical { get; set; }
         public string PostCode { get; set; }
+        public int DistanceInMiles { get; set; }
     }
 }

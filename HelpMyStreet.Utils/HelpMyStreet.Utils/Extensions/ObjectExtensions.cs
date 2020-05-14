@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace HelpMyStreet.Utils.Utils
+namespace HelpMyStreet.Utils.Extensions
 {
     public static class ObjectExtensions
     {

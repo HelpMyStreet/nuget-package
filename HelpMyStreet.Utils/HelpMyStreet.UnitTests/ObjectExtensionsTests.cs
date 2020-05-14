@@ -1,8 +1,8 @@
-﻿using HelpMyStreet.Utils.Utils;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using HelpMyStreet.Utils.Extensions;
 
 namespace HelpMyStreet.UnitTests
 {

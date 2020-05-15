@@ -10,6 +10,6 @@ namespace HelpMyStreet.Contracts.RequestService.Request
 {
     public class GetJobsAllocatedToUserRequest : IRequest<GetJobsAllocatedToUserResponse>
     { 
-        public int UserID { get; set; }
+        public int VolunteerUserID { get; set; }
     }
 }

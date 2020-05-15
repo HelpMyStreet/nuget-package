@@ -15,7 +15,8 @@ namespace HelpMyStreet.Utils.Models
         public SupportActivities SupportActivity { get; set; }
         public string Details { get; set; }
         public DateTime DueDate { get; set; }
-        public bool Critical { get; set; }
+        public bool IsHealthCritical { get; set; }
         public string PostCode { get; set; }
+        public double DistanceInMiles { get; set; }
     }
 }

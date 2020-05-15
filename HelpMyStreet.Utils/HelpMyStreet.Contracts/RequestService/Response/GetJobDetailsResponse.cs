@@ -1,13 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HelpMyStreet.Utils.Enums;
 using HelpMyStreet.Utils.Models;
 
 namespace HelpMyStreet.Contracts.RequestService.Response
 {
     public class GetJobDetailsResponse
     {
-        public HelpRequest HelpRequest { get; set; }
-        public Job Job { get; set; }
+        public int JobID { get; set; }
+        public string Details { get; set; }
+        public RequestPersonalDetails Requestor { get; set; }
+        public RequestPersonalDetails Recipient { get; set; }
+        public string SpecialCommunicationNeeds { get; set; }
+        public string OtherDetails { get; set; }
+        public bool ConsentForContact { get; set; }
+        public JobStatuses JobStatus { get; set; }
+        public int? VolunteerUserID { get; set; }
+        public SupportActivities SupportActivity { get; set; }
+        
+        public DateTime DueDate { get; set; }
+        public bool HealthCritical { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace HelpMyStreet.Utils.MemDistCache
         /// <param name="cancellationToken">Cancellation token</param>
         /// <param name="resetCacheTime">When cache should reset</param>
         /// <returns></returns>
-        Task<T> GetCachedDataAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> resetTimeDelegate, Action<string, Exception> backendGetErrorDelegate);
+        Task<T> GetCachedDataAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> resetTimeDelegate, Action<string, Exception> backendGetErrorDelegate, bool waitForFreshData = false);
 
         /// <summary>
         ///  Get data from cache. 
@@ -26,7 +26,7 @@ namespace HelpMyStreet.Utils.MemDistCache
         /// <param name="key">The key to store data under</param>
         /// <param name="resetCacheTime">When cache should reset</param>
         /// <returns></returns>
-        Task<T> GetCachedDataAsync<T>(Func<Task<T>> dataGetter, string key, Func<DateTimeOffset, DateTimeOffset> resetTimeDelegate, Action<string, Exception> backendGetErrorDelegate);
+        Task<T> GetCachedDataAsync<T>(Func<Task<T>> dataGetter, string key, Func<DateTimeOffset, DateTimeOffset> resetTimeDelegate, Action<string, Exception> backendGetErrorDelegate, bool waitForFreshData = false);
 
         /// <summary>
         ///  Get data from cache. 
@@ -37,7 +37,7 @@ namespace HelpMyStreet.Utils.MemDistCache
         /// <param name="cancellationToken">Cancellation token</param>
         /// <param name="resetCacheTime">When cache should reset</param>
         /// <returns></returns>
-        T GetCachedData<T>(Func<CancellationToken, T> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> resetTimeDelegate, Action<string, Exception> backendGetErrorDelegate);
+        T GetCachedData<T>(Func<CancellationToken, T> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> resetTimeDelegate, Action<string, Exception> backendGetErrorDelegate, bool waitForFreshData = false);
 
         /// <summary>
         ///  Get data from cache.
@@ -47,6 +47,6 @@ namespace HelpMyStreet.Utils.MemDistCache
         /// <param name="key">The key to store data under</param>
         /// <param name="resetCacheTime">When cache should reset</param>
         /// <returns></returns>
-        T GetCachedData<T>(Func<T> dataGetter, string key, Func<DateTimeOffset, DateTimeOffset> resetTimeDelegate, Action<string, Exception> backendGetErrorDelegate);
+        T GetCachedData<T>(Func<T> dataGetter, string key, Func<DateTimeOffset, DateTimeOffset> resetTimeDelegate, Action<string, Exception> backendGetErrorDelegate, bool waitForFreshData = false);
     }
 }

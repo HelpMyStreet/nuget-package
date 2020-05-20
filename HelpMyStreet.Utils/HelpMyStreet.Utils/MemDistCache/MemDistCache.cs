@@ -7,6 +7,8 @@ using Polly.Contrib.DuplicateRequestCollapser;
 
 namespace HelpMyStreet.Utils.MemDistCache
 {
+
+    //ToDo: retry on distcache fail and explore data compression
     /// <summary>
     /// A cache with three main features:
     /// 1) If data is stale it will be returned, but fresh data re-cached on a background thread so response times aren't affected.  It is also possible to wait for fresh data though.
@@ -73,9 +75,7 @@ namespace HelpMyStreet.Utils.MemDistCache
 
                     if (isDistributedCacheFresh)
                     {
-#pragma warning disable 4014
-                            Task.Factory.StartNew(() => _collapserSyncPolicy.Execute(() => AddToMemoryCacheAfterRetrievingFromDistCache(key, distributedCacheObject)), cancellationToken);
-#pragma warning restore 4014
+                        AddToMemoryCacheAfterRetrievingFromDistCache(key, distributedCacheObject);
                     }
                     else
                     {

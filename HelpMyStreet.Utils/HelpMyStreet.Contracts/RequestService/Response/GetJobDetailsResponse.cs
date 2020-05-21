@@ -9,6 +9,7 @@ namespace HelpMyStreet.Contracts.RequestService.Response
     public class GetJobDetailsResponse
     {
         public int JobID { get; set; }
+        public bool ForRequestor { get; set; }
         public string Details { get; set; }
         public RequestPersonalDetails Requestor { get; set; }
         public RequestPersonalDetails Recipient { get; set; }

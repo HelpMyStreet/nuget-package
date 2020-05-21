@@ -9,7 +9,6 @@ namespace HelpMyStreet.Utils.Models
     public class JobSummary
     {
         public int JobID { get; set; }
-        public Guid UniqueIdentifier { get; set; }
         public JobStatuses JobStatus { get; set; }
         public int? VolunteerUserID { get; set; }
         public SupportActivities SupportActivity { get; set; }
@@ -18,5 +17,7 @@ namespace HelpMyStreet.Utils.Models
         public bool IsHealthCritical { get; set; }
         public string PostCode { get; set; }
         public double DistanceInMiles { get; set; }
+        public string SpecialCommunicationNeeds { get; set; }
+        public string OtherDetails { get; set; }
     }
 }

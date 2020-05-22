@@ -22,7 +22,6 @@
     <ProjectReference Include="..\HelpMyStreet.Cache\HelpMyStreet.Cache.csproj" />
     <ProjectReference Include="..\HelpMyStreet.Contracts\HelpMyStreet.Contracts.csproj" />
     <ProjectReference Include="..\HelpMyStreet.Utils\HelpMyStreet.Utils.csproj" />
-    <ProjectReference Include="..\Polly.Caching.Distributed\Polly.Caching.Distributed.csproj" />
   </ItemGroup>
 
 </Project>

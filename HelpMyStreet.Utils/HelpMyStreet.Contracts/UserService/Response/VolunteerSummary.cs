@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.UserService.Response
 {
-    public class VolunteerSumary
+    public class VolunteerSummary
     {
         public int UserID { get; set; }
         public bool? IsVerified { get; set; }

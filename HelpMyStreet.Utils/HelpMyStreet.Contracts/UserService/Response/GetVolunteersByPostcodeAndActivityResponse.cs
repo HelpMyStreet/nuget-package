@@ -6,6 +6,6 @@ namespace HelpMyStreet.Contracts.UserService.Response
 {
     public class GetVolunteersByPostcodeAndActivityResponse
     {
-        public IEnumerable<VolunteerSumary> Volunteers { get; set; }
+        public IEnumerable<VolunteerSummary> Volunteers { get; set; }
     }
 }

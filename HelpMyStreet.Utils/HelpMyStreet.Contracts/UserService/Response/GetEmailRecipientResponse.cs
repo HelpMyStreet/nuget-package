@@ -4,8 +4,8 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.UserService.Response
 {
-    public class GetUsersByFilterResponse
+    public class GetEmailRecipientResponse
     {
-        public IEnumerable<UserSummary> UserSummaries { get; set; }
+        public IEnumerable<EmailRecipient> EmailRecipients { get; set; }
     }
 }

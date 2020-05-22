@@ -4,7 +4,7 @@ using MediatR;
 
 namespace HelpMyStreet.Contracts.UserService.Request
 {
-    public class GetEmailRecipientRequest : IRequest<GetEmailRecipientResponse>
+    public class GetVolunteersByPostcodeAndActivityRequest : IRequest<GetVolunteersByPostcodeAndActivityResponse>
     {
         public string Postcode { get; set; }
         public SupportActivities Activity { get; set; }

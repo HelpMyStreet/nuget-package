@@ -6,7 +6,6 @@ namespace HelpMyStreet.Contracts.UserService.Request
 {
     public class GetVolunteersByPostcodeAndActivityRequest : IRequest<GetVolunteersByPostcodeAndActivityResponse>
     {
-        public string Postcode { get; set; }
-        public string Activity { get; set; }
+        public VolunteerFilter VolunteerFilter { get; set; }
     }
 }

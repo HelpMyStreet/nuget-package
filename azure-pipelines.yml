@@ -28,10 +28,11 @@ steps:
   inputs:
     checkLatest: true
     
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   displayName: NuGet pack
   inputs:
     command: 'pack'
+    includesymbols: true
     packagesToPack: 'HelpMyStreet.Utils/**/*.csproj;!HelpMyStreet.Utils/**/*Tests.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'nugetVersion'

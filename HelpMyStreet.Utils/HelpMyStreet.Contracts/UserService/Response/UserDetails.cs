@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelpMyStreet.Utils.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,5 +15,8 @@ namespace HelpMyStreet.Contracts.UserService.Response
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PostCode { get; set; }
+        public decimal? Latitude { get; set; }
+        public decimal? Longitude { get; set; }
+        public IEnumerable<SupportActivities> SupportActivities { get; set; }
     }
 }

@@ -20,7 +20,17 @@ namespace HelpMyStreet.Cache.Extensions
 
             serviceCollection.AddSingleton<IDistributedCacheWrapper, DistributedCacheWrapperWithCompression>();
             serviceCollection.AddSingleton<ISystemClock, MockableDateTime>();
-            serviceCollection.AddSingleton<MemDistCache.MemDistCache>();
+            serviceCollection.AddSingleton<IMemDistCache, MemDistCache.MemDistCache>();
+
+            return serviceCollection;
+        }
+
+        public static IServiceCollection AddMemCache(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddMemoryCache();
+            serviceCollection.AddSingleton<Polly.Caching.ISyncCacheProvider, Polly.Caching.Memory.MemoryCacheProvider>();
+            serviceCollection.AddSingleton<ISystemClock, MockableDateTime>();
+            serviceCollection.AddSingleton<IMemDistCache, MemCache.MemCache>();
 
             return serviceCollection;
         }

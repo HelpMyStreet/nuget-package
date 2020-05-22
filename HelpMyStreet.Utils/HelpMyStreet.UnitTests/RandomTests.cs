@@ -23,17 +23,15 @@ namespace HelpMyStreet.UnitTests
             //services.AddMemoryCache();
             //services.AddSingleton<Polly.Caching.ISyncCacheProvider, Polly.Caching.Memory.MemoryCacheProvider>();
 
-            //services.AddDistributedRedisCache(options =>
-            //{
-            //    options.Configuration = "will.redis.cache.windows.net:6380,password=13uF22HqENL5bnJzeO6nNgPwtTnJTS+e43NpX9LdSP4=,ssl=True,abortConnect=False"; // or whatever
-            //    options.InstanceName = "Test";
-            //});
+
 
             //services.AddSingleton<IDistributedCacheWrapper, DistributedCacheWrapperWithCompression>();
             //services.AddSingleton<ISystemClock, MockableDateTime>();
             //services.AddSingleton<MemDistCache>();
 
-            services.AddMemDistCache("Test", "will.redis.cache.windows.net:6380,password=13uF22HqENL5bnJzeO6nNgPwtTnJTS+e43NpX9LdSP4=,ssl=True,abortConnect=False");
+            
+
+           // services.AddMemCache();
 
             var serviceProvider = services.BuildServiceProvider();
 
@@ -43,9 +41,9 @@ namespace HelpMyStreet.UnitTests
             var dddcc = serviceProvider.GetService<IDistributedCacheWrapper>();
             var regerg = serviceProvider.GetService<IDistributedCache>();
 
-            var eff = regerg.Get("gg");
+           // var eff = regerg.Get("gg");
 
-            var cache = serviceProvider.GetService<MemDistCache>();
+            var cache = serviceProvider.GetService<IMemDistCache>();
 
             var testClass = new TestClass()
             {

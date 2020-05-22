@@ -36,7 +36,7 @@ namespace HelpMyStreet.Cache.MemDistCache
         }
 
         /// <inheritdoc />>
-        public async Task<T> GetCachedDataAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate, bool waitForFreshData, CancellationToken cancellationToken, Action<string, Exception> backendGetErrorDelegate)
+        public async Task<T> GetCachedDataAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate, bool waitForFreshData, CancellationToken cancellationToken, Action<string, Exception> dataGetterErrorDelegate)
         {
             (bool, object) memoryWrappedResult = _pollySyncCacheProvider.TryGet(key);
 
@@ -51,12 +51,12 @@ namespace HelpMyStreet.Cache.MemDistCache
                 {
                     if (waitForFreshData)
                     {
-                        return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate, backendGetErrorDelegate));
+                        return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate, dataGetterErrorDelegate));
                     }
                     else
                     {
 #pragma warning disable 4014
-                        Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate, backendGetErrorDelegate), cancellationToken);
+                        Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate, dataGetterErrorDelegate), cancellationToken);
 #pragma warning restore 4014
                     }
                 }
@@ -82,12 +82,12 @@ namespace HelpMyStreet.Cache.MemDistCache
                     {
                         if (waitForFreshData)
                         {
-                            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate, backendGetErrorDelegate);
+                            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate, dataGetterErrorDelegate);
                         }
                         else
                         {
 #pragma warning disable 4014
-                            Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate, backendGetErrorDelegate), cancellationToken);
+                            Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate, dataGetterErrorDelegate), cancellationToken);
 #pragma warning restore 4014
                         }
                     }
@@ -97,7 +97,7 @@ namespace HelpMyStreet.Cache.MemDistCache
             }
 
             // data isn't in either memory or distributed cache
-            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate, backendGetErrorDelegate);
+            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate, dataGetterErrorDelegate);
         }
 
         private async Task<T> RecacheItemInMemoryAndDistCacheAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate, Action<string, Exception> backendGetErrorDelegate)
@@ -148,9 +148,9 @@ namespace HelpMyStreet.Cache.MemDistCache
         }
 
         /// <inheritdoc />>
-        public T GetCachedData<T>(Func<CancellationToken, T> dataGetter, string key, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate, bool waitForFreshData, CancellationToken cancellationToken, Action<string, Exception> backendGetErrorDelegate)
+        public T GetCachedData<T>(Func<CancellationToken, T> dataGetter, string key, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate, bool waitForFreshData, CancellationToken cancellationToken, Action<string, Exception> dataGetterErrorDelegate)
         {
-            return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, whenDataIsStaleDelegate, waitForFreshData, cancellationToken, backendGetErrorDelegate).Result;
+            return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, whenDataIsStaleDelegate, waitForFreshData, cancellationToken, dataGetterErrorDelegate).Result;
         }
 
     }

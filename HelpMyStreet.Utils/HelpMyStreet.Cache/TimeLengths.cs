@@ -6,6 +6,7 @@ namespace HelpMyStreet.Cache
     {
         public static Func<DateTimeOffset, DateTimeOffset> OnMinute => (timeNow) => GetLengthOfTimeUntilNextMinute(timeNow);
         public static Func<DateTimeOffset, DateTimeOffset> OnHour => (timeNow) => GetLengthOfTimeUntilNextHour(timeNow);
+        public static Func<DateTimeOffset, DateTimeOffset> OnMidday => (timeNow) => GetLengthOfTimeUntilNextMidday(timeNow);
 
         private static DateTimeOffset GetLengthOfTimeUntilNextHour(DateTimeOffset timeNow)
         {
@@ -21,11 +22,17 @@ namespace HelpMyStreet.Cache
             return theNextMinuteWithoutSeconds;
         }
 
-        private static DateTimeOffset GetLengthOfTimeUntilNextDay(DateTimeOffset timeNow)
+        private static DateTimeOffset GetLengthOfTimeUntilNextMidday(DateTimeOffset timeNow)
         {
-            DateTimeOffset nowPlusOneDay = timeNow.AddDays(1);
-            DateTimeOffset theNextMinuteWithoutSeconds = new DateTime(nowPlusOneDay.Year, nowPlusOneDay.Month, nowPlusOneDay.Day, nowPlusOneDay.Hour, nowPlusOneDay.Minute, 0, DateTimeKind.Utc);
-            return theNextMinuteWithoutSeconds;
+            if (timeNow.Hour >= 12)
+            {
+                return new DateTimeOffset(timeNow.Year, timeNow.Month, timeNow.Day + 1, 12, 0, 0, timeNow.Offset);
+            }
+            else
+            {
+                return new DateTimeOffset(timeNow.Year, timeNow.Month, timeNow.Day, 12, 0, 0, timeNow.Offset);
+            }
         }
+        
     }
 }

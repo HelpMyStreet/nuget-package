@@ -54,5 +54,29 @@ namespace HelpMyStreet.UnitTests
 
             Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+        public void NextMidday1()
+        {
+            DateTimeOffset timeNow = new DateTimeOffset(2020, 05, 22, 20, 08, 30, new TimeSpan(0));
+
+            DateTimeOffset expectedResult = new DateTimeOffset(2020, 05, 23, 12, 00, 00, new TimeSpan(0));
+
+            DateTimeOffset result = TimeLengths.OnMidday(timeNow);
+
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void NextMidday2()
+        {
+            DateTimeOffset timeNow = new DateTimeOffset(2020, 05, 22, 11, 08, 30, new TimeSpan(0));
+
+            DateTimeOffset expectedResult = new DateTimeOffset(2020, 05, 22, 12, 00, 00, new TimeSpan(0));
+
+            DateTimeOffset result = TimeLengths.OnMidday(timeNow);
+
+            Assert.AreEqual(expectedResult, result);
+        }
     }
 }

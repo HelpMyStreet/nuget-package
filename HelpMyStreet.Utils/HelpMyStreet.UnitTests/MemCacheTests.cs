@@ -63,9 +63,10 @@ namespace HelpMyStreet.UnitTests
 
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
-            MemCache inMemCache = new MemCache(_pollySyncCacheProvider.Object, _mockableDateTime.Object);
+            MemCacheFactory memCacheFactory = new MemCacheFactory(_pollySyncCacheProvider.Object,  _mockableDateTime.Object);
+            IMemDistCache memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour, _backendGetErrorDelegate);
 
-            string result = await inMemCache.GetCachedDataAsync(_dataGetterDelegate1, "key", TimeLengths.OnHour, false, CancellationToken.None, _backendGetErrorDelegate);
+            string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, "key", false, CancellationToken.None);
 
             Assert.AreEqual("fromMemCache", result);
             Assert.AreEqual(0, _numberOfTimesDataGetterDelegate1Called);
@@ -84,9 +85,10 @@ namespace HelpMyStreet.UnitTests
 
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
-            MemCache inMemCache = new MemCache(_pollySyncCacheProvider.Object,  _mockableDateTime.Object);
+            MemCacheFactory memCacheFactory = new MemCacheFactory(_pollySyncCacheProvider.Object, _mockableDateTime.Object);
+            IMemDistCache memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour, _backendGetErrorDelegate);
 
-            string result = await inMemCache.GetCachedDataAsync(_dataGetterDelegate1, "key", TimeLengths.OnHour, false, CancellationToken.None, _backendGetErrorDelegate);
+            string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, "key", false, CancellationToken.None);
 
             Assert.AreEqual("fromMemCache", result);
 
@@ -112,9 +114,10 @@ namespace HelpMyStreet.UnitTests
 
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
-            MemCache inMemCache = new MemCache(_pollySyncCacheProvider.Object,  _mockableDateTime.Object);
+            MemCacheFactory memCacheFactory = new MemCacheFactory(_pollySyncCacheProvider.Object, _mockableDateTime.Object);
+            IMemDistCache memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour, _backendGetErrorDelegate);
 
-            string result = await inMemCache.GetCachedDataAsync(_dataGetterDelegate1, "key", TimeLengths.OnHour, true, CancellationToken.None, _backendGetErrorDelegate);
+            string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, "key", true, CancellationToken.None);
 
             Assert.AreEqual("dataFromBackendGet", result);
 
@@ -144,9 +147,10 @@ namespace HelpMyStreet.UnitTests
                 throw new Exception("An error");
             };
 
-            MemCache inMemCache = new MemCache(_pollySyncCacheProvider.Object,  _mockableDateTime.Object);
+            MemCacheFactory memCacheFactory = new MemCacheFactory(_pollySyncCacheProvider.Object, _mockableDateTime.Object);
+            IMemDistCache memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour, _backendGetErrorDelegate);
 
-            string result = await inMemCache.GetCachedDataAsync(_dataGetterDelegate1, "key", TimeLengths.OnHour, false, CancellationToken.None, _backendGetErrorDelegate);
+            string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, "key", false, CancellationToken.None);
 
             Assert.AreEqual("fromMemCache", result);
 
@@ -180,9 +184,10 @@ namespace HelpMyStreet.UnitTests
                 throw new Exception("An error");
             };
 
-            MemCache inMemCache = new MemCache(_pollySyncCacheProvider.Object,  _mockableDateTime.Object);
+            MemCacheFactory memCacheFactory = new MemCacheFactory(_pollySyncCacheProvider.Object, _mockableDateTime.Object);
+            IMemDistCache memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour, null);
 
-            string result = await inMemCache.GetCachedDataAsync(_dataGetterDelegate1, "key", TimeLengths.OnHour, false, CancellationToken.None, null);
+            string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, "key", false, CancellationToken.None);
 
             Assert.AreEqual("fromMemCache", result);
 
@@ -225,7 +230,8 @@ namespace HelpMyStreet.UnitTests
 
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
-            MemCache MemCache = new MemCache(_pollySyncCacheProvider.Object,  _mockableDateTime.Object);
+            MemCacheFactory memCacheFactory = new MemCacheFactory(_pollySyncCacheProvider.Object, _mockableDateTime.Object);
+            IMemDistCache memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour, _backendGetErrorDelegate);
 
             ConcurrentBag<Task<string>> results1 = new ConcurrentBag<Task<string>>();
             ConcurrentBag<Task<string>> results2 = new ConcurrentBag<Task<string>>();
@@ -236,7 +242,7 @@ namespace HelpMyStreet.UnitTests
             {
                 Parallel.For(0, 50, i =>
                 {
-                    Task<string> result = MemCache.GetCachedDataAsync(dataGetterDelegate1, "key1", TimeLengths.OnHour, true, CancellationToken.None, _backendGetErrorDelegate);
+                    Task<string> result = memCache.GetCachedDataAsync(dataGetterDelegate1, "key1", true, CancellationToken.None);
                     results1.Add(result);
                 });
             });
@@ -246,7 +252,7 @@ namespace HelpMyStreet.UnitTests
             {
                 Parallel.For(0, 50, i =>
                 {
-                    Task<string> result = MemCache.GetCachedDataAsync(dataGetterDelegate2, "key2", TimeLengths.OnHour, true, CancellationToken.None, _backendGetErrorDelegate);
+                    Task<string> result = memCache.GetCachedDataAsync(dataGetterDelegate2, "key2",  true, CancellationToken.None);
                     results2.Add(result);
                 });
             });

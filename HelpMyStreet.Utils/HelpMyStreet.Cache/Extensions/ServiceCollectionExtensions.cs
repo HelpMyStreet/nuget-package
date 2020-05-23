@@ -2,6 +2,7 @@
 using HelpMyStreet.Cache.MemDistCache;
 using HelpMyStreet.Utils.Utils;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Internal;
 
 namespace HelpMyStreet.Cache.Extensions
@@ -15,7 +16,7 @@ namespace HelpMyStreet.Cache.Extensions
         public static IServiceCollection AddMemDistCache(this IServiceCollection serviceCollection, string applicationName, string redisConnectionString)
         {
             serviceCollection.AddMemoryCache();
-            serviceCollection.AddSingleton<Polly.Caching.ISyncCacheProvider, Polly.Caching.Memory.MemoryCacheProvider>();
+            serviceCollection.TryAddSingleton<Polly.Caching.ISyncCacheProvider, Polly.Caching.Memory.MemoryCacheProvider>();
 
             serviceCollection.AddDistributedRedisCache(options =>
             {
@@ -23,9 +24,9 @@ namespace HelpMyStreet.Cache.Extensions
                 options.InstanceName = applicationName;
             });
 
-            serviceCollection.AddSingleton<IDistributedCacheWrapper, DistributedCacheWrapperWithCompression>();
-            serviceCollection.AddSingleton<ISystemClock, MockableDateTime>();
-            serviceCollection.AddSingleton<IMemDistCacheFactory, MemDistCacheFactory>();
+            serviceCollection.TryAddSingleton<IDistributedCacheWrapper, DistributedCacheWrapperWithCompression>();
+            serviceCollection.TryAddSingleton<ISystemClock, MockableDateTime>();
+            serviceCollection.TryAddSingleton<IMemDistCacheFactory, MemDistCacheFactory>();
 
             return serviceCollection;
         }
@@ -36,9 +37,9 @@ namespace HelpMyStreet.Cache.Extensions
         public static IServiceCollection AddMemCache(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddMemoryCache();
-            serviceCollection.AddSingleton<Polly.Caching.ISyncCacheProvider, Polly.Caching.Memory.MemoryCacheProvider>();
-            serviceCollection.AddSingleton<ISystemClock, MockableDateTime>();
-            serviceCollection.AddSingleton<IMemDistCacheFactory, MemCacheFactory>();
+            serviceCollection.TryAddSingleton<Polly.Caching.ISyncCacheProvider, Polly.Caching.Memory.MemoryCacheProvider>();
+            serviceCollection.TryAddSingleton<ISystemClock, MockableDateTime>();
+            serviceCollection.TryAddSingleton<IMemDistCacheFactory, MemCacheFactory>();
 
             return serviceCollection;
         }

@@ -6,6 +6,7 @@ using Polly.Contrib.DuplicateRequestCollapser;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using HelpMyStreet.Utils.Utils;
 
 namespace HelpMyStreet.Cache.MemDistCache
 {
@@ -24,15 +25,15 @@ namespace HelpMyStreet.Cache.MemDistCache
         private readonly ISyncCacheProvider _pollySyncCacheProvider;
         private readonly IDistributedCacheWrapper _distributedCacheWrapper;
         private readonly ISystemClock _mockableDateTime;
+        private readonly ILoggerWrapper<MemDistCache> _logger;
 
         private static readonly IAsyncRequestCollapserPolicy _collapserPolicy = AsyncRequestCollapserPolicy.Create();
         private static readonly ISyncRequestCollapserPolicy _collapserSyncPolicy = RequestCollapserPolicy.Create();
 
         private readonly TimeSpan _defaultCacheDuration;
         private readonly Func<DateTimeOffset, DateTimeOffset> _whenDataIsStaleDelegate;
-        private readonly Action<string, Exception> _dataGetterErrorDelegate;
 
-        public MemDistCache(ISyncCacheProvider pollySyncCacheProvider, IDistributedCacheWrapper distributedCacheWrapper, ISystemClock mockableDateTime, TimeSpan defaultCacheDuration, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate, Action<string, Exception> dataGetterErrorDelegate)
+        public MemDistCache(ISyncCacheProvider pollySyncCacheProvider, IDistributedCacheWrapper distributedCacheWrapper, ISystemClock mockableDateTime, TimeSpan defaultCacheDuration, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate, ILoggerWrapper<MemDistCache> logger)
         {
             _pollySyncCacheProvider = pollySyncCacheProvider;
             _distributedCacheWrapper = distributedCacheWrapper;
@@ -40,7 +41,7 @@ namespace HelpMyStreet.Cache.MemDistCache
 
             _defaultCacheDuration = defaultCacheDuration;
             _whenDataIsStaleDelegate = whenDataIsStaleDelegate;
-            _dataGetterErrorDelegate = dataGetterErrorDelegate;
+            _logger = logger;
         }
 
         /// <inheritdoc />>
@@ -59,12 +60,12 @@ namespace HelpMyStreet.Cache.MemDistCache
                 {
                     if (waitForFreshData)
                     {
-                        return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate, _dataGetterErrorDelegate));
+                        return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate));
                     }
                     else
                     {
 #pragma warning disable 4014
-                        Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate, _dataGetterErrorDelegate), cancellationToken);
+                        Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
 #pragma warning restore 4014
                     }
                 }
@@ -90,12 +91,12 @@ namespace HelpMyStreet.Cache.MemDistCache
                     {
                         if (waitForFreshData)
                         {
-                            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate, _dataGetterErrorDelegate);
+                            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate);
                         }
                         else
                         {
 #pragma warning disable 4014
-                            Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate, _dataGetterErrorDelegate), cancellationToken);
+                            Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
 #pragma warning restore 4014
                         }
                     }
@@ -105,10 +106,10 @@ namespace HelpMyStreet.Cache.MemDistCache
             }
 
             // data isn't in either memory or distributed cache
-            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate, _dataGetterErrorDelegate);
+            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate);
         }
 
-        private async Task<T> RecacheItemInMemoryAndDistCacheAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate, Action<string, Exception> backendGetErrorDelegate)
+        private async Task<T> RecacheItemInMemoryAndDistCacheAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
         {
             return await _collapserPolicy.ExecuteAsync(async (context, token) =>
             {
@@ -119,7 +120,7 @@ namespace HelpMyStreet.Cache.MemDistCache
                 }
                 catch (Exception ex)
                 {
-                    backendGetErrorDelegate?.Invoke(key, ex);
+                    _logger.LogError($"Error executing data getter for key: {key}", ex);
                     return default(T);
                 }
 

@@ -27,6 +27,7 @@ namespace HelpMyStreet.Cache.Extensions
             serviceCollection.TryAddSingleton<IDistributedCacheWrapper, DistributedCacheWrapperWithCompression>();
             serviceCollection.TryAddSingleton<ISystemClock, MockableDateTime>();
             serviceCollection.TryAddSingleton<IMemDistCacheFactory, MemDistCacheFactory>();
+            serviceCollection.TryAddSingleton<ILoggerWrapper<MemDistCache.MemDistCache>, LoggerWrapper<MemDistCache.MemDistCache>>();
 
             return serviceCollection;
         }
@@ -40,6 +41,7 @@ namespace HelpMyStreet.Cache.Extensions
             serviceCollection.TryAddSingleton<Polly.Caching.ISyncCacheProvider, Polly.Caching.Memory.MemoryCacheProvider>();
             serviceCollection.TryAddSingleton<ISystemClock, MockableDateTime>();
             serviceCollection.TryAddSingleton<IMemDistCacheFactory, MemCacheFactory>();
+            serviceCollection.TryAddSingleton<ILoggerWrapper<MemCache.MemCache>, LoggerWrapper<MemCache.MemCache>>();
 
             return serviceCollection;
         }

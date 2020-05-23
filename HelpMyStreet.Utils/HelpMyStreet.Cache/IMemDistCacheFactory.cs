@@ -2,7 +2,7 @@
 
 namespace HelpMyStreet.Cache
 {
-    public interface IMemDistCacheFactory
+    public interface IMemDistCacheFactory<T>
     {
         /// <summary>
         /// Get cache
@@ -10,6 +10,6 @@ namespace HelpMyStreet.Cache
         /// <param name="howLongToKeepStaleData">How long to keep stale data in the cache</param>
         /// <param name="whenDataIsStaleDelegate">When the data should be considered stale</param> 
         /// <returns></returns>
-        IMemDistCache GetCache(TimeSpan howLongToKeepStaleData, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate);
+        IMemDistCache<T> GetCache(TimeSpan howLongToKeepStaleData, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate);
     }
 }

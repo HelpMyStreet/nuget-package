@@ -17,7 +17,7 @@ namespace HelpMyStreet.Cache.MemCache
     /// 3) Concurrent requests for the same key will result in only one call to the data getter delegate.
     /// Set up in DI container using: services.AddMemDistCache()
     /// </summary>
-    public class MemCache : IMemDistCache
+    public class MemCache<T> : IMemDistCache<T>
     {
         private readonly ISyncCacheProvider _pollySyncCacheProvider;
         private readonly ISystemClock _mockableDateTime;
@@ -26,9 +26,9 @@ namespace HelpMyStreet.Cache.MemCache
 
         private readonly TimeSpan _defaultCacheDuration;
         private readonly Func<DateTimeOffset, DateTimeOffset> _whenDataIsStaleDelegate;
-        private readonly ILoggerWrapper<MemCache> _logger;
+        private readonly ILoggerWrapper<MemCache<T>> _logger;
 
-        public MemCache(ISyncCacheProvider pollySyncCacheProvider, ISystemClock mockableDateTime, TimeSpan defaultCacheDuration, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate,  ILoggerWrapper<MemCache> logger)
+        public MemCache(ISyncCacheProvider pollySyncCacheProvider, ISystemClock mockableDateTime, TimeSpan defaultCacheDuration, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate,  ILoggerWrapper<MemCache<T>> logger)
         {
             _pollySyncCacheProvider = pollySyncCacheProvider;
             _mockableDateTime = mockableDateTime;
@@ -38,27 +38,29 @@ namespace HelpMyStreet.Cache.MemCache
         }
 
         /// <inheritdoc />>
-        public async Task<T> GetCachedDataAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
+        public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
         {
-            (bool, object) memoryWrappedResult = _pollySyncCacheProvider.TryGet(key);
+            string prefixedKey = $"_{typeof(T).Name}_{key}";
+
+            (bool, object) memoryWrappedResult = _pollySyncCacheProvider.TryGet(prefixedKey);
 
             bool isObjectInMemoryCache = memoryWrappedResult.Item1;
 
             if (isObjectInMemoryCache)
             {
                 CachedItemWrapper<T> memoryResultObject = (CachedItemWrapper<T>)memoryWrappedResult.Item2;
-                bool isMemoryCacheFresh = IsFresh<T>(memoryResultObject);
+                bool isMemoryCacheFresh = IsFresh(memoryResultObject);
 
                 if (!isMemoryCacheFresh)
                 {
                     if (waitForFreshData)
                     {
-                        return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate));
+                        return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate));
                     }
                     else
                     {
 #pragma warning disable 4014
-                        Task.Factory.StartNew(async () => await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
+                        Task.Factory.StartNew(async () => await RecacheItemInMemoryCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
 #pragma warning restore 4014
                     }
                 }
@@ -66,10 +68,10 @@ namespace HelpMyStreet.Cache.MemCache
                 return memoryResultObject.Content;
             }
 
-            return await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate);
+            return await RecacheItemInMemoryCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate);
         }
 
-        private async Task<T> RecacheItemInMemoryCacheAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
+        private async Task<T> RecacheItemInMemoryCacheAsync(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
         {
             return await _collapserPolicy.ExecuteAsync(async (context, token) =>
             {
@@ -97,7 +99,7 @@ namespace HelpMyStreet.Cache.MemCache
             }, new Context(key), cancellationToken);
         }
 
-        private bool IsFresh<T>(CachedItemWrapper<T> itemInWrapper)
+        private bool IsFresh(CachedItemWrapper<T> itemInWrapper)
         {
             if (itemInWrapper.IsFreshUntil >= _mockableDateTime.UtcNow)
             {
@@ -107,7 +109,7 @@ namespace HelpMyStreet.Cache.MemCache
         }
 
         /// <inheritdoc />>
-        public T GetCachedData<T>(Func<CancellationToken, T> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
+        public T GetCachedData(Func<CancellationToken, T> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
         {
             return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, waitForFreshData, cancellationToken).Result;
         }

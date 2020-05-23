@@ -4,20 +4,17 @@ using HelpMyStreet.Utils.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Internal;
+using Microsoft.Extensions.Logging;
 
 namespace HelpMyStreet.Cache.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-
         /// <summary>
         /// Add MemDistCache
         /// </summary>
         public static IServiceCollection AddMemDistCache(this IServiceCollection serviceCollection, string applicationName, string redisConnectionString)
         {
-            serviceCollection.AddMemoryCache();
-            serviceCollection.TryAddSingleton<Polly.Caching.ISyncCacheProvider, Polly.Caching.Memory.MemoryCacheProvider>();
-
             serviceCollection.AddDistributedRedisCache(options =>
             {
                 options.Configuration = redisConnectionString;
@@ -25,9 +22,8 @@ namespace HelpMyStreet.Cache.Extensions
             });
 
             serviceCollection.TryAddSingleton<IDistributedCacheWrapper, DistributedCacheWrapperWithCompression>();
-            serviceCollection.TryAddSingleton<ISystemClock, MockableDateTime>();
-            serviceCollection.TryAddSingleton<IMemDistCacheFactory, MemDistCacheFactory>();
-            serviceCollection.TryAddSingleton<ILoggerWrapper<MemDistCache.MemDistCache>, LoggerWrapper<MemDistCache.MemDistCache>>();
+            serviceCollection.TryAddSingleton(typeof(IMemDistCacheFactory<>), typeof(MemDistCacheFactory<>));
+            serviceCollection.AddShared();
 
             return serviceCollection;
         }
@@ -37,11 +33,20 @@ namespace HelpMyStreet.Cache.Extensions
         /// </summary>
         public static IServiceCollection AddMemCache(this IServiceCollection serviceCollection)
         {
+            serviceCollection.TryAddSingleton<Polly.Caching.ISyncCacheProvider, Polly.Caching.Memory.MemoryCacheProvider>();
+            serviceCollection.TryAddSingleton(typeof(IMemDistCacheFactory<>), typeof(MemCacheFactory<>));
+            serviceCollection.AddShared();
+
+            return serviceCollection;
+        }
+
+        private static IServiceCollection AddShared(this IServiceCollection serviceCollection)
+        {
             serviceCollection.AddMemoryCache();
+            serviceCollection.AddLogging();
             serviceCollection.TryAddSingleton<Polly.Caching.ISyncCacheProvider, Polly.Caching.Memory.MemoryCacheProvider>();
             serviceCollection.TryAddSingleton<ISystemClock, MockableDateTime>();
-            serviceCollection.TryAddSingleton<IMemDistCacheFactory, MemCacheFactory>();
-            serviceCollection.TryAddSingleton<ILoggerWrapper<MemCache.MemCache>, LoggerWrapper<MemCache.MemCache>>();
+            serviceCollection.TryAddSingleton(typeof(ILoggerWrapper<>), typeof(LoggerWrapper<>));
 
             return serviceCollection;
         }

@@ -5,13 +5,13 @@ using HelpMyStreet.Utils.Utils;
 
 namespace HelpMyStreet.Cache.MemCache
 {
-    public class MemCacheFactory : IMemDistCacheFactory
+    public class MemCacheFactory<T> : IMemDistCacheFactory<T>
     {
         private readonly ISyncCacheProvider _pollySyncCacheProvider;
         private readonly ISystemClock _mockableDateTime;
-        private readonly ILoggerWrapper<MemCache> _logger;
+        private readonly ILoggerWrapper<MemCache<T>> _logger;
 
-        public MemCacheFactory(ISyncCacheProvider pollySyncCacheProvider, ISystemClock mockableDateTime, ILoggerWrapper<MemCache> logger)
+        public MemCacheFactory(ISyncCacheProvider pollySyncCacheProvider, ISystemClock mockableDateTime, ILoggerWrapper<MemCache<T>> logger)
         {
             _pollySyncCacheProvider = pollySyncCacheProvider;
             _mockableDateTime = mockableDateTime;
@@ -19,9 +19,9 @@ namespace HelpMyStreet.Cache.MemCache
         }
 
         /// <inheritdoc />>
-        public IMemDistCache GetCache(TimeSpan howLongToKeepStaleData, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
+        public IMemDistCache<T> GetCache(TimeSpan howLongToKeepStaleData, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
         {
-            MemCache memDistCache = new MemCache(_pollySyncCacheProvider, _mockableDateTime, howLongToKeepStaleData, whenDataIsStaleDelegate, _logger);
+            MemCache<T> memDistCache = new MemCache<T>(_pollySyncCacheProvider, _mockableDateTime, howLongToKeepStaleData, whenDataIsStaleDelegate, _logger);
             return memDistCache;
         }
 

@@ -10,7 +10,7 @@ namespace HelpMyStreet.Cache
         ///  Get data from cache. 
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="dataGetter">Delegate that return data</param>
+        /// <param name="dataGetter">Delegate that returns data</param>
         /// <param name="key">The key to store data under</param>
         /// <param name="whenDataIsStaleDelegate">When the data should be considered stale</param>
         /// <param name="waitForFreshData">Whether to wait for fresh data</param>
@@ -24,7 +24,7 @@ namespace HelpMyStreet.Cache
         ///  Get data from cache. 
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="dataGetter">Delegate that return data</param>
+        /// <param name="dataGetter">Delegate that returns data</param>
         /// <param name="key">The key to store data under</param>
         /// <param name="whenDataIsStaleDelegate">When the data should be considered stale</param>
         /// <param name="waitForFreshData">Whether to wait for fresh data</param>

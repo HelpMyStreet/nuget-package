@@ -1,19 +1,19 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using HelpMyStreet.Cache.MemDistCache;
-using HelpMyStreet.Cache.Models;
+﻿using HelpMyStreet.Cache.Models;
 using Microsoft.Extensions.Internal;
 using Polly;
 using Polly.Caching;
 using Polly.Contrib.DuplicateRequestCollapser;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HelpMyStreet.Cache.MemCache
 {
     /// <summary>
-    /// A cache with two main features:
+    /// A cache with these features:
     /// 1) If data is stale it will be returned, but fresh data re-cached on a background thread so response times aren't affected.  It is also possible to wait for fresh data.
     /// 2) A delegate is passed in to calculate when the data will become stale.  This is so all servers' caches can be reset at the same time to avoid inconsistent data.
+    /// 3) Concurrent requests for the same key will result in only one call to the data getter delegate
     /// Set up in DI container using: services.AddMemCache()
     /// </summary>
     public class MemCache : IMemDistCache

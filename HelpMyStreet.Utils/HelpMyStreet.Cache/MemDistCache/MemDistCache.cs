@@ -1,26 +1,28 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using HelpMyStreet.Cache.Models;
+﻿using HelpMyStreet.Cache.Models;
 using Microsoft.Extensions.Internal;
 using Polly;
 using Polly.Caching;
 using Polly.Contrib.DuplicateRequestCollapser;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HelpMyStreet.Cache.MemDistCache
 {
-
     /// <summary>
-    /// A cache with three main features:
+    /// A cache with these features:
     /// 1) If data is stale it will be returned, but fresh data re-cached on a background thread so response times aren't affected.  It is also possible to wait for fresh data.
     /// 2) If data isn't available in memory, it will check the distributed cache.  This is to prevent re-calculating data if the app pool is reset, shuts down or the application scales out.
     /// 3) A delegate is passed in to calculate when the data will become stale.  This is so all servers' caches can be reset at the same time to avoid inconsistent data.
+    /// 4) Concurrent requests for the same key will result in only one call to the data getter delegate
+    /// 5) Automatic retries on a Redis error (when default DistributedCacheWrapperWithCompression implementation of IDistributedCacheWrapper is used)
+    /// 6) Compression of data in Redis (when default DistributedCacheWrapperWithCompression implementation of IDistributedCacheWrapper is used)
     /// Set up in DI container using: services.AddMemDistCache()
     /// </summary>
     public class MemDistCache : IMemDistCache
     {
         private readonly ISyncCacheProvider _pollySyncCacheProvider;
-        private readonly IDistributedCacheWrapper _pollyDistributedCacheProvider;
+        private readonly IDistributedCacheWrapper _distributedCacheWrapper;
         private readonly ISystemClock _mockableDateTime;
 
         private static readonly IAsyncRequestCollapserPolicy _collapserPolicy = AsyncRequestCollapserPolicy.Create();
@@ -28,10 +30,10 @@ namespace HelpMyStreet.Cache.MemDistCache
 
         private readonly TimeSpan _defaultCacheDuration = new TimeSpan(28, 0, 0, 0);
 
-        public MemDistCache(ISyncCacheProvider pollySyncCacheProvider, IDistributedCacheWrapper pollyDistributedCacheProvider, ISystemClock mockableDateTime)
+        public MemDistCache(ISyncCacheProvider pollySyncCacheProvider, IDistributedCacheWrapper distributedCacheWrapper, ISystemClock mockableDateTime)
         {
             _pollySyncCacheProvider = pollySyncCacheProvider;
-            _pollyDistributedCacheProvider = pollyDistributedCacheProvider;
+            _distributedCacheWrapper = distributedCacheWrapper;
             _mockableDateTime = mockableDateTime;
         }
 
@@ -65,7 +67,7 @@ namespace HelpMyStreet.Cache.MemDistCache
             }
             else
             {
-                (bool, object) distributedCacheWrappedResult = await _pollyDistributedCacheProvider.TryGetAsync<CachedItemWrapper<T>>(key, cancellationToken, false);
+                (bool, object) distributedCacheWrappedResult = await _distributedCacheWrapper.TryGetAsync<CachedItemWrapper<T>>(key, cancellationToken, false);
 
                 bool isObjectInDistributedCache = distributedCacheWrappedResult.Item1;
 
@@ -121,10 +123,9 @@ namespace HelpMyStreet.Cache.MemDistCache
                 CachedItemWrapper<T> itemInWrapper = new CachedItemWrapper<T>(data, timeToReset);
 
                 _pollySyncCacheProvider.Put(key, itemInWrapper, ttl);
-                await _pollyDistributedCacheProvider.PutAsync(key, itemInWrapper, ttl, cancellationToken, false);
+                await _distributedCacheWrapper.PutAsync(key, itemInWrapper, ttl, cancellationToken, false);
 
                 return data;
-
 
             }, new Context(key), cancellationToken);
         }
@@ -152,6 +153,5 @@ namespace HelpMyStreet.Cache.MemDistCache
         {
             return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, whenDataIsStaleDelegate, waitForFreshData, cancellationToken, dataGetterErrorDelegate).Result;
         }
-
     }
 }

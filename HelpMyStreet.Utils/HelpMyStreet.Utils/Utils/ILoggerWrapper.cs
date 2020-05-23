@@ -2,7 +2,7 @@
 
 namespace HelpMyStreet.Utils.Utils
 {
-    public interface ILoggerWrapper
+    public interface ILoggerWrapper<T>
     {
         void LogError(string message, Exception exception);
         void LogError(string message, Exception exception, object request);

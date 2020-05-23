@@ -6,7 +6,7 @@ namespace HelpMyStreet.Utils.Utils
     /// <summary>
     /// Wrapper for ILogger to make unit testing easier
     /// </summary>
-    public class LoggerWrapper<T> : ILoggerWrapper
+    public class LoggerWrapper<T> : ILoggerWrapper<T>
     {
         private readonly ILogger<T> _logger;
 

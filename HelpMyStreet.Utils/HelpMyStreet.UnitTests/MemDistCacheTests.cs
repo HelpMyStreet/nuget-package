@@ -32,7 +32,6 @@ namespace HelpMyStreet.UnitTests
         private readonly TimeSpan _defaultCacheDuration = new TimeSpan(28, 0, 0, 0);
 
         private string _key = "key";
-        private string _prefixedKey = "_String_key";
 
         [SetUp]
         public void SetUp()
@@ -79,7 +78,7 @@ namespace HelpMyStreet.UnitTests
             Assert.AreEqual("fromMemDistCache", result);
             Assert.AreEqual(0, _numberOfTimesDataGetterDelegate1Called);
 
-            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _prefixedKey)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
             _pollySyncCacheProvider.Verify(x => x.Put(It.IsAny<string>(), It.IsAny<CachedItemWrapper<string>>(), It.IsAny<Ttl>()), Times.Never);
 
             _distributedCacheWrapper.Verify(x => x.TryGetAsync<string>(It.IsAny<string>(), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Never);
@@ -102,7 +101,7 @@ namespace HelpMyStreet.UnitTests
 
             Assert.AreEqual("fromMemDistCache", result);
 
-            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _prefixedKey)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
 
             _distributedCacheWrapper.Verify(x => x.TryGetAsync<string>(It.IsAny<string>(), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Never);
 
@@ -112,9 +111,9 @@ namespace HelpMyStreet.UnitTests
 
             DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
 
-            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
 
-            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
         }
 
         [Test]
@@ -133,7 +132,7 @@ namespace HelpMyStreet.UnitTests
 
             Assert.AreEqual("dataFromBackendGet", result);
 
-            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _prefixedKey)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
 
             _distributedCacheWrapper.Verify(x => x.TryGetAsync<string>(It.IsAny<string>(), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Never);
 
@@ -141,9 +140,9 @@ namespace HelpMyStreet.UnitTests
 
             DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
 
-            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
 
-            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
         }
 
         [Test]
@@ -174,7 +173,7 @@ namespace HelpMyStreet.UnitTests
 
             await Task.Delay(_waitForBackgroundThreadToCompleteMs); // wait for background thread
 
-            _logger.Verify(x=>x.LogError(It.Is<string>(y=> y== $"Error executing data getter for key: {_prefixedKey}"), It.IsAny<Exception>()));
+            _logger.Verify(x=>x.LogError(It.Is<string>(y=> y== $"Error executing data getter for key: {_key}"), It.IsAny<Exception>()));
             
             Assert.AreEqual(1, _numberOfTimesDataGetterDelegate1Called);
 
@@ -206,15 +205,15 @@ namespace HelpMyStreet.UnitTests
             Assert.AreEqual("fromDistCache", result);
             Assert.AreEqual(0, _numberOfTimesDataGetterDelegate1Called);
 
-            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _prefixedKey)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
 
-            _distributedCacheWrapper.Verify(x => x.TryGetAsync<CachedItemWrapper<string>>(It.Is<string>(y => y == _prefixedKey), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+            _distributedCacheWrapper.Verify(x => x.TryGetAsync<CachedItemWrapper<string>>(It.Is<string>(y => y == _key), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
 
             await Task.Delay(_waitForBackgroundThreadToCompleteMs); // wait for background thread
 
             Assert.AreEqual(0, _numberOfTimesDataGetterDelegate1Called);
 
-            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "fromDistCache" && y.IsFreshUntil == distCacheItem.IsFreshUntil), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "fromDistCache" && y.IsFreshUntil == distCacheItem.IsFreshUntil), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
 
             _distributedCacheWrapper.Verify(x => x.PutAsync(It.IsAny<string>(), It.IsAny<CachedItemWrapper<string>>(), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Never);
         }
@@ -239,9 +238,9 @@ namespace HelpMyStreet.UnitTests
 
             Assert.AreEqual("fromDistCache", result);
 
-            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _prefixedKey)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
 
-            _distributedCacheWrapper.Verify(x => x.TryGetAsync<CachedItemWrapper<string>>(It.Is<string>(y => y == _prefixedKey), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+            _distributedCacheWrapper.Verify(x => x.TryGetAsync<CachedItemWrapper<string>>(It.Is<string>(y => y == _key), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
 
             await Task.Delay(_waitForBackgroundThreadToCompleteMs); // wait for background thread
 
@@ -250,9 +249,9 @@ namespace HelpMyStreet.UnitTests
 
             DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
 
-            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
 
-            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
         }
 
         [Test]
@@ -274,18 +273,18 @@ namespace HelpMyStreet.UnitTests
 
             Assert.AreEqual("dataFromBackendGet", result);
 
-            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _prefixedKey)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
 
-            _distributedCacheWrapper.Verify(x => x.TryGetAsync<CachedItemWrapper<string>>(It.Is<string>(y => y == _prefixedKey), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+            _distributedCacheWrapper.Verify(x => x.TryGetAsync<CachedItemWrapper<string>>(It.Is<string>(y => y == _key), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
 
             Assert.AreEqual(1, _numberOfTimesDataGetterDelegate1Called);
 
 
             DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
 
-            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
 
-            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
         }
 
         [Test]
@@ -305,9 +304,9 @@ namespace HelpMyStreet.UnitTests
 
             Assert.AreEqual("dataFromBackendGet", result);
 
-            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _prefixedKey)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
 
-            _distributedCacheWrapper.Verify(x => x.TryGetAsync<CachedItemWrapper<string>>(It.Is<string>(y => y == _prefixedKey), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+            _distributedCacheWrapper.Verify(x => x.TryGetAsync<CachedItemWrapper<string>>(It.Is<string>(y => y == _key), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
 
             await Task.Delay(_waitForBackgroundThreadToCompleteMs); // wait for background thread
 
@@ -316,9 +315,9 @@ namespace HelpMyStreet.UnitTests
 
             DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
 
-            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
 
-            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _prefixedKey), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
         }
 
 

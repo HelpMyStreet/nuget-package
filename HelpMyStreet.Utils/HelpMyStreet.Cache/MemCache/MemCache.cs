@@ -40,9 +40,7 @@ namespace HelpMyStreet.Cache.MemCache
         /// <inheritdoc />>
         public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
         {
-            string prefixedKey = $"_{typeof(T).Name}_{key}";
-
-            (bool, object) memoryWrappedResult = _pollySyncCacheProvider.TryGet(prefixedKey);
+            (bool, object) memoryWrappedResult = _pollySyncCacheProvider.TryGet(key);
 
             bool isObjectInMemoryCache = memoryWrappedResult.Item1;
 
@@ -55,12 +53,12 @@ namespace HelpMyStreet.Cache.MemCache
                 {
                     if (waitForFreshData)
                     {
-                        return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate));
+                        return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate));
                     }
                     else
                     {
 #pragma warning disable 4014
-                        Task.Factory.StartNew(async () => await RecacheItemInMemoryCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
+                        Task.Factory.StartNew(async () => await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
 #pragma warning restore 4014
                     }
                 }
@@ -68,7 +66,7 @@ namespace HelpMyStreet.Cache.MemCache
                 return memoryResultObject.Content;
             }
 
-            return await RecacheItemInMemoryCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate);
+            return await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate);
         }
 
         private async Task<T> RecacheItemInMemoryCacheAsync(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)

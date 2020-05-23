@@ -47,8 +47,7 @@ namespace HelpMyStreet.Cache.MemDistCache
         /// <inheritdoc />>
         public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
         {
-            string prefixedKey = $"_{typeof(T).Name}_{key}";
-            (bool, object) memoryWrappedResult = _pollySyncCacheProvider.TryGet(prefixedKey);
+            (bool, object) memoryWrappedResult = _pollySyncCacheProvider.TryGet(key);
 
             bool isObjectInMemoryCache = memoryWrappedResult.Item1;
 
@@ -61,12 +60,12 @@ namespace HelpMyStreet.Cache.MemDistCache
                 {
                     if (waitForFreshData)
                     {
-                        return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate));
+                        return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate));
                     }
                     else
                     {
 #pragma warning disable 4014
-                        Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
+                        Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
 #pragma warning restore 4014
                     }
                 }
@@ -75,7 +74,7 @@ namespace HelpMyStreet.Cache.MemDistCache
             }
             else
             {
-                (bool, object) distributedCacheWrappedResult = await _distributedCacheWrapper.TryGetAsync<CachedItemWrapper<T>>(prefixedKey, cancellationToken, false);
+                (bool, object) distributedCacheWrappedResult = await _distributedCacheWrapper.TryGetAsync<CachedItemWrapper<T>>(key, cancellationToken, false);
 
                 bool isObjectInDistributedCache = distributedCacheWrappedResult.Item1;
 
@@ -86,18 +85,18 @@ namespace HelpMyStreet.Cache.MemDistCache
 
                     if (isDistributedCacheFresh)
                     {
-                        AddToMemoryCache(prefixedKey, distributedCacheObject);
+                        AddToMemoryCache(key, distributedCacheObject);
                     }
                     else
                     {
                         if (waitForFreshData)
                         {
-                            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate);
+                            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate);
                         }
                         else
                         {
 #pragma warning disable 4014
-                            Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
+                            Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
 #pragma warning restore 4014
                         }
                     }
@@ -107,7 +106,7 @@ namespace HelpMyStreet.Cache.MemDistCache
             }
 
             // data isn't in either memory or distributed cache
-            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, prefixedKey, cancellationToken, _whenDataIsStaleDelegate);
+            return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate);
         }
 
         private async Task<T> RecacheItemInMemoryAndDistCacheAsync(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)

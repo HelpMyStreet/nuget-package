@@ -45,7 +45,7 @@ namespace HelpMyStreet.Cache.MemDistCache
         }
 
         /// <inheritdoc />>
-        public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
+        public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken)
         {
             (bool, object) memoryWrappedResult = _pollySyncCacheProvider.TryGet(key);
 
@@ -58,11 +58,11 @@ namespace HelpMyStreet.Cache.MemDistCache
 
                 if (!isMemoryCacheFresh)
                 {
-                    if (waitForFreshData)
+                    if (refreshBehaviour == RefreshBehaviour.WaitForFreshData)
                     {
                         return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate));
                     }
-                    else
+                    else if (refreshBehaviour == RefreshBehaviour.DontWaitForFreshData)
                     {
 #pragma warning disable 4014
                         Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
@@ -89,11 +89,11 @@ namespace HelpMyStreet.Cache.MemDistCache
                     }
                     else
                     {
-                        if (waitForFreshData)
+                        if (refreshBehaviour == RefreshBehaviour.WaitForFreshData)
                         {
                             return await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate);
                         }
-                        else
+                        else if (refreshBehaviour == RefreshBehaviour.DontWaitForFreshData)
                         {
 #pragma warning disable 4014
                             Task.Factory.StartNew(async () => await RecacheItemInMemoryAndDistCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
@@ -161,9 +161,9 @@ namespace HelpMyStreet.Cache.MemDistCache
         }
 
         /// <inheritdoc />>
-        public T GetCachedData(Func<CancellationToken, T> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
+        public T GetCachedData(Func<CancellationToken, T> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken)
         {
-            return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, waitForFreshData, cancellationToken).Result;
+            return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, refreshBehaviour, cancellationToken).Result;
         }
     }
 }

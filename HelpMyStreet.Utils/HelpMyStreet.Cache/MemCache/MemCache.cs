@@ -28,7 +28,7 @@ namespace HelpMyStreet.Cache.MemCache
         private readonly Func<DateTimeOffset, DateTimeOffset> _whenDataIsStaleDelegate;
         private readonly ILoggerWrapper<MemCache<T>> _logger;
 
-        public MemCache(ISyncCacheProvider pollySyncCacheProvider, ISystemClock mockableDateTime, TimeSpan defaultCacheDuration, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate,  ILoggerWrapper<MemCache<T>> logger)
+        public MemCache(ISyncCacheProvider pollySyncCacheProvider, ISystemClock mockableDateTime, TimeSpan defaultCacheDuration, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate, ILoggerWrapper<MemCache<T>> logger)
         {
             _pollySyncCacheProvider = pollySyncCacheProvider;
             _mockableDateTime = mockableDateTime;
@@ -38,7 +38,7 @@ namespace HelpMyStreet.Cache.MemCache
         }
 
         /// <inheritdoc />>
-        public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
+        public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken)
         {
             (bool, object) memoryWrappedResult = _pollySyncCacheProvider.TryGet(key);
 
@@ -51,11 +51,11 @@ namespace HelpMyStreet.Cache.MemCache
 
                 if (!isMemoryCacheFresh)
                 {
-                    if (waitForFreshData)
+                    if (refreshBehaviour == RefreshBehaviour.WaitForFreshData)
                     {
                         return await _collapserPolicy.ExecuteAsync(async () => await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate));
                     }
-                    else
+                    else if (refreshBehaviour == RefreshBehaviour.DontWaitForFreshData)
                     {
 #pragma warning disable 4014
                         Task.Factory.StartNew(async () => await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
@@ -112,9 +112,9 @@ namespace HelpMyStreet.Cache.MemCache
         }
 
         /// <inheritdoc />>
-        public T GetCachedData(Func<CancellationToken, T> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
+        public T GetCachedData(Func<CancellationToken, T> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken)
         {
-            return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, waitForFreshData, cancellationToken).Result;
+            return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, refreshBehaviour, cancellationToken).Result;
         }
 
     }

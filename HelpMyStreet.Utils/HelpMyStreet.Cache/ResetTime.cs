@@ -1,6 +1,6 @@
 ﻿namespace HelpMyStreet.Cache
 {
-    public enum ResetTime
+    public enum ResetTime : byte
     {
         OnMinute = 10,
         OnHour = 20,

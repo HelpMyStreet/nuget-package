@@ -62,8 +62,8 @@ namespace HelpMyStreet.UnitTests
 
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
-            MemCacheFactory<string> memCacheFactory = new MemCacheFactory<string>(_pollySyncCacheProvider.Object,  _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            MemCacheFactory<string> memCacheFactory = new MemCacheFactory<string>(_pollySyncCacheProvider.Object, _mockableDateTime.Object, _logger.Object);
+            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, _key, false, CancellationToken.None);
 
@@ -85,7 +85,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
             MemCacheFactory<string> memCacheFactory = new MemCacheFactory<string>(_pollySyncCacheProvider.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, _key, false, CancellationToken.None);
 
@@ -114,7 +114,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
             MemCacheFactory<string> memCacheFactory = new MemCacheFactory<string>(_pollySyncCacheProvider.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, _key, true, CancellationToken.None);
 
@@ -140,14 +140,14 @@ namespace HelpMyStreet.UnitTests
 
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
-            Func<CancellationToken, Task<string>> _dataGetterDelegate1 =  (token) =>
-            {
-                _numberOfTimesDataGetterDelegate1Called++;
-                throw new Exception("An error");
-            };
+            Func<CancellationToken, Task<string>> _dataGetterDelegate1 = (token) =>
+           {
+               _numberOfTimesDataGetterDelegate1Called++;
+               throw new Exception("An error");
+           };
 
             MemCacheFactory<string> memCacheFactory = new MemCacheFactory<string>(_pollySyncCacheProvider.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, _key, false, CancellationToken.None);
 
@@ -168,6 +168,25 @@ namespace HelpMyStreet.UnitTests
 
         }
 
+        [Test]
+        public async Task RefreshData()
+        {
+            _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
+            
+            MemCacheFactory<string> memCacheFactory = new MemCacheFactory<string>(_pollySyncCacheProvider.Object, _mockableDateTime.Object, _logger.Object);
+            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
+
+            string result = await memCache.RefreshDataAsync(_dataGetterDelegate1, _key, CancellationToken.None);
+
+            Assert.AreEqual("dataFromBackendGet", result);
+            
+            Assert.AreEqual(1, _numberOfTimesDataGetterDelegate1Called);
+
+            DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
+
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
+
+        }
 
         [Test]
         public async Task MultipleConcurrentRequests()
@@ -195,7 +214,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
             MemCacheFactory<string> memCacheFactory = new MemCacheFactory<string>(_pollySyncCacheProvider.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             ConcurrentBag<Task<string>> results1 = new ConcurrentBag<Task<string>>();
             ConcurrentBag<Task<string>> results2 = new ConcurrentBag<Task<string>>();
@@ -216,7 +235,7 @@ namespace HelpMyStreet.UnitTests
             {
                 Parallel.For(0, 50, i =>
                 {
-                    Task<string> result = memCache.GetCachedDataAsync(dataGetterDelegate2, "key2",  true, CancellationToken.None);
+                    Task<string> result = memCache.GetCachedDataAsync(dataGetterDelegate2, "key2", true, CancellationToken.None);
                     results2.Add(result);
                 });
             });

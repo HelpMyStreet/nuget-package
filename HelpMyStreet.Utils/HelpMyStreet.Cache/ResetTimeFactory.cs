@@ -2,12 +2,27 @@
 
 namespace HelpMyStreet.Cache
 {
-    public static class TimeLengths
+    public static class ResetTimeFactory
     {
         public static Func<DateTimeOffset, DateTimeOffset> OnMinute => (timeNow) => GetLengthOfTimeUntilNextMinute(timeNow);
         public static Func<DateTimeOffset, DateTimeOffset> OnHour => (timeNow) => GetLengthOfTimeUntilNextHour(timeNow);
         public static Func<DateTimeOffset, DateTimeOffset> OnMidday => (timeNow) => GetLengthOfTimeUntilNextMidday(timeNow);
-
+        
+        public static Func<DateTimeOffset, DateTimeOffset> GetResetTime(ResetTime resetTime)
+        {
+            switch (resetTime)
+            {
+                case ResetTime.OnMinute:
+                    return OnMinute;
+                case ResetTime.OnHour:
+                    return OnHour;
+                case ResetTime.OnMidday:
+                    return OnMidday;
+                default:
+                    throw new Exception("ResetTime not recognised");
+            }
+        }
+        
         private static DateTimeOffset GetLengthOfTimeUntilNextHour(DateTimeOffset timeNow)
         {
             DateTimeOffset nowPlusOneHour = timeNow.AddHours(1);

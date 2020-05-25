@@ -106,6 +106,11 @@ namespace HelpMyStreet.Cache.MemCache
             return false;
         }
 
+        public async Task<T> RefreshDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken)
+        {
+            return await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate);
+        }
+
         /// <inheritdoc />>
         public T GetCachedData(Func<CancellationToken, T> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken)
         {

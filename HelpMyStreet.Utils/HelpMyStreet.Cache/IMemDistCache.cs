@@ -7,7 +7,7 @@ namespace HelpMyStreet.Cache
     public interface IMemDistCache<T>
     {
         /// <summary>
-        ///  Get data from cache. 
+        /// Get data from cache. 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="dataGetter">Delegate that returns data</param>
@@ -19,7 +19,7 @@ namespace HelpMyStreet.Cache
 
 
         /// <summary>
-        ///  Get data from cache. 
+        /// Get data from cache. 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="dataGetter">Delegate that returns data</param>
@@ -29,5 +29,15 @@ namespace HelpMyStreet.Cache
         /// <returns></returns>
         T GetCachedData(Func<CancellationToken, T> dataGetter, string key, bool waitForFreshData, CancellationToken cancellationToken);
 
+
+        /// <summary>
+        /// Refresh data in cache. 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dataGetter">Delegate that returns data</param>
+        /// <param name="key">The key to store data under</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns></returns>
+        Task<T> RefreshDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken);
     }
 }

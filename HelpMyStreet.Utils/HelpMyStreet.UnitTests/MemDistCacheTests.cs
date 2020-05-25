@@ -70,7 +70,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
             
             MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memDistCache.GetCachedDataAsync(_dataGetterDelegate1, _key, false, CancellationToken.None);
 
@@ -95,7 +95,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
             MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memDistCache.GetCachedDataAsync(_dataGetterDelegate1, _key, false, CancellationToken.None);
 
@@ -126,7 +126,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
             MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memDistCache.GetCachedDataAsync(_dataGetterDelegate1, _key, true, CancellationToken.None);
 
@@ -161,7 +161,7 @@ namespace HelpMyStreet.UnitTests
             };
 
             MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memDistCache.GetCachedDataAsync(_dataGetterDelegate1, _key, false, CancellationToken.None);
 
@@ -198,7 +198,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
             MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memDistCache.GetCachedDataAsync(_dataGetterDelegate1, _key, false, CancellationToken.None);
 
@@ -232,7 +232,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
             MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memDistCache.GetCachedDataAsync(_dataGetterDelegate1, _key, false, CancellationToken.None);
 
@@ -267,7 +267,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
             MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memDistCache.GetCachedDataAsync(_dataGetterDelegate1, _key,  true, CancellationToken.None);
 
@@ -298,7 +298,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
             MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             string result = await memDistCache.GetCachedDataAsync(_dataGetterDelegate1, _key, false, CancellationToken.None);
 
@@ -320,6 +320,27 @@ namespace HelpMyStreet.UnitTests
             _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
         }
 
+        [Test]
+        public async Task RefreshData()
+        {
+
+            _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
+
+            MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
+
+            string result = await memDistCache.RefreshDataAsync(_dataGetterDelegate1, _key,  CancellationToken.None);
+
+            Assert.AreEqual("dataFromBackendGet", result);
+
+            Assert.AreEqual(1, _numberOfTimesDataGetterDelegate1Called);
+
+            DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
+
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
+
+            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+        }
 
         [Test]
         public async Task MultipleConcurrentRequests()
@@ -347,7 +368,7 @@ namespace HelpMyStreet.UnitTests
             _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
 
             MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
-            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, TimeLengths.OnHour);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
 
             ConcurrentBag<Task<string>> results1 = new ConcurrentBag<Task<string>>();
             ConcurrentBag<Task<string>> results2 = new ConcurrentBag<Task<string>>();

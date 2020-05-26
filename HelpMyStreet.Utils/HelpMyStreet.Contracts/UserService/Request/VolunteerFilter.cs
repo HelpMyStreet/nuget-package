@@ -8,6 +8,6 @@ namespace HelpMyStreet.Contracts.UserService.Request
     public class VolunteerFilter
     {
         public string Postcode { get; set; }
-        public SupportActivities Activity { get; set; }
+        public List<SupportActivities> Activity { get; set; }
     }
 }

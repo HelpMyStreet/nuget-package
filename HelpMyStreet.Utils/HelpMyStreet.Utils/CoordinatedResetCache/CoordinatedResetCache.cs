@@ -15,6 +15,8 @@ namespace HelpMyStreet.Utils.CoordinatedResetCache
 
         private static readonly IAsyncRequestCollapserPolicy _collapserPolicy = AsyncRequestCollapserPolicy.Create();
 
+
+        [Obsolete("Use MemDistCache in HelpMyStreet.Cache package")]
         public CoordinatedResetCache(IPollyMemoryCacheProvider pollyMemoryCacheProvider, ISystemClock mockableDateTime)
         {
             _pollyMemoryCacheProvider = pollyMemoryCacheProvider;
@@ -22,6 +24,7 @@ namespace HelpMyStreet.Utils.CoordinatedResetCache
         }
 
         /// <inheritdoc />>
+        [Obsolete("Use MemDistCache in HelpMyStreet.Cache package")]
         public async Task<T> GetCachedDataAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
         {
             TimeSpan timeToReset;
@@ -48,13 +51,17 @@ namespace HelpMyStreet.Utils.CoordinatedResetCache
 
         // async without token
         /// <inheritdoc />>
+        /// 
+        [Obsolete("Use MemDistCache in HelpMyStreet.Cache package")]
         public async Task<T> GetCachedDataAsync<T>(Func<Task<T>> dataGetter, string key, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
         {
             return await GetCachedDataAsync(token => dataGetter.Invoke(), key, CancellationToken.None, resetCacheTime);
         }
-        
+
         // sync with token
         /// <inheritdoc />>
+        /// 
+        [Obsolete("Use MemDistCache in HelpMyStreet.Cache package")]
         public T GetCachedData<T>(Func<CancellationToken, T> dataGetter, string key, CancellationToken cancellationToken, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
         {
             return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, cancellationToken, resetCacheTime).Result;
@@ -62,6 +69,8 @@ namespace HelpMyStreet.Utils.CoordinatedResetCache
 
         // sync without token
         /// <inheritdoc />>
+        /// 
+        [Obsolete("Use MemDistCache in HelpMyStreet.Cache package")]
         public T GetCachedData<T>(Func<T> dataGetter, string key, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
         {
             return GetCachedDataAsync(() => Task.FromResult(dataGetter.Invoke()), key, resetCacheTime).Result;

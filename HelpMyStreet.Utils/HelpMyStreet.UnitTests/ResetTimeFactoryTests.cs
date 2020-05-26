@@ -133,5 +133,19 @@ namespace HelpMyStreet.UnitTests
             Assert.AreEqual(expectedResult, result);
         }
 
+        [Test]
+        public void NextMidday4_LastDayOfMonth()
+        {
+            DateTimeOffset timeNow = new DateTimeOffset(2020, 05, 31, 12, 00, 00, new TimeSpan(0));
+
+            DateTimeOffset expectedResult = new DateTimeOffset(2020, 06, 01, 12, 00, 00, new TimeSpan(0));
+
+            Func<DateTimeOffset, DateTimeOffset> resetTimeDelegate = ResetTimeFactory.GetResetTime(ResetTime.OnMidday);
+
+            DateTimeOffset result = resetTimeDelegate.Invoke(timeNow);
+
+            Assert.AreEqual(expectedResult, result);
+        }
+
     }
 }

@@ -7,7 +7,7 @@ namespace HelpMyStreet.Cache
         public static Func<DateTimeOffset, DateTimeOffset> OnMinute => (timeNow) => GetLengthOfTimeUntilNextMinute(timeNow);
         public static Func<DateTimeOffset, DateTimeOffset> OnHour => (timeNow) => GetLengthOfTimeUntilNextHour(timeNow);
         public static Func<DateTimeOffset, DateTimeOffset> OnMidday => (timeNow) => GetLengthOfTimeUntilNextMidday(timeNow);
-        
+
         public static Func<DateTimeOffset, DateTimeOffset> GetResetTime(ResetTime resetTime)
         {
             switch (resetTime)
@@ -22,7 +22,7 @@ namespace HelpMyStreet.Cache
                     throw new Exception("ResetTime not recognised");
             }
         }
-        
+
         private static DateTimeOffset GetLengthOfTimeUntilNextHour(DateTimeOffset timeNow)
         {
             DateTimeOffset nowPlusOneHour = timeNow.AddHours(1);
@@ -41,13 +41,14 @@ namespace HelpMyStreet.Cache
         {
             if (timeNow.Hour >= 12)
             {
-                return new DateTimeOffset(timeNow.Year, timeNow.Month, timeNow.Day + 1, 12, 0, 0, timeNow.Offset);
+                timeNow = timeNow.AddDays(1);
+                return new DateTimeOffset(timeNow.Year, timeNow.Month, timeNow.Day, 12, 0, 0, timeNow.Offset);
             }
             else
             {
                 return new DateTimeOffset(timeNow.Year, timeNow.Month, timeNow.Day, 12, 0, 0, timeNow.Offset);
             }
         }
-        
+
     }
 }

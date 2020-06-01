@@ -12,9 +12,9 @@ namespace HelpMyStreet.Contracts.RequestService.Extensions
         {
             return
               input
-                .OrderBy(j => j.DueDate)
+                .OrderBy(j => j.DueDate.Date)
                 .ThenByDescending(j => j.IsHealthCritical)
-                .ThenByDescending(j => j.DistanceInMiles);
+                .ThenBy(j => j.DistanceInMiles);
         }  
 
     }

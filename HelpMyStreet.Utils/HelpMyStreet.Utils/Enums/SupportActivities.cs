@@ -37,8 +37,12 @@ namespace HelpMyStreet.Utils.Enums
         //Reaching out to people in my area to check-in
 
         Other = 11,
-
-        FaceMask = 12
         //I may be able to help with other tasks. Please check with me.
+
+        FaceMask = 12,
+        //making a face covering
+
+        WellbeingPackage = 13
+        //Age UK - Collecting and delivering a pre-prepared wellbeing package
     }
 }

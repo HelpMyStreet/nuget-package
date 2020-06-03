@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpMyStreet.Contracts", "H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpMyStreet.UnitTests", "HelpMyStreet.UnitTests\HelpMyStreet.UnitTests.csproj", "{07D20E44-6F2F-41EF-88D7-AA9C58F577C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpMyStreet.PostcodeCoordinates.EF", "HelpMyStreet.PostcodeCoordinates.EF\HelpMyStreet.PostcodeCoordinates.EF.csproj", "{7CF9B065-94A2-46CD-AFAF-73C49A62B577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpMyStreet.Cache", "HelpMyStreet.Cache\HelpMyStreet.Cache.csproj", "{B4B9FBA0-177A-445D-A05F-94F1293D369C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpMyStreet.PostcodeCoordinates.EF", "HelpMyStreet.PostcodeCoordinates.EF\HelpMyStreet.PostcodeCoordinates.EF.csproj", "{7CF9B065-94A2-46CD-AFAF-73C49A62B577}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{07D20E44-6F2F-41EF-88D7-AA9C58F577C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D20E44-6F2F-41EF-88D7-AA9C58F577C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07D20E44-6F2F-41EF-88D7-AA9C58F577C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B9FBA0-177A-445D-A05F-94F1293D369C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B9FBA0-177A-445D-A05F-94F1293D369C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B9FBA0-177A-445D-A05F-94F1293D369C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B9FBA0-177A-445D-A05F-94F1293D369C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CF9B065-94A2-46CD-AFAF-73C49A62B577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7CF9B065-94A2-46CD-AFAF-73C49A62B577}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CF9B065-94A2-46CD-AFAF-73C49A62B577}.Release|Any CPU.ActiveCfg = Release|Any CPU

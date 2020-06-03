@@ -18,5 +18,6 @@ namespace HelpMyStreet.Contracts.UserService.Response
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }
         public IEnumerable<SupportActivities> SupportActivities { get; set; }
+        public double? SupportRadiusMiles { get; set; }
     }
 }

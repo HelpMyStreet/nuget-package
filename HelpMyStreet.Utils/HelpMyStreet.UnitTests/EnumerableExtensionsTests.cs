@@ -34,5 +34,27 @@ namespace HelpMyStreet.UnitTests
             Assert.IsTrue(result.Any(x => x.Latitude == 5d && x.Longitude == 5d));
             Assert.IsTrue(result.Any(x => x.Latitude == 10d && x.Longitude == 10d));
         }
+
+
+        [Test]
+        public void SplitList()
+        {
+            var strings = new List<string>
+        {
+            "true",
+            "true",
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+        };
+
+            var (truelist, falselist) = strings.Split(x => x == "true");
+            Assert.AreEqual(3, truelist.Count());
+            Assert.AreEqual(4, falselist.Count());
+            Assert.IsTrue(truelist.All(x => x == "true"));
+            Assert.IsTrue(falselist.All(x => x == "false"));
+        }
     }
 }

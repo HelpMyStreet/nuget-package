@@ -18,9 +18,9 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         public bool ConsentForContact { get; set; }
         public JobStatuses JobStatus { get; set; }
         public int? VolunteerUserID { get; set; }
-        public SupportActivities SupportActivity { get; set; }
-        
+        public SupportActivities SupportActivity { get; set; }        
         public DateTime DueDate { get; set; }
         public bool HealthCritical { get; set; }
+        public DateTime DateRequested { get; set; }
     }
 }

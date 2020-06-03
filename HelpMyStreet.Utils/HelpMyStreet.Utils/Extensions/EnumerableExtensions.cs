@@ -1,4 +1,5 @@
 ﻿using HelpMyStreet.Utils.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,6 +16,14 @@ namespace HelpMyStreet.Utils.Extensions
                 pt.Longitude <= neLongitude);
 
             return result;
+        }
+
+        public static (IEnumerable<T>, IEnumerable<T>) Split<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+        {
+            var trueList = source.Where(predicate).ToList();
+            var falseList = source.Where(x => !predicate(x)).ToList();
+
+            return (trueList, falseList);
         }
     }
 }

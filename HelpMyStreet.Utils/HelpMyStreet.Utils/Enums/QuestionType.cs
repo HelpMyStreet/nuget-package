@@ -8,6 +8,7 @@ namespace HelpMyStreet.Utils.Enums
     {
        Number = 1,
        Text= 2,
-       MultiLineText = 3
+       MultiLineText = 3,
+       Radio = 3
     }
 }

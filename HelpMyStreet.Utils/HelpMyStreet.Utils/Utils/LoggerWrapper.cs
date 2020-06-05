@@ -17,7 +17,7 @@ namespace HelpMyStreet.Utils.Utils
 
         public void LogError(string message, Exception exception)
         {
-            _logger.LogError(message, exception);
+            _logger.LogError(exception, message);
         }
 
         public void LogError(string message, Exception exception, object request)
@@ -28,7 +28,7 @@ namespace HelpMyStreet.Utils.Utils
         public void LogErrorAndNotifyNewRelic(string message, Exception exception)
         {
             NewRelic.Api.Agent.NewRelic.NoticeError(exception);
-            _logger.LogError(message, exception);
+            _logger.LogError(exception, message);
         }
 
         public void LogErrorAndNotifyNewRelic(string message, Exception exception, object request)
@@ -39,7 +39,7 @@ namespace HelpMyStreet.Utils.Utils
 
         public void LogWarning(string message, Exception exception)
         {
-            _logger.LogWarning(message, exception);
+            _logger.LogWarning(exception, message);
         }
 
         public void LogWarning(string message, Exception exception, object request)

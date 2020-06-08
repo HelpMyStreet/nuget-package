@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.RequestService.Response
 {
-    public enum CommunicationJobs
+    public enum CommunicationJobTypes
     {
         SendWelcomeMessage = 1,
         SendRegistrationChasers = 2,

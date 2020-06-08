@@ -10,7 +10,7 @@ namespace HelpMyStreet.Contracts.CommunicationService.Request
 {
     public class SendMessageRequest
     {
-        public CommunicationJobs CommunicationJobs { get; set; }
+        public CommunicationJob CommunicationJob { get; set; }
         public MessageType MessageType { get; set; }
         public string TemplateID { get; set; }
         public int RecipientUserID { get; set; }

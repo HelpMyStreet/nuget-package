@@ -7,8 +7,8 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.CommunicationService.Request
 {
-    public class CommunicationJobsTemplate
+    public class CommunicationJob
     {
-        public CommunicationJobs CommunicationJobs { get; set; }
+        public CommunicationJobTypes CommunicationJobType { get; set; }
     }
 }

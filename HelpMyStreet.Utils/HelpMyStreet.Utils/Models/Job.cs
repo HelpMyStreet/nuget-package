@@ -12,6 +12,7 @@ namespace HelpMyStreet.Utils.Models
         public JobStatuses JobStatus { get; set; }
         public int? VolunteerUserID { get; set; }
         public SupportActivities SupportActivity { get; set; }
+        public List<Question> Questions { get; set; }
         public string Details { get; set; }
         public int DueDays { get; set; }
         public bool HealthCritical { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HelpMyStreet.Utils.Enums
 {
-    public enum MessageType
+    public enum MessageTypes
     {
         Email = 1,
         SMS = 2

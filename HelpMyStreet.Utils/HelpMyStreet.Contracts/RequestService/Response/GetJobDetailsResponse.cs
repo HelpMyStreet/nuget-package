@@ -22,6 +22,7 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         public SupportActivities SupportActivity { get; set; }        
         public DateTime DueDate { get; set; }
         public bool HealthCritical { get; set; }
-        public DateTime DateRequested { get; set; }
+        public DateTime DateRequested { get; set; }  
+        public RequestorType RequestorType { get; set; }
     }
 }

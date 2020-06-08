@@ -9,7 +9,7 @@ namespace HelpMyStreet.Contracts.CommunicationService.Request
 {
     public class SendCommunicationRequest : IRequest<SendCommunicationResponse>
     {
-        public CommunicationJobs CommunicationJobs { get; set; }
+        public CommunicationJobsTemplate CommunicationJobsTemplate { get; set; }
         public int? RecipientUserID { get; set; }
         public int? JobID { get; set; }
         public int? GroupID { get; set; }

@@ -15,6 +15,7 @@ namespace HelpMyStreet.Utils.Models
         public RequestPersonalDetails Requestor { get; set; }
         public RequestPersonalDetails Recipient { get; set; }
         public string SpecialCommunicationNeeds { get; set; }
+        public string OrganisationName { get; set; }
         public string OtherDetails { get; set; }
         public bool ConsentForContact { get; set; }
         public int CreatedByUserId { get; set; }

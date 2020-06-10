@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.CommunicationService.Request
 {
-    public class SendCommunicationRequest : IRequest<SendCommunicationResponse>
+    public class RequestCommunicationRequest : IRequest<RequestCommunicationResponse>
     {
         public CommunicationJob CommunicationJob { get; set; }
         public int? RecipientUserID { get; set; }

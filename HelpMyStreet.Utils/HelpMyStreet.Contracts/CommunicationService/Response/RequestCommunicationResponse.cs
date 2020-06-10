@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.CommunicationService.Response
 {
-    public class SendCommunicationResponse
+    public class RequestCommunicationResponse
     {
         public bool Success { get; set; }
     }

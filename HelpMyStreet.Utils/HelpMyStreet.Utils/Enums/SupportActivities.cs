@@ -42,7 +42,10 @@ namespace HelpMyStreet.Utils.Enums
         FaceMask = 12,
         //making a face covering
 
-        WellbeingPackage = 13
+        WellbeingPackage = 13,
         //Age UK - Collecting and delivering a pre-prepared wellbeing package
+
+        // HLP 
+        CommunityConnector = 14
     }
 }

@@ -19,5 +19,6 @@ namespace HelpMyStreet.Utils.Models
         public string OtherDetails { get; set; }
         public bool ConsentForContact { get; set; }
         public int CreatedByUserId { get; set; }
+        public int? VolunteerUserId { get; set; }
     }
 }

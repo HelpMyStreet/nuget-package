@@ -8,5 +8,6 @@ namespace HelpMyStreet.Contracts.UserService.Response
     {
         public int RegistrationStep { get; set; }
         public int UserId { get; set; }
+        public DateTime DateCompleted { get; set; }
     }
 }

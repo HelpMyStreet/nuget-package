@@ -2,8 +2,8 @@
 
 namespace HelpMyStreet.Contracts.GroupService.Request
 {
-    public class PostCreateGroupResponse
+    public class PostAddMembersToGroupResponse
     {
-        public int GroupId { get; set; }
+        public bool Success { get; set; }
     }
 }

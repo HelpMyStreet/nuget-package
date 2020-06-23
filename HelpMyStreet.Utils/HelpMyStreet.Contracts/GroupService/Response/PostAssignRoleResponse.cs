@@ -2,7 +2,7 @@
 
 namespace HelpMyStreet.Contracts.GroupService.Request
 {
-    public class PostAddMembersToGroupResponse
+    public class PostAssignRoleResponse
     {
         public bool Success { get; set; }
     }

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace HelpMyStreet.Contracts.GroupService.Request
+namespace HelpMyStreet.Contracts.GroupService.Response
 {
     public class PostAssignRoleResponse
     {

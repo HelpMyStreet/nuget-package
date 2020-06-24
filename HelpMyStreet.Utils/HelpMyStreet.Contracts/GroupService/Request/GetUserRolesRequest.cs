@@ -7,6 +7,6 @@ namespace HelpMyStreet.Contracts.GroupService.Request
     public class GetUserRolesRequest : IRequest<GetUserRolesResponse>
     {
         [Required]
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
     }
 }

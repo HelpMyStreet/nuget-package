@@ -7,15 +7,15 @@ namespace HelpMyStreet.Contracts.GroupService.Request
     public class PostAssignRoleRequest : IRequest<PostAssignRoleResponse>
     {
         [Required]
-        public int GroupID { get; set; }
+        public int? GroupID { get; set; }
 
         [Required]
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
 
         [Required]
         public RoleRequest Role { get; set; }
 
         [Required]
-        public int AuthorisedByUserID { get; set; }
+        public int? AuthorisedByUserID { get; set; }
     }
 }

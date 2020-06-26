@@ -33,5 +33,9 @@ namespace HelpMyStreet.Contracts.RequestService.Request
         /// Supply null for an activity type to return requets nationwide
         /// </summary>
         public Dictionary<SupportActivities,double?> ActivitySpecificSupportDistancesInMiles { get; set; }
-    }
+
+        public int? ReferringGroupID { get; set; }
+        public List<int> Groups { get; set; }
+        public List<JobStatuses> Statuses {get; set; }
+}
 }

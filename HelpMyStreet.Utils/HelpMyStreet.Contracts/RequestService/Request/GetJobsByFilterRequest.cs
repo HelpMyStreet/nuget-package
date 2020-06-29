@@ -14,7 +14,7 @@ namespace HelpMyStreet.Contracts.RequestService.Request
         /// Support activities to be returned
         /// Supply null to return all activities
         /// </summary>
-        public List<SupportActivities> SupportActivities { get; set; }
+        public SupportActivityRequest SupportActivities { get; set; }
 
         /// <summary>
         /// Base postcode for calculating distances
@@ -36,6 +36,6 @@ namespace HelpMyStreet.Contracts.RequestService.Request
 
         public int? ReferringGroupID { get; set; }
         public List<int> Groups { get; set; }
-        public List<JobStatuses> Statuses {get; set; }
+        public JobStatusRequest JobStatuses {get; set; }
 }
 }

@@ -36,6 +36,6 @@ namespace HelpMyStreet.Contracts.RequestService.Request
 
         public int? ReferringGroupID { get; set; }
         public List<int> Groups { get; set; }
-        public List<JobStatusRequest> JobStatuses {get; set; }
+        public JobStatusRequest JobStatuses {get; set; }
 }
 }

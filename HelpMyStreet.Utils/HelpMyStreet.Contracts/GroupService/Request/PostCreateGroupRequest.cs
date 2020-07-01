@@ -8,6 +8,8 @@ namespace HelpMyStreet.Contracts.GroupService.Request
     {
         [Required]
         public string GroupName { get; set; }
+        [Required]
+        public string GroupKey { get; set; }
         public string ParentGroupName { get; set; }
     }
 }

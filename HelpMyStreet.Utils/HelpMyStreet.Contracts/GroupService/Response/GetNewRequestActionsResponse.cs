@@ -1,8 +1,4 @@
-﻿using HelpMyStreet.Contracts.GroupService.Request;
-using HelpMyStreet.Utils.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace HelpMyStreet.Contracts.GroupService.Response
 {

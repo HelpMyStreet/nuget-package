@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HelpMyStreet.Contracts.GroupService.Request
+namespace HelpMyStreet.Contracts.GroupService.Response
 {
     public class TaskAction
     {

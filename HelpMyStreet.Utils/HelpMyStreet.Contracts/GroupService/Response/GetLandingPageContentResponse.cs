@@ -9,19 +9,19 @@ namespace HelpMyStreet.Contracts.GroupService.Response
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public int ZoomLevel { get; set; }
+        public string SignUpLink { get; set; }
         public string CommunityName { get; set; }
+        public string CommunityShortName { get; set; }
         public string BannerImageLocation { get; set; }
         public string Header { get; set; }
-        public string HeaderSubtitle { get; set; }
-        public IEnumerable<string> HeaderBullets { get; set; }
         public string HeaderHelpButtonText { get; set; }
         public string HeaderVolunteerButtonText { get; set; }
-        public bool HideHeaderButtons { get; set; } = false;
-        public bool HideHeaderVolunteerButton { get; set; } = false;
-        public bool HideHeaderHelpButton { get; set; } = false;
+        public string HeaderHTML { get; set; }
         public string CommunityVolunteersHeader { get; set; }
         public string CommunityVolunteersTextHtml { get; set; }
-        public bool HideHelpPanel { get; set; } = false;
+        public bool ShowRequestHelp { get; set; }
+        public bool ShowHelpExampleCards { get; set; }
+        public bool DisableButtons { get; set; }
         public string RequestHelpHeading { get; set; }
         public string RequestHelpText { get; set; }
         public string ProvideHelpHeading { get; set; }

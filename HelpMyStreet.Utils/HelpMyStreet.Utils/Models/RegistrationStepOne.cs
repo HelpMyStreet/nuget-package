@@ -9,5 +9,7 @@ namespace HelpMyStreet.Utils.Models
         public string FirebaseUID { get; set; }
         public DateTime DateCreated { get; set; }
         public string EmailAddress { get; set; }
+        public int? ReferringGroupId { get; set; }
+        public string Source { get; set; }
     }
 }

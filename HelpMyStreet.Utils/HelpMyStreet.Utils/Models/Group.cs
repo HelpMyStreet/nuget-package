@@ -6,8 +6,9 @@ namespace HelpMyStreet.Utils.Models
 {
     public class Group
     {
+        public int GroupId { get; set; }
         public string GroupName { get; set; }
         public string GroupKey { get; set; }
-        public string ParentGroupName { get; set; }
+        public int ParentGroupId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelpMyStreet.Utils.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,6 @@ namespace HelpMyStreet.Contracts.GroupService.Response
 {
     public class GetChildGroupsResponse
     {
-        public List<int> ChildGroups { get; set; }
+        public List<Group> ChildGroups { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace HelpMyStreet.Utils.Models
         public int GroupId { get; set; }
         public string GroupName { get; set; }
         public string GroupKey { get; set; }
-        public int ParentGroupId { get; set; }
+        public int? ParentGroupId { get; set; }
     }
 }

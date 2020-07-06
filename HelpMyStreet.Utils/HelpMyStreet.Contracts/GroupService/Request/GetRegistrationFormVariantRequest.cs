@@ -8,7 +8,6 @@ namespace HelpMyStreet.Contracts.GroupService.Request
     {
         [Required]
         public int? GroupID { get; set; }
-        [Required]
         public string Source { get; set; }
     }
 }

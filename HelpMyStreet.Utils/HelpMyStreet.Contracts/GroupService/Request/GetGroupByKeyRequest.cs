@@ -4,12 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HelpMyStreet.Contracts.GroupService.Request
 {
-    public class PostCreateGroupRequest :IRequest<PostCreateGroupResponse>
+    public class GetGroupByKeyRequest : IRequest<GetGroupByKeyResponse>
     {
         [Required]
-        public string GroupName { get; set; }
-        [Required]
         public string GroupKey { get; set; }
-        public string ParentGroupName { get; set; }
     }
+
 }

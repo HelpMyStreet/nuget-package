@@ -24,5 +24,6 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         public bool HealthCritical { get; set; }
         public DateTime DateRequested { get; set; }  
         public RequestorType RequestorType { get; set; }
+        public string OrganisationName { get; set; }
     }
 }

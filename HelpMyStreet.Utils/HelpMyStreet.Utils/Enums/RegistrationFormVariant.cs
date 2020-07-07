@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HelpMyStreet.Utils.Enums
 {
-    public enum RegistrationSource
+    public enum RegistrationFormVariant
     {
         Default = 0,
         HLP = 1,

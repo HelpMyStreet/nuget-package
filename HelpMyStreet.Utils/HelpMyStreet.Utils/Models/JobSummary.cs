@@ -22,5 +22,6 @@ namespace HelpMyStreet.Utils.Models
         public List<Question> Questions { get; set; }
         public int? ReferringGroupID { get; set; }
         public List<int> Groups { get; set; }
+        public string RecipientOrganisation { get; set; }
     }
 }

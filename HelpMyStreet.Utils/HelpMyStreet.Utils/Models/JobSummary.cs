@@ -1,8 +1,6 @@
-﻿using HelpMyStreet.Contracts.RequestService.Response;
-using HelpMyStreet.Utils.Enums;
+﻿using HelpMyStreet.Utils.Enums;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace HelpMyStreet.Utils.Models
 {

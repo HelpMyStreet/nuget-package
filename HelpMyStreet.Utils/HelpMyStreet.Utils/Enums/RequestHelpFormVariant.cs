@@ -1,6 +1,6 @@
 ﻿namespace HelpMyStreet.Utils.Enums
 {
-    public enum RequestHelpSource
+    public enum RequestHelpFormVariant
     {
         Default = 1,
         VitalsForVeterans = 2,

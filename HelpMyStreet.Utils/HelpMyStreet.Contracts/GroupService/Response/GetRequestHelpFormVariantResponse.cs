@@ -7,6 +7,7 @@ namespace HelpMyStreet.Contracts.GroupService.Response
 {
     public class GetRequestHelpFormVariantResponse
     {
-        public RequestHelpSource RequestHelpSource { get; set; }
+        public RequestHelpFormVariant RequestHelpFormVariant { get; set; }
+        public TargetGroups TargetGroups { get; set; }
     }
 }

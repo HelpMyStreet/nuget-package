@@ -4,6 +4,6 @@ namespace HelpMyStreet.Contracts.GroupService.Response
 {
     public class GetRegistrationFormVariantResponse
     {
-        public RegistrationSource RegistrationSource { get; set; }
+        public RegistrationFormVariant RegistrationFormVariant { get; set; }
     }
 }

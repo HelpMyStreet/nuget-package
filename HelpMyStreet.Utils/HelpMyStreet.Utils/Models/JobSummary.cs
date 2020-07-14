@@ -1,8 +1,6 @@
-﻿using HelpMyStreet.Contracts.RequestService.Response;
-using HelpMyStreet.Utils.Enums;
+﻿using HelpMyStreet.Utils.Enums;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace HelpMyStreet.Utils.Models
 {
@@ -22,5 +20,6 @@ namespace HelpMyStreet.Utils.Models
         public List<Question> Questions { get; set; }
         public int? ReferringGroupID { get; set; }
         public List<int> Groups { get; set; }
+        public string RecipientOrganisation { get; set; }
     }
 }

@@ -25,5 +25,7 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         public DateTime DateRequested { get; set; }  
         public RequestorType RequestorType { get; set; }
         public string OrganisationName { get; set; }
+        public DateTime DateStatusLastChanged { get; set; }
+        public int DueDays { get; set; }
     }
 }

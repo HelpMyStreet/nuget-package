@@ -10,6 +10,7 @@ namespace HelpMyStreet.Utils.Enums
         HLP = 1,
         FtLOS = 2,
         AgeUKLSL = 3,
+        FaceMasks = 4,
     }
 }
     

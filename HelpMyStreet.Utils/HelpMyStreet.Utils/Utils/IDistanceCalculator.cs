@@ -2,8 +2,8 @@
 {
     public interface IDistanceCalculator
     {
-        double GetDistanceInMetres(double longitude, double latitude, double otherLongitude, double otherLatitude);
+        double GetDistanceInMetres(double latitude, double longitude, double otherLatitude, double otherLongitude);
 
-        double GetDistanceInMiles(double longitude, double latitude, double otherLongitude, double otherLatitude);
+        double GetDistanceInMiles(double latitude, double longitude, double otherLatitude, double otherLongitude);
     }
 }

@@ -35,7 +35,7 @@ namespace HelpMyStreet.Contracts.RequestService.Request
         public Dictionary<SupportActivities,double?> ActivitySpecificSupportDistancesInMiles { get; set; }
 
         public int? ReferringGroupID { get; set; }
-        public List<int> Groups { get; set; }
+        public GroupRequest Groups { get; set; }
         public JobStatusRequest JobStatuses {get; set; }
 }
 }

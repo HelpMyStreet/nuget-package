@@ -21,5 +21,7 @@ namespace HelpMyStreet.Utils.Models
         public int? ReferringGroupID { get; set; }
         public List<int> Groups { get; set; }
         public string RecipientOrganisation { get; set; }
+        public DateTime DateStatusLastChanged { get; set; }
+        public int DueDays { get; set; }
     }
 }

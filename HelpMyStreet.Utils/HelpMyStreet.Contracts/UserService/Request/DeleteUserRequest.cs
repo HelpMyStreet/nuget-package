@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HelpMyStreet.Contracts.UserService.Request
 {
-    public class PostDeleteUserRequest : IRequest<PostDeleteUserResponse>
+    public class DeleteUserRequest : IRequest<DeleteUserResponse>
     {
         [Required]
         public int UserID { get; set; }

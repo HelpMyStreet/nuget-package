@@ -6,6 +6,7 @@
         VitalsForVeterans = 2,
         DIY = 3,
         FtLOS = 4,
-        FaceMasks = 5
+        FaceMasks = 5,
+        HLP_CommunityConnector = 6,
     }
 }

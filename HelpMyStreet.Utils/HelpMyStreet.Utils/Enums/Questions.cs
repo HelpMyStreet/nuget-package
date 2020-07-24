@@ -13,5 +13,6 @@ namespace HelpMyStreet.Utils.Enums
        FaceMask_Cost = 5,
        IsHealthCritical = 6,
        WillYouCompleteYourself = 7,
+       FtlosDonationInformation = 8,
     }
 }

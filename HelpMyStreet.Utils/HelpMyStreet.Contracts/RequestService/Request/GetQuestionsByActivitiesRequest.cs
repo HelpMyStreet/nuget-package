@@ -9,11 +9,17 @@ namespace HelpMyStreet.Contracts.RequestService.Request
 {
     public class GetQuestionsByActivitiesRequest : IRequest<GetQuestionsByActivtiesResponse>
     {
-       public ActivitesRequest ActivitesRequest { get; set;  }
+        public ActivitesRequest ActivitesRequest { get; set;  }
+        public RequestHelpFormVariantRequest RequestHelpFormVariantRequest { get; set; }
     }
 
     public class ActivitesRequest
     {
         public List<SupportActivities> Activities { get; set; }
+    }
+
+    public class RequestHelpFormVariantRequest
+    {
+        public RequestHelpFormVariant RequestHelpFormVariant { get; set; }
     }
 }

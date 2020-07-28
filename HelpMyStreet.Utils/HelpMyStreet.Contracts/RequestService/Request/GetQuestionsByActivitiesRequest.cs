@@ -11,6 +11,7 @@ namespace HelpMyStreet.Contracts.RequestService.Request
     {
         public ActivitesRequest ActivitesRequest { get; set;  }
         public RequestHelpFormVariantRequest RequestHelpFormVariantRequest { get; set; }
+        public RequestHelpFormStage RequestHelpFormStage { get; set; }
     }
 
     public class ActivitesRequest

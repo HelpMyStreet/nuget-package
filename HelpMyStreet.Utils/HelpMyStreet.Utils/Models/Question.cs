@@ -1,7 +1,5 @@
 ﻿using HelpMyStreet.Utils.Enums;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace HelpMyStreet.Utils.Models
 {
@@ -11,6 +9,10 @@ namespace HelpMyStreet.Utils.Models
         public string Name { get; set; }
         public QuestionType Type {get;set;}
         public bool Required { get; set; }
+        public string SubText { get; set; }
+        public string PlaceholderText { get; set; }
+        public RequestHelpFormStage FormStage { get; set; }
+        public string Location { get; set; }
         public string Answer { get; set; }
         public List<AdditonalQuestionData> AddtitonalData { get; set; }
     }

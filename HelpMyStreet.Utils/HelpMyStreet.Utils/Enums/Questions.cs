@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HelpMyStreet.Utils.Enums
+﻿namespace HelpMyStreet.Utils.Enums
 {
     public enum Questions
     {
@@ -14,5 +10,7 @@ namespace HelpMyStreet.Utils.Enums
        IsHealthCritical = 6,
        WillYouCompleteYourself = 7,
        FtlosDonationInformation = 8,
+       CommunicationNeeds = 9,
+       AnythingElseToTellUs = 10,
     }
 }

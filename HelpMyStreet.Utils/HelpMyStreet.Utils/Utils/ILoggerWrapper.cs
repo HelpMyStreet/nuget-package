@@ -12,5 +12,7 @@ namespace HelpMyStreet.Utils.Utils
         void LogWarning(string message, Exception exception, object request);
         void LogInformation(string message);
         void LogInformation(string message, Exception exception, object request);
+        void LogWarning<T>(string message, Exception exception, T request);
+        void LogInformation<T>(string message, Exception exception, T request);
     }
 }

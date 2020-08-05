@@ -10,6 +10,8 @@ namespace HelpMyStreet.Utils.Enums
         CommunicationService = 2,
         AddressService = 3,
         GroupService = 4,
-        RequestService = 5
+        RequestService = 5,
+        PostcodeIo = 6,
+        Qas = 7
     }
 }

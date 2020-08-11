@@ -4,7 +4,12 @@ namespace HelpMyStreet.Utils.Exceptions
 {
     public class InternalServerException : Exception
     {
-        public InternalServerException() : base("Internal Server")
+        public InternalServerException()
+        {
+        }
+
+        public InternalServerException(string message)
+            : base(message)
         {
         }
     }

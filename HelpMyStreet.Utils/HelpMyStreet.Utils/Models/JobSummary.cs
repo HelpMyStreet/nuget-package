@@ -23,5 +23,10 @@ namespace HelpMyStreet.Utils.Models
         public string RecipientOrganisation { get; set; }
         public DateTime DateStatusLastChanged { get; set; }
         public int DueDays { get; set; }
+        public bool ForRequestor { get; set; }
+        public bool ConsentForContact { get; set; }
+        public DateTime DateRequested { get; set; }
+        public RequestorType RequestorType { get; set; }
+
     }
 }

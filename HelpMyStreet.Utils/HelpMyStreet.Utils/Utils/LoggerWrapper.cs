@@ -56,5 +56,15 @@ namespace HelpMyStreet.Utils.Utils
         {
             _logger.LogInformation(exception, message, request);
         }
+
+        public void LogWarning<T>(string message, Exception exception, T request)
+        {
+            _logger.LogWarning(exception, message, request);
+        }
+
+        public void LogInformation<T>(string message, Exception exception, T request)
+        {
+            _logger.LogInformation(exception, message, request);
+        }
     }
 }

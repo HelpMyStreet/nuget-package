@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using HelpMyStreet.Utils.Enums;
 
 namespace HelpMyStreet.Contracts.RequestService.Response
 {
     public class PutUpdateJobStatusToInProgressResponse
     {
-        public bool Success { get; set; }
+        public UpdateJobStatusOutcome Outcome { get; set; }
     }
 }

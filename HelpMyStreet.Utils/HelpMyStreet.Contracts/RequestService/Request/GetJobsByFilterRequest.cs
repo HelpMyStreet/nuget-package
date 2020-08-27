@@ -9,7 +9,11 @@ using HelpMyStreet.Contracts.RequestService.Response;
 namespace HelpMyStreet.Contracts.RequestService.Request
 {
     public class GetJobsByFilterRequest : IRequest<GetJobsByFilterResponse>
-    { 
+    {
+        /// <summary>
+        /// Filter by userID if passed in
+        /// </summary>
+        public int? UserID { get; set; }
         /// <summary>
         /// Support activities to be returned
         /// Supply null to return all activities

@@ -6,6 +6,7 @@ variables:
 
 trigger:
 - master
+- NetCorev3
 
 pool:
   vmImage: 'windows-latest'

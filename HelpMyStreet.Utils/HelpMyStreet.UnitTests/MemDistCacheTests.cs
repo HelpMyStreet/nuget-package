@@ -385,6 +385,74 @@ namespace HelpMyStreet.UnitTests
         }
 
         [Test]
+        public async Task DataNotInMemoryCache_DataNotInDistCache_DontWaitForData()
+        {
+            _pollySyncCacheProvider.Setup(x => x.TryGet(It.IsAny<string>())).Returns((false, null));
+
+            _distributedCacheWrapper.Setup(x => x.TryGetAsync<CachedItemWrapper<string>>(It.IsAny<string>(), It.IsAny<CancellationToken>(), It.IsAny<bool>())).ReturnsAsync((false, null));
+
+
+            _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
+
+            MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
+
+            string result = await memDistCache.GetCachedDataAsync(_dataGetterDelegate1, _key, RefreshBehaviour.DontWaitForFreshData, CancellationToken.None, NotInCacheBehaviour.DontWaitForData);
+
+            Assert.IsNull(result);
+
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
+
+            _distributedCacheWrapper.Verify(x => x.TryGetAsync<CachedItemWrapper<string>>(It.Is<string>(y => y == _key), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+
+            await Task.Delay(_waitForBackgroundThreadToCompleteMs); // wait for background thread
+
+            Assert.AreEqual(1, _numberOfTimesDataGetterDelegate1Called);
+
+
+            DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
+
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
+
+            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+        }
+
+
+        [Test]
+        public async Task DataNotInMemoryCache_DataNotInDistCache_DontGetData()
+        {
+            _pollySyncCacheProvider.Setup(x => x.TryGet(It.IsAny<string>())).Returns((false, null));
+
+            _distributedCacheWrapper.Setup(x => x.TryGetAsync<CachedItemWrapper<string>>(It.IsAny<string>(), It.IsAny<CancellationToken>(), It.IsAny<bool>())).ReturnsAsync((false, null));
+
+
+            _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
+
+            MemDistCacheFactory<string> memDistCacheFactory = new MemDistCacheFactory<string>(_pollySyncCacheProvider.Object, _distributedCacheWrapper.Object, _mockableDateTime.Object, _logger.Object);
+            IMemDistCache<string> memDistCache = memDistCacheFactory.GetCache(_defaultCacheDuration, Cache.ResetTimeFactory.OnHour);
+
+            string result = await memDistCache.GetCachedDataAsync(_dataGetterDelegate1, _key, RefreshBehaviour.DontWaitForFreshData, CancellationToken.None, NotInCacheBehaviour.DontGetData);
+
+            Assert.IsNull(result);
+
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
+
+            _distributedCacheWrapper.Verify(x => x.TryGetAsync<CachedItemWrapper<string>>(It.Is<string>(y => y == _key), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Once);
+
+            await Task.Delay(_waitForBackgroundThreadToCompleteMs); // wait for background thread
+
+            Assert.AreEqual(0, _numberOfTimesDataGetterDelegate1Called);
+
+
+            DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
+
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Never);
+
+            _distributedCacheWrapper.Verify(x => x.PutAsync(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration), It.IsAny<CancellationToken>(), It.IsAny<bool>()), Times.Never);
+        }
+
+
+        [Test]
         public async Task RefreshData()
         {
 

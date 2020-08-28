@@ -68,7 +68,57 @@ namespace HelpMyStreet.UnitTests
             Assert.AreEqual("dataFromBackendGet", result);
 
             _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
-            
+
+            Assert.AreEqual(1, _numberOfTimesDataGetterDelegate1Called);
+
+            DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
+
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Once);
+        }
+
+        [Test]
+        public async Task DataNotInMemoryCache_DontGetData()
+        {
+            _pollySyncCacheProvider.Setup(x => x.TryGet(It.IsAny<string>())).Returns((false, null));
+
+            _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
+
+            MemCacheFactory<string> memCacheFactory = new MemCacheFactory<string>(_pollySyncCacheProvider.Object, _mockableDateTime.Object, _logger.Object);
+            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, ResetTimeFactory.OnHour);
+
+            string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, _key, RefreshBehaviour.DontWaitForFreshData, CancellationToken.None, NotInCacheBehaviour.DontGetData);
+
+            Assert.IsNull(result);
+
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
+
+            await Task.Delay(_waitForBackgroundThreadToCompleteMs); // wait for background thread
+
+            Assert.AreEqual(0, _numberOfTimesDataGetterDelegate1Called);
+
+            DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));
+
+            _pollySyncCacheProvider.Verify(x => x.Put(It.Is<string>(y => y == _key), It.Is<CachedItemWrapper<string>>(y => y.Content == "dataFromBackendGet" && y.IsFreshUntil == whenDataWillNotBeFresh), It.Is<Ttl>(y => y.Timespan == _defaultCacheDuration)), Times.Never);
+        }
+
+        [Test]
+        public async Task DataNotInMemoryCache_DontWaitForData()
+        {
+            _pollySyncCacheProvider.Setup(x => x.TryGet(It.IsAny<string>())).Returns((false, null));
+
+            _mockableDateTime.Setup(x => x.UtcNow).Returns(new DateTimeOffset(2020, 05, 17, 20, 00, 00, 00, new TimeSpan(0, 0, 0)));
+
+            MemCacheFactory<string> memCacheFactory = new MemCacheFactory<string>(_pollySyncCacheProvider.Object, _mockableDateTime.Object, _logger.Object);
+            IMemDistCache<string> memCache = memCacheFactory.GetCache(_defaultCacheDuration, ResetTimeFactory.OnHour);
+
+            string result = await memCache.GetCachedDataAsync(_dataGetterDelegate1, _key, RefreshBehaviour.DontWaitForFreshData, CancellationToken.None, NotInCacheBehaviour.DontWaitForData);
+
+            Assert.IsNull(result);
+
+            _pollySyncCacheProvider.Verify(x => x.TryGet(It.Is<string>(y => y == _key)), Times.Once);
+
+            await Task.Delay(_waitForBackgroundThreadToCompleteMs); // wait for background thread
+
             Assert.AreEqual(1, _numberOfTimesDataGetterDelegate1Called);
 
             DateTimeOffset whenDataWillNotBeFresh = new DateTimeOffset(2020, 05, 17, 21, 00, 00, 00, new TimeSpan(0, 0, 0));

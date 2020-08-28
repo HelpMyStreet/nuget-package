@@ -1,9 +1,9 @@
 ﻿namespace HelpMyStreet.Cache
 {
-    public enum RefreshBehaviour : byte
+    public enum NotInCacheBehaviour : byte
     {
-        DontWaitForFreshData = 1,
-        WaitForFreshData = 2,
-        DontRefreshData = 3
+        DontWaitForData = 1,
+        WaitForData = 2,
+        DontGetData = 3
     }
 }

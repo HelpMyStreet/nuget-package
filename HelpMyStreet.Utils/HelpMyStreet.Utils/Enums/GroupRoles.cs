@@ -10,6 +10,7 @@ namespace HelpMyStreet.Utils.Enums
         TaskAdmin = 2,
         UserAdmin = 3,
         Owner = 4,
-        RequestSubmitter = 5
+        RequestSubmitter = 5,
+        Volunteer = 6
     }
 }

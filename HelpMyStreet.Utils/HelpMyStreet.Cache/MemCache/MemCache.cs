@@ -38,7 +38,7 @@ namespace HelpMyStreet.Cache.MemCache
         }
 
         /// <inheritdoc />>
-        public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken)
+        public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken, NotInCacheBehaviour notInCacheBehaviour)
         {
             (bool, object) memoryWrappedResult = _pollySyncCacheProvider.TryGet(key);
 
@@ -66,7 +66,18 @@ namespace HelpMyStreet.Cache.MemCache
                 return memoryResultObject.Content;
             }
 
-            return await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate);
+            if (notInCacheBehaviour == NotInCacheBehaviour.WaitForData)
+            {
+                return await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate);
+            }
+            else if (notInCacheBehaviour == NotInCacheBehaviour.DontWaitForData)
+            {
+#pragma warning disable 4014
+                Task.Factory.StartNew(async () => await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, _whenDataIsStaleDelegate), cancellationToken);
+#pragma warning restore 4014
+            }
+
+            return default;
         }
 
         private async Task<T> RecacheItemInMemoryCacheAsync(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
@@ -112,9 +123,9 @@ namespace HelpMyStreet.Cache.MemCache
         }
 
         /// <inheritdoc />>
-        public T GetCachedData(Func<CancellationToken, T> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken)
+        public T GetCachedData(Func<CancellationToken, T> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken, NotInCacheBehaviour notInCacheBehaviour)
         {
-            return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, refreshBehaviour, cancellationToken).Result;
+            return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, refreshBehaviour, cancellationToken, notInCacheBehaviour).Result;
         }
 
     }

@@ -24,6 +24,7 @@ namespace HelpMyStreet.Utils.Models
         public bool ConsentForContact { get; set; }
         public DateTime DateRequested { get; set; }
         public RequestorType RequestorType { get; set; }
+        public bool? Archive { get; set; }
 
     }
 }

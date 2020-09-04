@@ -26,5 +26,6 @@ namespace HelpMyStreet.Utils.Models
         public RequestorType RequestorType { get; set; }
         public bool? Archive { get; set; }
 
+
     }
 }

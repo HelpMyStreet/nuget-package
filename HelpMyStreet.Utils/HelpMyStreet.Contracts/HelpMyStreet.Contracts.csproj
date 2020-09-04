@@ -7,12 +7,13 @@
     <Product>HelpMyStreet</Product>
     <Authors>HelpMyStreet</Authors>
     <Description>Shared contracts for the HelpMyStreet Project.</Description>
+    <PackageId>HelpMyStreet.CoreV3.Contracts</PackageId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MediatR" Version="8.0.1" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="MediatR" Version="8.1.0" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+	</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HelpMyStreet.Utils\HelpMyStreet.Utils.csproj" />

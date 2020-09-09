@@ -11,5 +11,6 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         public JobSummary JobSummary { get; set; }
         public RequestPersonalDetails Requestor { get; set; }
         public RequestPersonalDetails Recipient { get; set; }
+        public List<StatusHistory> History { get; set; }
     }
 }

@@ -8,11 +8,4 @@ namespace HelpMyStreet.Contracts.RequestService.Response
     {
         public List<StatusHistory> History { get; set; }
     }
-
-    public class StatusHistory
-    {
-        public DateTime StatusDate { get; set; }
-        public JobStatuses JobStatus { get; set; }
-    }
-
 }

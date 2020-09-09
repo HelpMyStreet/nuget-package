@@ -23,5 +23,37 @@ namespace HelpMyStreet.UnitTests
 
             Assert.AreEqual("Hello World!", result);
         }
+
+        [Test]
+        public void Base64Encode_Base64DecodeToInt()
+        {
+            int result = Base64Utils.Base64DecodeToInt(Base64Utils.Base64Encode(123));
+
+            Assert.AreEqual(123, result);
+        }
+
+        [Test]
+        public void Base64Encode_Base64DecodeToInt_Zero()
+        {
+            int result = Base64Utils.Base64DecodeToInt(Base64Utils.Base64Encode(0));
+
+            Assert.AreEqual(0, result);
+        }
+
+        [Test]
+        public void Base64Encode_Base64DecodeToInt_Negative()
+        {
+            int result = Base64Utils.Base64DecodeToInt(Base64Utils.Base64Encode(-1));
+
+            Assert.AreEqual(-1, result);
+        }
+
+        [Test]
+        public void Base64Encode_Base64DecodeToInt_Invalid()
+        {
+            string encodedString = Base64Utils.Base64Encode("Not a number");
+
+            Assert.Throws<FormatException>(() => { Base64Utils.Base64DecodeToInt(encodedString); });
+        }
     }
 }

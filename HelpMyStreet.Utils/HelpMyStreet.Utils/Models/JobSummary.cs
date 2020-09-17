@@ -5,8 +5,7 @@ using System.Collections.Generic;
 namespace HelpMyStreet.Utils.Models
 {
     public class JobSummary : JobHeader
-    {
-        public int? VolunteerUserID { get; set; }
+    {     
         public string Details { get; set; }
         public List<Question> Questions { get; set; }
         public List<int> Groups { get; set; }

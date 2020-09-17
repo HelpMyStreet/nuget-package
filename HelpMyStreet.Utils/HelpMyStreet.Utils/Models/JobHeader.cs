@@ -5,6 +5,7 @@ namespace HelpMyStreet.Utils.Models
 {
     public class JobHeader
     {
+        public int? VolunteerUserID { get; set; }
         public DateTime DateRequested { get; set; }
         public DateTime DateStatusLastChanged { get; set; }
         public int? ReferringGroupID { get; set; }

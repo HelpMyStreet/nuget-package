@@ -7,6 +7,6 @@ namespace HelpMyStreet.Contracts.RequestService.Response
 {
     public class GetJobsByFilterResponse
     {
-        public List<JobSummary> JobSummaries { get; set; }
+        public List<JobHeader> JobHeaders { get; set; }
     }
 }

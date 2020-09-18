@@ -8,7 +8,7 @@ namespace HelpMyStreet.Contracts.RequestService.Extensions
 {
     public static class HelperExtensions
     {
-        public static IOrderedEnumerable<JobSummary> OrderOpenJobsForDisplay(this IEnumerable<JobSummary> input)
+        public static IOrderedEnumerable<JobHeader> OrderOpenJobsForDisplay(this IEnumerable<JobHeader> input)
         {
             return
               input

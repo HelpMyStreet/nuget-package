@@ -8,5 +8,6 @@
         FtLOS = 4,
         FaceMasks = 5,
         HLP_CommunityConnector = 6,
+        Ruddington = 7,
     }
 }

@@ -17,5 +17,6 @@ namespace HelpMyStreet.Utils.Models
         public JobStatuses JobStatus { get; set; }
         public int JobID { get; set; }
         public bool? Archive { get; set; }
+        public string Reference { get; set; }
     }
 }

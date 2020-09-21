@@ -1,6 +1,6 @@
 ﻿namespace HelpMyStreet.Contracts.FeedbackService.Response
 {
-    public enum FeedServiceErrorCode
+    public enum FeedbackServiceErrorCode
     {
         InternalServerError = 1,
         ValidationError = 2,

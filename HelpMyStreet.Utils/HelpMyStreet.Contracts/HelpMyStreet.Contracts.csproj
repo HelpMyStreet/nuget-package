@@ -14,7 +14,7 @@
 		<PackageReference Include="MediatR" Version="8.1.0" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
 	</ItemGroup>
-
+   
   <ItemGroup>
     <ProjectReference Include="..\HelpMyStreet.Utils\HelpMyStreet.Utils.csproj" />
   </ItemGroup>

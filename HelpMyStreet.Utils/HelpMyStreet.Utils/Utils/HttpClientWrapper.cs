@@ -41,11 +41,13 @@ namespace HelpMyStreet.Utils.Utils
             return response;
         }
 
-        public Task<HttpResponseMessage> DeleteAsync(HttpClientConfigName httpClientConfigName, string absolutePath, CancellationToken cancellationToken)
+        public Task<HttpResponseMessage> DeleteAsync(HttpClientConfigName httpClientConfigName, string absolutePath, HttpContent content, CancellationToken cancellationToken)
         {
             HttpClient httpClient = _httpClientFactory.CreateClient(httpClientConfigName.ToString());
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, absolutePath);
-            return httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+            request.Content = content;
+            Task<HttpResponseMessage> response = httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+            return response;
         }
 
         public Task<HttpResponseMessage> PutAsync(HttpClientConfigName httpClientConfigName, string absolutePath, HttpContent content, CancellationToken cancellationToken)

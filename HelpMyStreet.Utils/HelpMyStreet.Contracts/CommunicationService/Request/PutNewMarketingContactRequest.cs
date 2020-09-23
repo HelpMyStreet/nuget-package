@@ -2,7 +2,7 @@
 
 namespace HelpMyStreet.Contracts.CommunicationService.Request
 {
-    public class PostNewMarketingContactRequest : IRequest<bool>
+    public class PutNewMarketingContactRequest : IRequest<bool>
     {
         public MarketingContact MarketingContact { get; set; }
     }

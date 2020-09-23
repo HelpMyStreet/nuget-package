@@ -4,6 +4,7 @@
     {
         Success = 1,
         Unauthorized = 2,
-        BadRequest = 3
+        BadRequest = 3,
+        AlreadyInThisStatus = 4
     }
 }

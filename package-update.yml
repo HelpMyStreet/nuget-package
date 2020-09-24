@@ -1,3 +1,11 @@
+schedules:
+- cron: "0 20 * * Sun,Tue,Thu"
+  displayName: 8pm Sunday, Tuesday, Thursday
+  branches:
+    include:
+    - master
+  always: true
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -13,6 +21,12 @@ steps:
     command: custom
     custom: 'tool '
     arguments: 'install -g NuKeeper'
+
+- script: 'git config --global user.email %git_email%' 
+  displayName: 'Set git email address'
+
+- script: 'git config --global user.name %git_username%' 
+  displayName: 'Set git user name'
 
 - script: 'nukeeper org HelpMyStreet $(NUKEEPER_GITHUB_TOKEN) --maxrepo 99 --maxpackageupdates 99 --consolidate --fork PreferSingleRepository' 
   displayName: 'Run NuKeeper'

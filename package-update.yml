@@ -1,0 +1,13 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'install NuKeeper'
+  inputs:
+    command: custom
+    custom: 'tool '
+    arguments: 'install -g NuKeeper'
+
+- script: 'nukeeper org HelpMyStreet $(NUKEEPER_GITHUB_TOKEN) --maxrepo 99 --maxpackageupdates 99 --consolidate --fork PreferSingleRepository' 
+  displayName: 'Run NuKeeper'

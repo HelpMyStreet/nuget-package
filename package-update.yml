@@ -10,8 +10,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: UseDotNet@2 
+  displayName: "Install .NET Core 3.1.x SDK"
+  inputs:
+    version: '3.1.x'
+    packageType: sdk
+
 - task: DotNetCoreCLI@2
-  displayName: 'install NuKeeper'
+  displayName: 'Install NuKeeper'
   inputs:
     command: custom
     custom: 'tool '

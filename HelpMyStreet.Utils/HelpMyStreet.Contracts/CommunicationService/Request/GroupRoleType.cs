@@ -7,7 +7,7 @@ namespace HelpMyStreet.Contracts.CommunicationService.Request
 {
     public class GroupRoleType
     {
-        public int GroupId { get; set; }
+        public int? GroupId { get; set; }
         public GroupRoles GroupRoles { get; set; }
     }
 }

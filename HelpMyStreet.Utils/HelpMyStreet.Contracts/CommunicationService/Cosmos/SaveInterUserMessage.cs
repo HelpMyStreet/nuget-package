@@ -15,6 +15,7 @@ namespace HelpMyStreet.Contracts.CommunicationService.Cosmos
         public string Content { get; set; }
         public EmailDetails EmailDetails { get; set; }
         public List<int> RecipientUserIds { get; set; }
+        public Guid id { get; set; }
         public DateTime MessageDate { get; set; }
         public RequestRoles RecipientRequestRoles { get; set; }
     }

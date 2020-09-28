@@ -9,6 +9,7 @@ namespace HelpMyStreet.Contracts.CommunicationService.Cosmos
     public class SaveInterUserMessage
     {
         public Guid ThreadId { get; set; }
+        public List<int> SenderUserIds { get; set; }
         public string SenderFirstName { get; set; }
         public RequestRoles SenderRequestRoles { get; set; }
         public int? JobId { get; set; }

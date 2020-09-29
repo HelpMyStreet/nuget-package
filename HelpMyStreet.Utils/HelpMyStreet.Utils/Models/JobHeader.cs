@@ -8,7 +8,7 @@ namespace HelpMyStreet.Utils.Models
         public int? VolunteerUserID { get; set; }
         public DateTime DateRequested { get; set; }
         public DateTime DateStatusLastChanged { get; set; }
-        public int? ReferringGroupID { get; set; }
+        public int ReferringGroupID { get; set; }
         public double DistanceInMiles { get; set; }
         public string PostCode { get; set; }
         public bool IsHealthCritical { get; set; }

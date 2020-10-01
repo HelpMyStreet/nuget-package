@@ -12,6 +12,7 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         SendOpenTaskDigest = 4,
         SendTaskStateChangeUpdate = 5,
         PostYotiCommunication = 6,
-        SendTaskReminder = 7
+        SendTaskReminder = 7,
+        InterUserMessage = 8
     }
 }

@@ -9,6 +9,7 @@ namespace HelpMyStreet.Contracts.CommunicationService.Response
         InternalServerError = 1,
         EmailProviderDown = 2,
         NoUserFound = 3,
-        ValidationError = 4
+        ValidationError = 4,
+        Unauthorised = 5
     }
 }

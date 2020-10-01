@@ -15,7 +15,7 @@
     <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.4.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
-    <PackageReference Include="NewRelic.Agent.Api" Version="8.27.139" />
+    <PackageReference Include="NewRelic.Agent.Api" Version="8.32.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Polly" Version="7.2.0" />
     <PackageReference Include="Polly.Caching.Memory" Version="3.0.2" />

@@ -1,0 +1,36 @@
+schedules:
+- cron: "0 20 * * Sun,Tue,Thu"
+  displayName: 8pm Sunday, Tuesday, Thursday
+  branches:
+    include:
+    - master
+  always: true
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UseDotNet@2 
+  displayName: "Install .NET Core 3.1.x SDK"
+  inputs:
+    version: '3.1.x'
+    packageType: sdk
+
+- task: DotNetCoreCLI@2
+  displayName: 'Install NuKeeper'
+  inputs:
+    command: custom
+    custom: 'tool '
+    arguments: 'install -g NuKeeper'
+
+- script: 'git config --global user.email %git_email%' 
+  displayName: 'Set git email address'
+
+- script: 'git config --global user.name %git_username%' 
+  displayName: 'Set git user name'
+
+- script: 'nukeeper org HelpMyStreet $(NUKEEPER_GITHUB_TOKEN) --maxrepo 99 --maxpackageupdates 99 --consolidate --fork PreferSingleRepository --source https://api.nuget.org/v3/index.json --source https://pkgs.dev.azure.com/HelpMyStreet/nuget-package/_packaging/nuget.HelpMyStreet/nuget/v3/index.json'
+  displayName: 'Run NuKeeper (All packages, min age 7 days)'
+
+- script: 'nukeeper org HelpMyStreet $(NUKEEPER_GITHUB_TOKEN) --maxrepo 99 --maxpackageupdates 99 --consolidate --fork PreferSingleRepository --source https://pkgs.dev.azure.com/HelpMyStreet/nuget-package/_packaging/nuget.HelpMyStreet/nuget/v3/index.json --age 0' 
+  displayName: 'Run NuKeeper (HMS packages, min age 0 days)'

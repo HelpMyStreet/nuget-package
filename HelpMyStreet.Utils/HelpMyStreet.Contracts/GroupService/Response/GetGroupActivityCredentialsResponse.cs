@@ -7,6 +7,6 @@ namespace HelpMyStreet.Contracts.GroupService.Response
 {
     public class GetGroupActivityCredentialsResponse
     {
-        public List<UserCredential> UserCredentials { get; set; }
+        public List<List<int>> CredentialSets { get; set; }
     }
 }

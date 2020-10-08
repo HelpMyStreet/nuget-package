@@ -16,7 +16,6 @@ namespace HelpMyStreet.Contracts.GroupService.Response
     public class GetGroupMemberDetailsResponse
     {
         public UserInGroup UserInGroup { get; set; }
-        public List<UserCredential> UserCredentials { get; set; }
         public List<UserRoleAudit> UserRoleAudits { get; set; }
     }
 }

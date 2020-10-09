@@ -10,8 +10,9 @@ namespace HelpMyStreet.Utils.Models
         public int UserId { get; set; }
         public int GroupId { get; set; }
         public List<GroupRoles> GroupRoles { get; set; }
-        public List<UserCredential> UserCredentials { get; set; }        
+        public List<int> ValidCredentials { get; set; }
     }
+
 }
 
 

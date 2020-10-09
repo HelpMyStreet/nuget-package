@@ -12,10 +12,10 @@ namespace HelpMyStreet.Contracts.GroupService.Response
         public GroupAction Action { get; set; }
         public bool Success { get; set; }
     }
-
     public class GetGroupMemberDetailsResponse
     {
-        public UserInGroup UserInGroup { get; set; }
+        public List<GroupRoles> GroupRoles { get; set; }
+        public List<UserCredential> UserCredentials { get; set; }
         public List<UserRoleAudit> UserRoleAudits { get; set; }
     }
 }

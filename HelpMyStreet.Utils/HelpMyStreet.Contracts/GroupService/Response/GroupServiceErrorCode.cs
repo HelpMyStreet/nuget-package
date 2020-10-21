@@ -8,5 +8,6 @@ namespace HelpMyStreet.Contracts.RequestService.Response
     {
         InternalServerError = 1,
         ValidationError = 2,
+        UnauthorisedError = 3
     }
 }

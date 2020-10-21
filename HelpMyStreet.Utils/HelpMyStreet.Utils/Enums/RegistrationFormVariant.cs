@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HelpMyStreet.Utils.Enums
+﻿namespace HelpMyStreet.Utils.Enums
 {
     public enum RegistrationFormVariant
     {
@@ -10,7 +6,8 @@ namespace HelpMyStreet.Utils.Enums
         HLP = 1,
         FtLOS = 2,
         AgeUKLSL = 3,
-        FaceMasks = 4
+        FaceMasks = 4,
+        AgeUKWirral = 5
     }
 }
     

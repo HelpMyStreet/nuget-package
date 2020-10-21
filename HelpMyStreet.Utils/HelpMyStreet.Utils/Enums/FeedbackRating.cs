@@ -4,11 +4,9 @@ using System.Text;
 
 namespace HelpMyStreet.Utils.Enums
 {
-    public enum RequestRoles
+    public enum FeedbackRating
     {
-        Requestor = 1,
-        Recipient = 2,
-        Volunteer = 3,
-        GroupAdmin = 4
+        HappyFace = 1,
+        SadFace = 2
     }
 }

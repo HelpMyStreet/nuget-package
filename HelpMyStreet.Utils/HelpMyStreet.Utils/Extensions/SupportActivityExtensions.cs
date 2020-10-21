@@ -1,4 +1,5 @@
-﻿using HelpMyStreet.Utils.Enums;
+﻿using System;
+using HelpMyStreet.Utils.Enums;
 
 namespace HelpMyStreet.Utils.Extensions
 {
@@ -21,7 +22,8 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.WellbeingPackage => "delivering a well-being package",
                 SupportActivities.Other => "your requested activity",
                 SupportActivities.CommunityConnector => "a community connector",
-                _ => activity.ToString()                
+                SupportActivities.MedicalAppointmentTransport => "medical appointment transport",
+                _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
 
@@ -42,7 +44,8 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.WellbeingPackage => "Wellbeing Package",
                 SupportActivities.Other => "Other",
                 SupportActivities.CommunityConnector => "Community Connector",
-                _ => activity.ToString()
+                SupportActivities.MedicalAppointmentTransport => "Medical Appointment Transport",
+                _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
     }

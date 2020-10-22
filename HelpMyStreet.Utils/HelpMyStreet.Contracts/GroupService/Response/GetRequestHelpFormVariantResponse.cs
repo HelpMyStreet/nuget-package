@@ -9,5 +9,7 @@ namespace HelpMyStreet.Contracts.GroupService.Response
     {
         public RequestHelpFormVariant RequestHelpFormVariant { get; set; }
         public TargetGroups TargetGroups { get; set; }
+        public bool AccessRestrictedByRole { get; set; }
+        public bool RequestorDefinedByGroup { get; set; }
     }
 }

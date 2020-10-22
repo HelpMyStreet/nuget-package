@@ -13,5 +13,8 @@
        CommunicationNeeds = 9,
        AnythingElseToTellUs = 10,
        AgeUKReference = 11,
+       Shopping = 12,
+       Prescription = 13,
+       ColdWeatherArmy = 14
     }
 }

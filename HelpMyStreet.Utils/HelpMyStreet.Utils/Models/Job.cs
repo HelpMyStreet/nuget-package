@@ -16,5 +16,6 @@ namespace HelpMyStreet.Utils.Models
         public string Details { get; set; }
         public int DueDays { get; set; }
         public bool HealthCritical { get; set; }
+        public DueDateType DueDateType { get; set; }
     }
 }

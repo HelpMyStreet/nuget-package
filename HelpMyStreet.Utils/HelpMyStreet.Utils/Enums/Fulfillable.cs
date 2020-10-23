@@ -12,6 +12,8 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         Accepted_PassToStreetChampion = 4,
         Accepted_PassToVolunteer = 5,
         Accepted_ManualReferral = 6,
-        Accepted_DiyRequest = 7
+        Accepted_DiyRequest = 7,
+        Rejected_Unauthorised = 8,
+        Rejected_ConfigurationError = 9
     }
 }

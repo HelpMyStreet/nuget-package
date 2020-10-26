@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Internal;
+﻿using HelpMyStreet.Utils.Enums;
+using Microsoft.Extensions.Internal;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -51,6 +52,30 @@ namespace HelpMyStreet.Utils.Utils
                 0 => "today",
                 _ => $"on {dateTimeDue:dd/MM/yyyy}"
             });
+        }
+
+        public string JobDueDate(DateTime dateTimeDue, DueDateType dueDateType)
+        {
+            DateTime dueDate = dateTimeDue.Date;
+            DateTime today = _systemClock.UtcNow.Date;
+
+            int daysUntilDue = (int)dueDate.Subtract(today).TotalDays;
+
+            if (daysUntilDue < 1) return "urgently";
+
+            if (dueDateType == DueDateType.On)
+            {
+                return $"{dateTimeDue:dd/MM/yyyy}";
+            }
+            else
+            {
+                return (daysUntilDue switch
+                {
+                    int i when i < 14 => "soon",
+                    int i when i >= 14 => $"in {i / 7} weeks",
+                    _ => $"on {dateTimeDue:dd/MM/yyyy}"
+                });
+            }
         }
     }
 }

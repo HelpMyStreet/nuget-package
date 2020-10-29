@@ -13,6 +13,5 @@ namespace HelpMyStreet.Utils.Models
         public int DueDays { get; set; }
         public bool ConsentForContact { get; set; }
         public RequestorType RequestorType { get; set; }
-        public DueDateType DueDateType { get; set; }
     }
 }

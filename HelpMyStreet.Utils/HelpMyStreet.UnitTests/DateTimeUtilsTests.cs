@@ -1,4 +1,5 @@
-﻿using HelpMyStreet.Utils.Utils;
+﻿using HelpMyStreet.Utils.Extensions;
+using HelpMyStreet.Utils.Utils;
 using Microsoft.Extensions.Internal;
 using Moq;
 using NUnit.Framework;
@@ -158,6 +159,33 @@ namespace HelpMyStreet.UnitTests
             string result = _classUnderTest.FriendlyPastDate(dateTimeDue);
 
             Assert.AreEqual($"on {dateTimeDue:dd/MM/yyyy}", result);
+        }
+
+        [Test]
+        public void SuffixTest()
+        {
+            DateTime dateTime = new DateTime(2000, 01, 01);
+            string result = DateTimeExtensions.ToString(dateTime, "dnn", true);
+
+            Assert.AreEqual("1st", result);
+        }
+
+        [Test]
+        public void SuffixTest_Capital()
+        {
+            DateTime dateTime = new DateTime(2000, 01, 22);
+            string result = DateTimeExtensions.ToString(dateTime, "dNN", true);
+
+            Assert.AreEqual("22ND", result);
+        }
+
+        [Test]
+        public void SuffixTest_11th()
+        {
+            DateTime dateTime = new DateTime(2009, 12, 11);
+            string result = DateTimeExtensions.ToString(dateTime, "ddnn MMMM yyyy", true);
+
+            Assert.AreEqual("11th December 2009", result);
         }
     }
 }

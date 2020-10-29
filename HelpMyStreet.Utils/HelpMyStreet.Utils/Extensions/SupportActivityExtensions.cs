@@ -23,8 +23,8 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.Other => "your requested activity",
                 SupportActivities.CommunityConnector => "a community connector",
                 SupportActivities.MedicalAppointmentTransport => "medical appointment transport",
-                SupportActivities.ColdWeatherArmy => "providing help in emergency situations during a cold snap",
-                SupportActivities.Transport => "providing transport for essential appointments",
+                SupportActivities.ColdWeatherArmy => "cold weather support",
+                SupportActivities.Transport => "essential appointments transport",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -47,8 +47,8 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.Other => "Other",
                 SupportActivities.CommunityConnector => "Community Connector",
                 SupportActivities.MedicalAppointmentTransport => "Medical Appointment Transport",
-                SupportActivities.ColdWeatherArmy => "Providing Help In Emergency Situations During A Cold Snap",
-                SupportActivities.Transport => "Providing Transport Essential Appointments",
+                SupportActivities.ColdWeatherArmy => "Cold Weather Support",
+                SupportActivities.Transport => "Essential Appointments Transport",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }

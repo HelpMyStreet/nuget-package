@@ -13,8 +13,7 @@
        CommunicationNeeds = 9,
        AnythingElseToTellUs = 10,
        AgeUKReference = 11,
-       Shopping = 12,
-       Prescription = 13,
-       ColdWeatherArmy = 14
+       Shopping_List = 12,
+       Prescription_PharmacyAddress = 13,
     }
 }

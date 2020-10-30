@@ -33,15 +33,6 @@ namespace HelpMyStreet.Utils.Models
         public bool? HMSContactConsent { get; set; }
 
 
-        // Supplied in registration step 4
-        public bool? StreetChampionRoleUnderstood { get; set; }
-        public List<string> ChampionPostcodes { get; set; }
-
-
-        // Supplied in registration step 5
-        public bool? IsVerified { get; set; }
-
-
         public UserPersonalDetails UserPersonalDetails { get; set; }
         public Dictionary<int, DateTime> RegistrationHistory { get; set; }
 

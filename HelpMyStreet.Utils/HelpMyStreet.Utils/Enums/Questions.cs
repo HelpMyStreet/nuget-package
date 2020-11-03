@@ -13,5 +13,7 @@
        CommunicationNeeds = 9,
        AnythingElseToTellUs = 10,
        AgeUKReference = 11,
+       Shopping_List = 12,
+       Prescription_PharmacyAddress = 13,
     }
 }

@@ -8,7 +8,7 @@
         AgeUKLSL = 3,
         FaceMasks = 4,
         AgeUKWirral = 5,
-        AgeUKNotts = 6
+        AgeUKNottsBalderton = 6
     }
 }
     

@@ -10,6 +10,6 @@
         HLP_CommunityConnector = 6,
         Ruddington = 7,
         AgeUKWirral = 8,
-        AgeUKNotts = 9
+        AgeUKNottsBalderton = 9
     }
 }

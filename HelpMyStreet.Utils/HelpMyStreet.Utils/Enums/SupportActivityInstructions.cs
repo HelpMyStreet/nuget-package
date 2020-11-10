@@ -13,6 +13,9 @@
         AgeUKLincoln_V4V = 9,
         AgeUKWirral_Shopping = 10,
         AgeUKWirral_Prescriptions = 11,
-        AgeUKWirral_General = 12
+        AgeUKWirral_General = 12,
+        AgeUKLSL_Shopping = 13,
+        AgeUKLSL_Prescriptions = 14,
+        AgeUKLSL_General = 15
     }
 }

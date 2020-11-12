@@ -15,6 +15,7 @@ namespace HelpMyStreet.Utils.Models
         public string Location { get; set; }
         public string Answer { get; set; }
         public List<AdditonalQuestionData> AddtitonalData { get; set; }
+        public bool AnswerContainsSensitiveData { get; set; }
     }
 
 

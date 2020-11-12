@@ -8,6 +8,7 @@
         HLP = -4,
         Tankersley = -5,
         Ruddington = -6,
-        AgeUKWirral = -7
+        AgeUKWirral = -7,
+        AgeUKNottsBalderton = -8
     }
 }

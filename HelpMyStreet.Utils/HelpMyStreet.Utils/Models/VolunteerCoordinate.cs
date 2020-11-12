@@ -17,6 +17,9 @@ namespace HelpMyStreet.Utils.Models
         [DataMember(Name = "lng")]
         public double Longitude { get; set; }
 
+        [DataMember(Name = "date")]
+        public DateTime? CreatedDate { get; set; }
+
         // fields are temporarily nullable until the grid aggregation functionality is implemented
         [DataMember(Name = "sc")]
         public int? NumberOfStreetChampions { get; set; }

@@ -19,5 +19,6 @@ namespace HelpMyStreet.Utils.Models
         public bool? Archive { get; set; }
         public string Reference { get; set; }
         public DueDateType DueDateType { get; set; }
+        public bool RequestorDefinedByGroup { get; set; }
     }
 }

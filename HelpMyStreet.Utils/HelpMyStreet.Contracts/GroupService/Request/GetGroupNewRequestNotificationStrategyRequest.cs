@@ -7,7 +7,7 @@ namespace HelpMyStreet.Contracts.GroupService.Request
     public class GetGroupNewRequestNotificationStrategyRequest : IRequest<GetGroupNewRequestNotificationStrategyResponse>
     {
         [Required]
-        public int GroupID { get; set; }
+        public int? GroupID { get; set; }
     }
 
 }

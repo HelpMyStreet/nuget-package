@@ -9,6 +9,7 @@ namespace HelpMyStreet.Utils.Extensions
             return role switch
             {
                 GroupRoles.UserAdmin => "User Admin",
+                GroupRoles.UserAdmin_ReadOnly => "User Admin (Read-only)",
                 GroupRoles.TaskAdmin => "Request Admin",
                 GroupRoles.RequestSubmitter => "Request Submitter",
                 _ => role.ToString()

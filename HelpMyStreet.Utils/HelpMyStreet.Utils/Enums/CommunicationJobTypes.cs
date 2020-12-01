@@ -13,6 +13,7 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         SendTaskStateChangeUpdate = 5,
         PostYotiCommunication = 6,
         SendTaskReminder = 7,
-        InterUserMessage = 8
+        InterUserMessage = 8,
+        NewCredentials = 9
     }
 }

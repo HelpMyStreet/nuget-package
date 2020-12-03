@@ -8,6 +8,7 @@ namespace HelpMyStreet.Utils.Enums
     {
         MakeAvailableToGroups = 1,
         NotifyMatchingVolunteers = 2,
-        AssignToVolunteer = 3
+        AssignToVolunteer = 3,
+        NotifyGroupAdmins = 4,
     }
 }

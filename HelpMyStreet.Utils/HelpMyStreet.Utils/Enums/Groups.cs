@@ -9,6 +9,7 @@
         Tankersley = -5,
         Ruddington = -6,
         AgeUKWirral = -7,
-        AgeUKNottsBalderton = -8
+        AgeUKNottsBalderton = -8,
+        AgeUKNorthWestKent = -9,
     }
 }

@@ -10,5 +10,6 @@ namespace HelpMyStreet.Utils.Enums
         NotifyMatchingVolunteers = 2,
         AssignToVolunteer = 3,
         NotifyGroupAdmins = 4,
+        SetStatusToOpen = 5,
     }
 }

@@ -11,6 +11,7 @@
         Ruddington = 7,
         AgeUKWirral = 8,
         AgeUKNottsBalderton = 9,
-        AgeUKNorthWestKent_PublicForm = 10,
+        AgeUKNorthWestKent_Public = 10,
+        AgeUKNorthWestKent_RequestSubmitter = 11,
     }
 }

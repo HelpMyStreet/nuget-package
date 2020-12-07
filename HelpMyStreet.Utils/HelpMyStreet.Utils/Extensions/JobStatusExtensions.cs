@@ -8,6 +8,7 @@ namespace HelpMyStreet.Utils.Extensions
         {
             return status switch
             {
+                JobStatuses.New => "New",
                 JobStatuses.InProgress => "In Progress",
                 _ => status.ToString()
             };

@@ -4,7 +4,7 @@ using System;
 
 namespace HelpMyStreet.Contracts.RequestService.Request
 {
-    public class PutUpdateDueDateRequest : IRequest<PutUpdateJobDueDateResponse>
+    public class PutUpdateJobDueDateRequest : IRequest<PutUpdateJobDueDateResponse>
     {
         public int? JobID { get; set; }
         public DateTime DueDate { get; set; }

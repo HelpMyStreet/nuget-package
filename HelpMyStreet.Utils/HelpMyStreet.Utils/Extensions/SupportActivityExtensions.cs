@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using HelpMyStreet.Utils.Enums;
 
 namespace HelpMyStreet.Utils.Extensions
 {
     public static class SupportActivityExtensions
     {
+        [Obsolete("Use FriendlyNameShort")]
         public static string FriendlyNameForEmail(this SupportActivities activity)
         {
             return activity switch

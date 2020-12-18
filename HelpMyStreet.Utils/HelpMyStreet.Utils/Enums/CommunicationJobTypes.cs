@@ -14,6 +14,8 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         PostYotiCommunication = 6,
         SendTaskReminder = 7,
         InterUserMessage = 8,
-        NewCredentials = 9
+        NewCredentials = 9,
+        NewTaskPendingApprovalNotification = 10,
+        RequestorTaskConfirmation = 11,
     }
 }

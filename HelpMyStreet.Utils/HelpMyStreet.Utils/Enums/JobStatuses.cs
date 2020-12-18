@@ -9,6 +9,7 @@ namespace HelpMyStreet.Utils.Enums
         Open = 1,
         InProgress = 2,
         Done = 3,
-        Cancelled = 4
+        Cancelled = 4,
+        New = 5,
     }
 }

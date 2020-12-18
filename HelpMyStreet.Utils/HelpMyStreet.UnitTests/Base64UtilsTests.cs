@@ -55,5 +55,47 @@ namespace HelpMyStreet.UnitTests
 
             Assert.Throws<FormatException>(() => { Base64Utils.Base64DecodeToInt(encodedString); });
         }
+
+        [Test]
+        public void Base64Encode_TryBase64DecodeToInt()
+        {
+            int? result = Base64Utils.TryBase64DecodeToInt(Base64Utils.Base64Encode(1000));
+
+            Assert.AreEqual(1000, result);
+        }
+
+        [Test]
+        public void Base64Encode_TryBase64DecodeToInt_NotANumber()
+        {
+            string encodedString = Base64Utils.Base64Encode("Not a number");
+
+            int? result = Base64Utils.TryBase64DecodeToInt(encodedString);
+
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void Base64Encode_TryBase64DecodeToInt_NotABase64String()
+        {
+            int? result = Base64Utils.TryBase64DecodeToInt("Not a base 64 string");
+
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void Base64Encode_TryBase64DecodeToInt_Null()
+        {
+            int? result = Base64Utils.TryBase64DecodeToInt(null);
+
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void Base64Encode_TryBase64DecodeToInt_EmptyString()
+        {
+            int? result = Base64Utils.TryBase64DecodeToInt(null);
+
+            Assert.AreEqual(null, result);
+        }
     }
 }

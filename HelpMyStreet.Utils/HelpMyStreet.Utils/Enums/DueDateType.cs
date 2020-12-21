@@ -4,6 +4,7 @@
     {
         Before = 1,
         On = 2,
-        SpecificTime = 3
+        SpecificStartTime = 3,
+        SpecificStartAndEndTimes = 4
     }
 }

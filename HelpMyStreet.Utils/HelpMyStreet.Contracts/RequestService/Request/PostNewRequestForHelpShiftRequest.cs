@@ -17,6 +17,6 @@ namespace HelpMyStreet.Contracts.RequestService.Request
         public string LocationRef { get; set; }
         public DateTime StartDate { get; set; }
         public int ShiftLength { get; set; }
-        public Dictionary<SupportActivities, int> DictSupportActivities { get; set; }
+        public List<SupportActivityCountRequest> SupportActivitiesCount { get; set; }
     }
 }

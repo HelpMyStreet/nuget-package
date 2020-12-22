@@ -17,5 +17,6 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         NewCredentials = 9,
         NewTaskPendingApprovalNotification = 10,
         RequestorTaskConfirmation = 11,
+        TaskDetail = 12,
     }
 }

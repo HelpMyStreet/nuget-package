@@ -12,6 +12,7 @@ namespace HelpMyStreet.Contracts.GroupService.Response
         public TargetGroups TargetGroups { get; set; }
         public bool AccessRestrictedByRole { get; set; }
         public bool RequestorDefinedByGroup { get; set; }
+        public bool RequestsRequireApproval { get; set; }
         public RequestPersonalDetails RequestorPersonalDetails { get; set; }
     }
 }

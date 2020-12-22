@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.RequestService.Response
 {
-    public class PostNewRequestForHelpShiftResponse
+    public class PostNewShiftsResponse
     {
         public int RequestID { get; set; }
         public Fulfillable Fulfillable { get; set; }

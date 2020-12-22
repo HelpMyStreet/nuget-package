@@ -8,7 +8,7 @@ using HelpMyStreet.Utils.Enums;
 
 namespace HelpMyStreet.Contracts.RequestService.Request
 {
-    public class PostNewRequestForHelpShiftRequest : IRequest<PostNewRequestForHelpShiftResponse>
+    public class PostNewShiftsRequest : IRequest<PostNewShiftsResponse>
     {
         public string OtherDetails { get; set; }        
         public int CreatedByUserId { get; set; }        

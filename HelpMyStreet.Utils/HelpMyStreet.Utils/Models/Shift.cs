@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace HelpMyStreet.Utils.Models
 {
-    public class Shift : JobHeader
+    public class Shift
     {
         public DateTime StartDate { get; set; }
         public int ShiftLength { get; set; }

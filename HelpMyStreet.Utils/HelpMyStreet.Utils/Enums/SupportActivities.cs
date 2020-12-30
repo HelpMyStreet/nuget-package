@@ -66,5 +66,10 @@ namespace HelpMyStreet.Utils.Enums
         Steward = 20,
         //Steward,
 
+        MealsOnWheels = 21,
+        //MealsOnWheels,
+
+        VolunteerSupport = 22,
+        //VolunteerSupport,
     }
 }

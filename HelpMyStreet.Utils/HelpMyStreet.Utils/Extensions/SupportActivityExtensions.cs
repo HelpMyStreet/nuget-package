@@ -26,6 +26,9 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.MedicalAppointmentTransport => "medical appointment transport",
                 SupportActivities.ColdWeatherArmy => "cold weather army assistance",
                 SupportActivities.Transport => "transport",
+                SupportActivities.MealtimeCompanion => "meal time companion",
+                SupportActivities.MealsOnWheels => "meals on wheels",
+                SupportActivities.VolunteerSupport => "volunteer support",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -51,6 +54,8 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.ColdWeatherArmy => "Cold Weather Army",
                 SupportActivities.Transport => "Transport",
                 SupportActivities.MealsOnWheels => "Meals On Wheels",
+                SupportActivities.MealtimeCompanion => "Meal time companion",
+                SupportActivities.VolunteerSupport => "Volunteer support",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -76,6 +81,10 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.MedicalAppointmentTransport => "1 person transported to a medical appointment",
                     SupportActivities.ColdWeatherArmy => "1 cold weather army task completed",
                     SupportActivities.Other => "1 other task completed",
+                    SupportActivities.MealtimeCompanion => "1 meal time companion task completed",
+                    SupportActivities.MealsOnWheels => "1 meals on wheels task completed",
+                    SupportActivities.VolunteerSupport => "1 volunteer support task completed",
+
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -98,6 +107,9 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.MedicalAppointmentTransport => $"{count} people transported to medical appointments",
                     SupportActivities.ColdWeatherArmy => $"{count} cold weather army tasks completed",
                     SupportActivities.Other => $"{count} other tasks completed",
+                    SupportActivities.MealtimeCompanion => $"{count} meal time companion tasks completed",
+                    SupportActivities.MealsOnWheels => $"{count} meals on wheels tasks completed",
+                    SupportActivities.VolunteerSupport => $"{count} volunteer support tasks completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }

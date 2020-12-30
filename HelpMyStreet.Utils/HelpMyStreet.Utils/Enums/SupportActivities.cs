@@ -71,5 +71,8 @@ namespace HelpMyStreet.Utils.Enums
 
         VolunteerSupport = 22,
         //VolunteerSupport,
+
+        MealtimeCompanion = 23,
+        //MealtimeCompanion,
     }
 }

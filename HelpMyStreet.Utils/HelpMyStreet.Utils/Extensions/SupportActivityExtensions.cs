@@ -50,6 +50,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.MedicalAppointmentTransport => "Medical Appointment Transport",
                 SupportActivities.ColdWeatherArmy => "Cold Weather Army",
                 SupportActivities.Transport => "Transport",
+                SupportActivities.MealsOnWheels => "Meals On Wheels",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }

@@ -9,6 +9,9 @@
         FaceMasks = 4,
         AgeUKWirral = 5,
         AgeUKNottsBalderton = 6,
+        AgeUKNWK = 7,
+        AgeUKSKC = 8,
+        AgeUKFandS = 9
     }
 }
     

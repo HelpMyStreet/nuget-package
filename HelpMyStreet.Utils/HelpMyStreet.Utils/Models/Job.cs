@@ -8,6 +8,7 @@ namespace HelpMyStreet.Utils.Models
 {
     public class Job
     {
+        public Guid Guid { get; set; }
         public int JobID { get; set; }
         public JobStatuses JobStatus { get; set; }
         public int? VolunteerUserID { get; set; }

@@ -21,6 +21,7 @@ namespace HelpMyStreet.Utils.Extensions
             {
                 JobStatuses.New => true,
                 JobStatuses.Open => true,
+                JobStatuses.Accepted => true,
                 JobStatuses.InProgress => true,
                 JobStatuses.Done => false,
                 JobStatuses.Cancelled => false,

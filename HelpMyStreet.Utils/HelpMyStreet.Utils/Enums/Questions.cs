@@ -15,6 +15,7 @@
        AgeUKReference = 11,
        Shopping_List = 12,
        Prescription_PharmacyAddress = 13,
-       SensitiveInformation = 14
+       SensitiveInformation = 14,
+       SpecialDietaryRequirements = 15
     }
 }

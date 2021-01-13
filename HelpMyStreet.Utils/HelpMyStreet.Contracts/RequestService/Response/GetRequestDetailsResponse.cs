@@ -7,7 +7,6 @@ namespace HelpMyStreet.Contracts.RequestService.Response
 {
     public class GetRequestDetailsResponse
     {
-        public Shift Shift { get; set; }
-        public List<ShiftJobSummary> ShiftJobSummaries { get; set; }
+        public ShiftRequest ShiftRequest { get; set; }
     }
 }

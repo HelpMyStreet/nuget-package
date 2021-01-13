@@ -11,6 +11,12 @@ namespace HelpMyStreet.Utils.Models
         public Location Location { get; set; }        
         public DateTime StartDate { get; set; }
         public int ShiftLength { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate
+        {
+            get
+            {
+                return StartDate.AddMinutes(ShiftLength);
+            }
+        }
     }
 }

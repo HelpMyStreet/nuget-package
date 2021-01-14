@@ -7,6 +7,6 @@ namespace HelpMyStreet.Utils.Models
     public class ShiftRequest
     {
         public Shift Shift { get; set; }
-        public List<ShiftJobSummary> ShiftJobSummaries { get; set; }
+        public List<JobBasic> ShiftJobSummaries { get; set; }
     }
 }

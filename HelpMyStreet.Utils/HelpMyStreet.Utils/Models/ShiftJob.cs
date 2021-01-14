@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HelpMyStreet.Utils.Models
 {
-    public class ShiftJob : ShiftJobSummary
+    public class ShiftJob : JobBasic
     {        
         public int RequestID { get; set; }
         public Location Location { get; set; }        

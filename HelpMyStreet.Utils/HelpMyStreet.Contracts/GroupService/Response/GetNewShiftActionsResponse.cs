@@ -5,6 +5,6 @@ namespace HelpMyStreet.Contracts.GroupService.Response
 {
     public class GetNewShiftActionsResponse
     {
-        public Dictionary<Guid,TaskAction> Actions { get; set; }
+        public List<TaskAction> TaskActions { get; set; }
     }
 }

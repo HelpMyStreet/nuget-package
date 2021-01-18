@@ -4,6 +4,8 @@ namespace HelpMyStreet.Utils.Models
 {
     public class JobBasic
     {
+        public int RequestID { get; set; }
+        public RequestType RequestType { get; set; }
         public int ReferringGroupID { get; set; }
         public int JobID { get; set; }
         public int? VolunteerUserID { get; set; }

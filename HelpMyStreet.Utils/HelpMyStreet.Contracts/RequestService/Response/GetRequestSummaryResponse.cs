@@ -2,10 +2,8 @@
 
 namespace HelpMyStreet.Contracts.RequestService.Response
 {
-    public class GetRequestDetailsResponse
+    public class GetRequestSummaryResponse
     {
         public RequestSummary RequestSummary { get; set; }
-        public RequestPersonalDetails Requestor { get; set; }
-        public RequestPersonalDetails Recipient { get; set; }
     }
 }

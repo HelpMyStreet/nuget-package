@@ -1,4 +1,4 @@
-﻿namespace HelpMyStreet.Utils.Enums
+namespace HelpMyStreet.Utils.Enums
 {
     public enum Groups
     {

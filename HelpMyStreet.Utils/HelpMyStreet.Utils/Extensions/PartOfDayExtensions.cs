@@ -15,6 +15,12 @@ namespace HelpMyStreet.Utils.Extensions
                 _ => throw new ArgumentException("Unexpected Part Of Day")
             };
         }
+
+        public static bool CheckStartTimeWithin(this PartOfDay partOfDay, DateTime dateTime)
+        {
+            var hours = partOfDay.GetStartTimeBetweenHours();
+            return hours.Item1 <= dateTime.Hour && hours.Item2 >= dateTime.Hour;
+        }
         
     }
 }

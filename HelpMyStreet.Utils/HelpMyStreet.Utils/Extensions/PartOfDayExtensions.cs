@@ -13,7 +13,7 @@ namespace HelpMyStreet.Utils.Extensions
                 PartOfDay.Afternoon => (12, 18),
                 PartOfDay.Night => (18, 23),
                 _ => throw new ArgumentException("Unexpected Part Of Day")
-            }
+            };
         }
         
     }

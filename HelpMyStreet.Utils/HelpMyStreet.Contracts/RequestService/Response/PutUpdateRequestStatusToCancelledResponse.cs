@@ -2,9 +2,8 @@
 
 namespace HelpMyStreet.Contracts.RequestService.Response
 {
-    public class PutUpdateShiftStatusToAcceptedResponse
+    public class PutUpdateRequestStatusToCancelledResponse
     {
-        public int JobID { get; set; }
         public UpdateJobStatusOutcome Outcome { get; set; }
     }
 }

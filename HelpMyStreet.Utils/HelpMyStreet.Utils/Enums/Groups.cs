@@ -14,6 +14,8 @@ namespace HelpMyStreet.Utils.Enums
         AgeUKNottsNorthMuskham = -10,
         AgeUKSouthKentCoast = -11,
         AgeUKFavershamAndSittingbourne = -13,
-        LincolnshireVolunteers = -12
+        LincolnshireVolunteers = -12,
+        LincolnCountyHospital = -14,
+        PilgramHospitalBolton = -15,
     }
 }

@@ -12,6 +12,8 @@ namespace HelpMyStreet.Contracts.RequestService.Request
         // If supplied, filters to that referring group
         public int? ReferringGroupID { get; set; }
 
+        public bool IncludeChildGroups { get; set; }
+
         // If supplied, returns shifts available to those groups
         public GroupRequest Groups { get; set; }
 

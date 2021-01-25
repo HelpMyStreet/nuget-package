@@ -29,6 +29,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.MealtimeCompanion => "mealtime companion",
                 SupportActivities.MealsToYourDoor => "meals on to your door",
                 SupportActivities.VolunteerSupport => "volunteer support",
+                SupportActivities.VaccineSupport => "vaccine support",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -56,6 +57,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.MealsToYourDoor => "Meals To Your Door",
                 SupportActivities.MealtimeCompanion => "Mealtime Companion",
                 SupportActivities.VolunteerSupport => "Volunteer Support",
+                SupportActivities.VaccineSupport => "Vaccine Support",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -84,6 +86,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.MealtimeCompanion => "1 mealtime companion task completed",
                     SupportActivities.MealsToYourDoor => "1 meal delivered",
                     SupportActivities.VolunteerSupport => "1 volunteer support task completed",
+                    SupportActivities.VaccineSupport => "1 vaccine support task completed",
 
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
@@ -110,6 +113,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.MealtimeCompanion => $"{count} mealtime companion tasks completed",
                     SupportActivities.MealsToYourDoor => $"{count} meals delivered",
                     SupportActivities.VolunteerSupport => $"{count} volunteer support tasks completed",
+                    SupportActivities.VaccineSupport => $"{count} vaccine support tasks completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }

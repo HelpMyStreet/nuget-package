@@ -22,6 +22,7 @@
         HMS_VolunteerSupport = 18,
         AgeUKSKC_Other = 19,
         AgeUKSKC_Prescriptions = 20,
-        AgeUKSKC_Shopping = 21
+        AgeUKSKC_Shopping = 21,
+        Lincoln_VaccineSupport = 22
     }
 }

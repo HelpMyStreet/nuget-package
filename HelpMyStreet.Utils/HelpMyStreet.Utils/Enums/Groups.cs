@@ -15,7 +15,13 @@ namespace HelpMyStreet.Utils.Enums
         AgeUKSouthKentCoast = -11,
         AgeUKFavershamAndSittingbourne = -13,
         LincolnshireVolunteers = -12,
-        LincolnCountyHospital = -14,
-        PilgramHospitalBolton = -15,
+        LouthPCN = -14,
+        GranthamPCN = -15,
+        SouthLincolnPCN = -16,
+        StamfordPCN = -17,
+        SpilsbyPCN = -18,
+        BostonPCN = -19,
+        LincolnPCN = -20,
+        LincolnPortlandPCN= -21
     }
 }

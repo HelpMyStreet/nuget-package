@@ -9,5 +9,6 @@ namespace HelpMyStreet.Contracts.UserService.Request
     {
         public string Postcode { get; set; }
         public List<SupportActivities> Activities { get; set; }
+        public int? OverrideVolunteerRadius { get; set; }
     }
 }

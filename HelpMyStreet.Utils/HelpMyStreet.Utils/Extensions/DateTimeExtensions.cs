@@ -29,5 +29,15 @@ namespace HelpMyStreet.Utils.Extensions
                     .Replace("NN", dateTime.Day.ToOccurrenceSuffix().ToUpper())
                 : dateTime.ToString(format);
         }
+
+        public static DateTime ToUKFromUTCTime(this DateTime dateTime)
+        {
+            return TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.Utc, TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"));
+        }
+
+        public static DateTime ToUTCFromUKTime(this DateTime dateTime)
+        {
+            return TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"), TimeZoneInfo.Utc);
+        }
     }
 }

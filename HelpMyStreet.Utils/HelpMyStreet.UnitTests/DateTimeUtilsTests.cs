@@ -187,5 +187,37 @@ namespace HelpMyStreet.UnitTests
 
             Assert.AreEqual("11th December 2009", result);
         }
+
+        [Test]
+        public void ToUKFromUTCTime_Summer()
+        {
+            DateTime dateTime = new DateTime(2000, 8, 1, 10, 0, 0);
+            DateTime result = dateTime.ToUKFromUTCTime();
+            Assert.AreEqual(dateTime.AddHours(1), result);
+        }
+
+        [Test]
+        public void ToUKFromUTCTime_Winter()
+        {
+            DateTime dateTime = new DateTime(2000, 1, 1, 10, 0, 0);
+            DateTime result = dateTime.ToUKFromUTCTime();
+            Assert.AreEqual(dateTime, result);
+        }
+
+        [Test]
+        public void ToUTCFromUKTime_Summer()
+        {
+            DateTime dateTime = new DateTime(2000, 8, 1, 10, 0, 0);
+            DateTime result = dateTime.ToUTCFromUKTime();
+            Assert.AreEqual(dateTime.AddHours(-1), result);
+        }
+
+        [Test]
+        public void ToUTCFromUKTime_Winter()
+        {
+            DateTime dateTime = new DateTime(2000, 1, 1, 10, 0, 0);
+            DateTime result = dateTime.ToUTCFromUKTime();
+            Assert.AreEqual(dateTime, result);
+        }
     }
 }

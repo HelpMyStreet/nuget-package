@@ -36,6 +36,15 @@ namespace HelpMyStreet.Utils.Utils
             });
         }
 
+        public string ShiftyDate(DateTime dateTime)
+        {
+            return $"{dateTime: DDD, D MMM YYYY}";
+        }
+
+        public string ShiftyTime(DateTime startDateTime, DateTime endDateTime)
+        {
+            return $"{startDateTime: hh:mm tt} - {endDateTime: hh:mm tt}";
+        }
         public string FriendlyPastDate(DateTime dateTimeDue)
         {
             DateTime dueDate = dateTimeDue.Date;

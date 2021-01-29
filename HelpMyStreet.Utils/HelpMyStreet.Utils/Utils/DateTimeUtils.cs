@@ -41,9 +41,9 @@ namespace HelpMyStreet.Utils.Utils
             return $"{dateTime: ddd, d MMM yyyy}";
         }
 
-        public string ShiftyTime(DateTime startDateTime, DateTime endDateTime)
+        public string ShiftyTime(DateTime dateTime)
         {
-            return $"{startDateTime: hh:mmtt} - {endDateTime: hh:mmtt}";
+            return $"{dateTime: h:mmtt}";
         }
         public string FriendlyPastDate(DateTime dateTimeDue)
         {

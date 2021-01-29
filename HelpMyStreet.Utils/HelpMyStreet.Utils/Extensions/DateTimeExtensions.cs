@@ -26,9 +26,9 @@ namespace HelpMyStreet.Utils.Extensions
         }
 
 
-        public static string ShiftyTime(this DateTime startDateTime, DateTime endDateTime)
+        public static string ShiftyTime(this DateTime dateTime)
         {
-            return new DateTimeUtils(new MockableDateTime()).ShiftyTime(startDateTime, endDateTime);
+            return new DateTimeUtils(new MockableDateTime()).ShiftyTime(dateTime);
         }
 
         public static string ToString(this DateTime dateTime, string format, bool useExtendedSpecifiers)

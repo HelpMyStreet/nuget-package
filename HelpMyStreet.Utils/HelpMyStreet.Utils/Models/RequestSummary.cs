@@ -12,5 +12,6 @@ namespace HelpMyStreet.Utils.Models
         public int RequestID { get; set; }
         public RequestType RequestType { get; set; }
         public int ReferringGroupID { get; set; }
+        public DateTime DateRequested { get; set; }
     }
 }

@@ -74,5 +74,8 @@ namespace HelpMyStreet.Utils.Enums
 
         MealtimeCompanion = 23,
         //MealtimeCompanion,
+
+        VaccineSupport = 24,
+        //VaccineSupport
     }
 }

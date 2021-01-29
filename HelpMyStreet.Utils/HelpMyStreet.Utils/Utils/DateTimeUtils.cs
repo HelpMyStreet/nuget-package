@@ -36,33 +36,10 @@ namespace HelpMyStreet.Utils.Utils
             });
         }
 
-        public string GetDateSuffix(DateTime dateTime)
-        {
-            int i = dateTime.Day;
-            var appendage = "";
-            if (i % 10 == 1 && i != 11)
-            {
-                appendage = "st";
-            }
-            else if (i % 10 == 2 && i != 12)
-            {
-                appendage = "nd";
-            }
-            else if (i % 10 == 3 && i != 13)
-            {
-                appendage = "rd";
-            }
-            else
-            {
-                appendage = "th";
-            }
-            return appendage;
-        }
-
         public string ShiftyDate(DateTime dateTime)
         {
-            var appendage = GetDateSuffix(dateTime);
-            return $"{dateTime: ddd}, {dateTime: d}{appendage} {dateTime: MMM yyyy}";
+            
+            return $"{dateTime: ddd, d MMM yyyy}";
         }
 
         public string ShiftyTime(DateTime dateTime)

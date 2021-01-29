@@ -1,4 +1,5 @@
 ﻿using HelpMyStreet.Utils.Enums;
+using HelpMyStreet.Utils.Extensions;
 using Microsoft.Extensions.Internal;
 using System;
 using System.Collections.Generic;
@@ -38,8 +39,8 @@ namespace HelpMyStreet.Utils.Utils
 
         public string ShiftyDate(DateTime dateTime)
         {
-            
-            return $"{dateTime: ddd, d MMM yyyy}";
+            var suffix = dateTime.Day.ToOccurrenceSuffix();
+            return $"{dateTime: ddd}, {dateTime: d}{suffix} {dateTime: MMM yyyy}";
         }
 
         public string ShiftyTime(DateTime dateTime)

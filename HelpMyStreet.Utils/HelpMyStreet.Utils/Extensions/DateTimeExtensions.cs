@@ -21,6 +21,16 @@ namespace HelpMyStreet.Utils.Extensions
             return new DateTimeUtils(new MockableDateTime()).JobDueDate(dateTimeDue, dueDateType);
         }
 
+        public static string ShiftyDate(this DateTime dateTime) {
+            return new DateTimeUtils(new MockableDateTime()).ShiftyDate(dateTime);
+        }
+
+
+        public static string ShiftyTime(this DateTime dateTime)
+        {
+            return new DateTimeUtils(new MockableDateTime()).ShiftyTime(dateTime);
+        }
+
         public static string ToString(this DateTime dateTime, string format, bool useExtendedSpecifiers)
         {
             return useExtendedSpecifiers

@@ -12,6 +12,7 @@ namespace HelpMyStreet.Contracts.RequestService.Request
         public ActivitesRequest ActivitesRequest { get; set;  }
         public RequestHelpFormVariantRequest RequestHelpFormVariantRequest { get; set; }
         public RequestHelpFormStageRequest RequestHelpFormStageRequest { get; set; }
+        public int? GroupId { get; set; }
     }
 
     public class ActivitesRequest

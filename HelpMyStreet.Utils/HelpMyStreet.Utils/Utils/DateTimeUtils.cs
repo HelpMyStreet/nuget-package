@@ -1,4 +1,5 @@
 ﻿using HelpMyStreet.Utils.Enums;
+using HelpMyStreet.Utils.Extensions;
 using Microsoft.Extensions.Internal;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,16 @@ namespace HelpMyStreet.Utils.Utils
             });
         }
 
+        public string ShiftyDate(DateTime dateTime)
+        {
+            var suffix = dateTime.Day.ToOccurrenceSuffix();
+            return $"{dateTime: ddd}, {dateTime: d}{suffix} {dateTime: MMM yyyy}";
+        }
+
+        public string ShiftyTime(DateTime dateTime)
+        {
+            return $"{dateTime: h:mmtt}";
+        }
         public string FriendlyPastDate(DateTime dateTimeDue)
         {
             DateTime dueDate = dateTimeDue.Date;

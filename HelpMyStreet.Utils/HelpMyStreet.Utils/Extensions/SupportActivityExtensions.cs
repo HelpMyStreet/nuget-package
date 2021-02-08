@@ -86,7 +86,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.MealtimeCompanion => "1 mealtime companion task completed",
                     SupportActivities.MealsToYourDoor => "1 meal delivered",
                     SupportActivities.VolunteerSupport => "1 volunteer support task completed",
-                    SupportActivities.VaccineSupport => "1 vaccine programme support task completed",
+                    SupportActivities.VaccineSupport => "1 vaccination support shift completed",
 
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
@@ -113,7 +113,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.MealtimeCompanion => $"{count} mealtime companion tasks completed",
                     SupportActivities.MealsToYourDoor => $"{count} meals delivered",
                     SupportActivities.VolunteerSupport => $"{count} volunteer support tasks completed",
-                    SupportActivities.VaccineSupport => $"{count} vaccine programme support tasks completed",
+                    SupportActivities.VaccineSupport => $"{count} vaccination support shifts completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }

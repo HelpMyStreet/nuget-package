@@ -118,5 +118,14 @@ namespace HelpMyStreet.Utils.Extensions
                 };
             }
         }
+
+        public static RequestType RequestType(this SupportActivities activity)
+        {
+            return activity switch
+            {
+                SupportActivities.VaccineSupport => Enums.RequestType.Shift,
+                _ => Enums.RequestType.Task
+            };
+        }   
     }
 }

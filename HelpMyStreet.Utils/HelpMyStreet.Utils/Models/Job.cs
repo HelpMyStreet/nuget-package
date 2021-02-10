@@ -14,9 +14,10 @@ namespace HelpMyStreet.Utils.Models
         public int? VolunteerUserID { get; set; }
         public SupportActivities SupportActivity { get; set; }
         public List<Question> Questions { get; set; }
-        public string Details { get; set; }
         public int DueDays { get; set; }
         public bool HealthCritical { get; set; }
         public DueDateType DueDateType { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }

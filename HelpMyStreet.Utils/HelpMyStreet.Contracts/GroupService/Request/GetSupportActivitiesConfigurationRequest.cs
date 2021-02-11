@@ -6,9 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HelpMyStreet.Contracts.GroupService.Request
 {
-    public class GetSupportActivityConfigurationRequest : IRequest<GetSupportActivityConfigurationResponse>
-    {
-        [Required]
-        public SupportActivityType SupportActivityType { get; set; }
+    public class GetSupportActivitiesConfigurationRequest : IRequest<GetSupportActivitiesConfigurationResponse>
+    {        
     }
 }

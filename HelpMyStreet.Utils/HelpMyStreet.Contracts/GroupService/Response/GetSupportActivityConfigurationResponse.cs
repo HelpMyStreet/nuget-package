@@ -1,7 +1,9 @@
-﻿namespace HelpMyStreet.Contracts.GroupService.Response
+﻿using HelpMyStreet.Utils.Models;
+
+namespace HelpMyStreet.Contracts.GroupService.Response
 {
     public class GetSupportActivityConfigurationResponse
     {
-        public bool AutoSignUpWhenOtherSelected { get; set; }
+        public SupportActivityConfiguration SupportActivityConfiguration { get; set; }
     }
 }

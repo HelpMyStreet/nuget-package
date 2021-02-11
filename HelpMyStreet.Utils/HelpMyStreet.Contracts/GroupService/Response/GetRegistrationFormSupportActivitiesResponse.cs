@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HelpMyStreet.Contracts.GroupService.Response
 {
-    public class GetRegistrationFormSupportActivityResponse
+    public class GetRegistrationFormSupportActivitiesResponse
     {
         public List<SupportActivityDetail> SupportActivityDetails { get; set; }
     }

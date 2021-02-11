@@ -9,7 +9,7 @@ namespace HelpMyStreet.Contracts.GroupService.Request
     {
         public RegistrationFormVariant RegistrationFormVariant { get; set; }
     }
-    public class GetRegistrationFormSupportActivityRequest : IRequest<GetRegistrationFormSupportActivityResponse>
+    public class GetRegistrationFormSupportActivitiesRequest : IRequest<GetRegistrationFormSupportActivitiesResponse>
     {
         [Required]
         public RegistrationFormVariantRequest RegistrationFormVariantRequest { get; set; }

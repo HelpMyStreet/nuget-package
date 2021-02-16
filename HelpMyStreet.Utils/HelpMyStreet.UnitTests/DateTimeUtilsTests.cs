@@ -158,7 +158,7 @@ namespace HelpMyStreet.UnitTests
             DateTime dateTimeDue = _systemClockMock.Object.UtcNow.DateTime.AddDays(12);
             string result = _classUnderTest.FriendlyPastDate(dateTimeDue);
 
-            Assert.AreEqual($"on {dateTimeDue:dd/MM/yyyy}", result);
+            Assert.AreEqual($"on {dateTimeDue:dd/MM/yy}", result);
         }
 
         [Test]
@@ -206,8 +206,8 @@ namespace HelpMyStreet.UnitTests
         public void ToLongDateMarkdown()
         {
             DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);
-            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateMarkdownFormat);
-            Assert.AreEqual("Friday, 1^st^ January", result);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateHTMLFormat);
+            Assert.AreEqual("Friday, 1<sup>st</sup> January", result);
         }
 
         [Test]
@@ -246,8 +246,8 @@ namespace HelpMyStreet.UnitTests
         public void ToLongDateTimeMarkdown()
         {
             DateTime dateTime = new DateTime(2021, 1, 2, 10, 0, 0);
-            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateTimeMarkdownFormat);
-            Assert.AreEqual("Saturday, 2^nd^ January 10:00 am", result);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateTimeHTMLFormat);
+            Assert.AreEqual("Saturday, 2<sup>nd</sup> January 10:00 am", result);
         }
 
         [Test]

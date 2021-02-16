@@ -7,7 +7,7 @@
         TimeFormat = 3,
         LongDateTimeFormat = 4,
         ShortDateTimeFormat = 5,
-        LongDateMarkdownFormat = 6,
-        LongDateTimeMarkdownFormat = 7,
+        LongDateHTMLFormat = 6,
+        LongDateTimeHTMLFormat = 7,
     }
 }

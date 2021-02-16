@@ -40,23 +40,22 @@ namespace HelpMyStreet.Utils.Extensions
 
             string shortDateFormat = "dd/MM/yy";
             string longDateFormat = "dddd, dnn MMMM";
-            string longDateMarkdownFormat = "dddd, d^nn^ MMMM";
             string timeformat = "h:mm xx";
 
             switch (dateTimeFormat)
             {
                 case DateTimeFormat.LongDateFormat:
                     return dateTime.ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower());
-                case DateTimeFormat.LongDateMarkdownFormat:
-                    return dateTime.ToString(longDateMarkdownFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower());
+                case DateTimeFormat.LongDateHTMLFormat:
+                    return dateTime.ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix(true).ToLower());
                 case DateTimeFormat.ShortDateFormat:
                     return dateTime.ToString(shortDateFormat);                    
                 case DateTimeFormat.TimeFormat:
                     return $"{dateTime.ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
                 case DateTimeFormat.LongDateTimeFormat:
                     return $"{dateTime.ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
-                case DateTimeFormat.LongDateTimeMarkdownFormat:
-                    return $"{dateTime.ToString(longDateMarkdownFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
+                case DateTimeFormat.LongDateTimeHTMLFormat:
+                    return $"{dateTime.ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix(true).ToLower())} {dateTime.ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
                 case DateTimeFormat.ShortDateTimeFormat:
                     return $"{dateTime.ToString(shortDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
                 default:

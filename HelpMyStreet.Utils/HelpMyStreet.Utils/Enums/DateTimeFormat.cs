@@ -6,6 +6,8 @@
         LongDateFormat = 2,
         TimeFormat = 3,
         LongDateTimeFormat = 4,
-        ShortDateTimeFormat = 5
+        ShortDateTimeFormat = 5,
+        LongDateMarkdownFormat = 6,
+        LongDateTimeMarkdownFormat = 7,
     }
 }

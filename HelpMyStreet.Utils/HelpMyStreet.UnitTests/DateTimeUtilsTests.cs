@@ -230,6 +230,14 @@ namespace HelpMyStreet.UnitTests
         }
 
         [Test]
+        public void ToLongDateMarkdown()
+        {
+            DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateMarkdownFormat);
+            Assert.AreEqual("Friday, 1^st^ January", result);
+        }
+
+        [Test]
         public void ToShortDate()
         {
             DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);
@@ -259,6 +267,14 @@ namespace HelpMyStreet.UnitTests
             DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);
             string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateTimeFormat);
             Assert.AreEqual("Friday, 1st January 10:00 am", result);
+        }
+
+        [Test]
+        public void ToLongDateTimeMarkdown()
+        {
+            DateTime dateTime = new DateTime(2021, 1, 2, 10, 0, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateTimeMarkdownFormat);
+            Assert.AreEqual("Saturday, 2^nd^ January 10:00 am", result);
         }
 
         [Test]

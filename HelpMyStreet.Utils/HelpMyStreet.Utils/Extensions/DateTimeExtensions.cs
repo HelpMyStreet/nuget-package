@@ -21,7 +21,8 @@ namespace HelpMyStreet.Utils.Extensions
             return new DateTimeUtils(new MockableDateTime()).JobDueDate(dateTimeDue, dueDateType);
         }
 
-        public static string ShiftyDate(this DateTime dateTime) {
+        public static string ShiftyDate(this DateTime dateTime)
+        {
             return new DateTimeUtils(new MockableDateTime()).ShiftyDate(dateTime);
         }
 
@@ -48,6 +49,29 @@ namespace HelpMyStreet.Utils.Extensions
         public static DateTime ToUTCFromUKTime(this DateTime dateTime)
         {
             return TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"), TimeZoneInfo.Utc);
+        }
+
+        public static string FormatDate(this DateTime dateTime, DateTimeFormat dateTimeFormat)
+        {
+            string shortDateFormat = "dd/MM/yy";
+            string longDateFormat = "dddd, dnn MMMM";
+            string timeformat = "h:mm xx";
+
+            switch (dateTimeFormat)
+            {
+                case DateTimeFormat.LongDateFormat:
+                    return dateTime.ToUKFromUTCTime().ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower());
+                case DateTimeFormat.ShortDateFormat:
+                    return dateTime.ToUKFromUTCTime().ToString(shortDateFormat);                    
+                case DateTimeFormat.TimeFormat:
+                    return $"{dateTime.ToUKFromUTCTime().ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
+                case DateTimeFormat.LongDateTimeFormat:
+                    return $"{dateTime.ToUKFromUTCTime().ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToUKFromUTCTime().ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
+                case DateTimeFormat.ShortDateTimeFormat:
+                    return $"{dateTime.ToUKFromUTCTime().ToString(shortDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToUKFromUTCTime().ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
+                default:
+                    throw new Exception($"Unknown format {dateTimeFormat.ToString()}");
+            }
         }
     }
 }

@@ -23,5 +23,13 @@ namespace HelpMyStreet.Utils.Extensions
                 _ => "th",
             };
         }
+
+        public static string ToAMPM(this int integer)
+        {
+            if (integer >= 0 && integer < 12)
+                return "am";
+            else
+                return "pm";
+        }
     }
 }

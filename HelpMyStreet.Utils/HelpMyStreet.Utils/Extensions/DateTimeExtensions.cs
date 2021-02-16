@@ -8,37 +8,17 @@ namespace HelpMyStreet.Utils.Extensions
     {
         public static string FriendlyFutureDate(this DateTime dateTimeDue)
         {
-            return new DateTimeUtils(new MockableDateTime()).FriendlyFutureDate(dateTimeDue);
+            return new DateTimeUtils(new MockableDateTime()).FriendlyFutureDate(dateTimeDue.ToUKFromUTCTime());
         }
 
         public static string FriendlyPastDate(this DateTime dateTimeDue)
         {
-            return new DateTimeUtils(new MockableDateTime()).FriendlyPastDate(dateTimeDue);
+            return new DateTimeUtils(new MockableDateTime()).FriendlyPastDate(dateTimeDue.ToUKFromUTCTime());
         }
 
         public static string JobDueDate(this DateTime dateTimeDue, DueDateType dueDateType)
         {
-            return new DateTimeUtils(new MockableDateTime()).JobDueDate(dateTimeDue, dueDateType);
-        }
-
-        public static string ShiftyDate(this DateTime dateTime)
-        {
-            return new DateTimeUtils(new MockableDateTime()).ShiftyDate(dateTime);
-        }
-
-
-        public static string ShiftyTime(this DateTime dateTime)
-        {
-            return new DateTimeUtils(new MockableDateTime()).ShiftyTime(dateTime);
-        }
-
-        public static string ToString(this DateTime dateTime, string format, bool useExtendedSpecifiers)
-        {
-            return useExtendedSpecifiers
-                ? dateTime.ToString(format)
-                    .Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())
-                    .Replace("NN", dateTime.Day.ToOccurrenceSuffix().ToUpper())
-                : dateTime.ToString(format);
+            return new DateTimeUtils(new MockableDateTime()).JobDueDate(dateTimeDue.ToUKFromUTCTime(), dueDateType);
         }
 
         public static DateTime ToUKFromUTCTime(this DateTime dateTime)
@@ -51,8 +31,13 @@ namespace HelpMyStreet.Utils.Extensions
             return TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"), TimeZoneInfo.Utc);
         }
 
-        public static string FormatDate(this DateTime dateTime, DateTimeFormat dateTimeFormat)
+        public static string FormatDate(this DateTime dateTime, DateTimeFormat dateTimeFormat, bool convertFromUTC = true)
         {
+            if (convertFromUTC)
+            {
+                dateTime = dateTime.ToUKFromUTCTime();
+            }
+
             string shortDateFormat = "dd/MM/yy";
             string longDateFormat = "dddd, dnn MMMM";
             string longDateMarkdownFormat = "dddd, d^nn^ MMMM";
@@ -61,19 +46,19 @@ namespace HelpMyStreet.Utils.Extensions
             switch (dateTimeFormat)
             {
                 case DateTimeFormat.LongDateFormat:
-                    return dateTime.ToUKFromUTCTime().ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower());
+                    return dateTime.ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower());
                 case DateTimeFormat.LongDateMarkdownFormat:
-                    return dateTime.ToUKFromUTCTime().ToString(longDateMarkdownFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower());
+                    return dateTime.ToString(longDateMarkdownFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower());
                 case DateTimeFormat.ShortDateFormat:
-                    return dateTime.ToUKFromUTCTime().ToString(shortDateFormat);                    
+                    return dateTime.ToString(shortDateFormat);                    
                 case DateTimeFormat.TimeFormat:
-                    return $"{dateTime.ToUKFromUTCTime().ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
+                    return $"{dateTime.ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
                 case DateTimeFormat.LongDateTimeFormat:
-                    return $"{dateTime.ToUKFromUTCTime().ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToUKFromUTCTime().ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
+                    return $"{dateTime.ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
                 case DateTimeFormat.LongDateTimeMarkdownFormat:
-                    return $"{dateTime.ToUKFromUTCTime().ToString(longDateMarkdownFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToUKFromUTCTime().ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
+                    return $"{dateTime.ToString(longDateMarkdownFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
                 case DateTimeFormat.ShortDateTimeFormat:
-                    return $"{dateTime.ToUKFromUTCTime().ToString(shortDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToUKFromUTCTime().ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
+                    return $"{dateTime.ToString(shortDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
                 default:
                     throw new Exception($"Unknown format {dateTimeFormat.ToString()}");
             }

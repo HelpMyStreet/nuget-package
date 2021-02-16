@@ -162,33 +162,6 @@ namespace HelpMyStreet.UnitTests
         }
 
         [Test]
-        public void SuffixTest()
-        {
-            DateTime dateTime = new DateTime(2000, 01, 01);
-            string result = DateTimeExtensions.ToString(dateTime, "dnn", true);
-
-            Assert.AreEqual("1st", result);
-        }
-
-        [Test]
-        public void SuffixTest_Capital()
-        {
-            DateTime dateTime = new DateTime(2000, 01, 22);
-            string result = DateTimeExtensions.ToString(dateTime, "dNN", true);
-
-            Assert.AreEqual("22ND", result);
-        }
-
-        [Test]
-        public void SuffixTest_11th()
-        {
-            DateTime dateTime = new DateTime(2009, 12, 11);
-            string result = DateTimeExtensions.ToString(dateTime, "ddnn MMMM yyyy", true);
-
-            Assert.AreEqual("11th December 2009", result);
-        }
-
-        [Test]
         public void ToUKFromUTCTime_Summer()
         {
             DateTime dateTime = new DateTime(2000, 8, 1, 10, 0, 0);

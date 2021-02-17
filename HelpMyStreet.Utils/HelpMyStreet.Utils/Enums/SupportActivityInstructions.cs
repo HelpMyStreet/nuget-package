@@ -33,6 +33,7 @@
         AgeUKFANDS_MealtimeCompanion = 29,
         AgeUKFANDS_Transport = 30,
         AgeUKFANDS_VolunteerSupport = 31,
-        AgeUKFANDS_Other = 32
+        AgeUKFANDS_Other = 32,
+        HMS_EmergencySupport = 33
     }
 }

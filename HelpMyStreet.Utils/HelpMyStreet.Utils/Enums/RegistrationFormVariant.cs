@@ -12,7 +12,8 @@
         AgeUKNWK = 7,
         AgeUKSKC = 8,
         AgeUKFandS = 9,
-        LincolnshireVolunteers = 10
+        LincolnshireVolunteers = 10,
+        Ruddington = 11
     }
 }
     

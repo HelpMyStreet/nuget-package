@@ -18,6 +18,7 @@ namespace HelpMyStreet.Utils.Extensions
                 (int)Questions.AnythingElseToTellUs => true,
                 (int)Questions.Shopping_List => true,
                 (int)Questions.Prescription_PharmacyAddress => true,
+                (int)Questions.SpecialDietaryRequirements => true,
                 (int)Questions.SensitiveInformation => showSensitiveData,
                 _ => false
             };

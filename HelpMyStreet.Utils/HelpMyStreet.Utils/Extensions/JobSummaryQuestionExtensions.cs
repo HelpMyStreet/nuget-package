@@ -49,7 +49,7 @@ namespace HelpMyStreet.Utils.Extensions
                 (int)Questions.CommunicationNeeds => 98,
                 (int)Questions.AnythingElseToTellUs => 99,
                 (int)Questions.SensitiveInformation => 100,
-                _ => 0
+                _ => 50
             };
         }
     }

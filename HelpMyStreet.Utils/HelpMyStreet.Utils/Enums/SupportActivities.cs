@@ -65,5 +65,8 @@ namespace HelpMyStreet.Utils.Enums
 
         VaccineSupport = 24,
         //VaccineSupport
+
+        EmergencySupport = 25,
+        //EmergencySupport
     }
 }

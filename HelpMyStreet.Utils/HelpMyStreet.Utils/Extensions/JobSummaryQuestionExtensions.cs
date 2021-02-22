@@ -9,17 +9,14 @@ namespace HelpMyStreet.Utils.Extensions
         {
             return question.Id switch
             {
-                (int)Questions.FaceMask_Amount => true,
-                (int)Questions.FaceMask_Recipient => true,
-                (int)Questions.FaceMask_Cost => true,
-                (int)Questions.SupportRequesting => true,
-                (int)Questions.FaceMask_SpecificRequirements => true,
-                (int)Questions.CommunicationNeeds => true,
-                (int)Questions.AnythingElseToTellUs => true,
-                (int)Questions.Shopping_List => true,
-                (int)Questions.Prescription_PharmacyAddress => true,
                 (int)Questions.SensitiveInformation => showSensitiveData,
-                _ => false
+                (int)Questions.IsHealthCritical => false,
+                (int)Questions.WillYouCompleteYourself => false,
+                (int)Questions.FtlosDonationInformation => false,
+                (int)Questions.AgeUKReference => false,
+                (int)Questions.Location => false,
+                (int)Questions.NumberOfSlots => false,
+                _ => true
             };
         }
 
@@ -52,7 +49,7 @@ namespace HelpMyStreet.Utils.Extensions
                 (int)Questions.CommunicationNeeds => 98,
                 (int)Questions.AnythingElseToTellUs => 99,
                 (int)Questions.SensitiveInformation => 100,
-                _ => 0
+                _ => 50
             };
         }
     }

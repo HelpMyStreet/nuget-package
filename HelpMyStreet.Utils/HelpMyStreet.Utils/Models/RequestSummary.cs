@@ -13,5 +13,6 @@ namespace HelpMyStreet.Utils.Models
         public RequestType RequestType { get; set; }
         public int ReferringGroupID { get; set; }
         public DateTime DateRequested { get; set; }
+        public string PostCode { get; set; }
     }
 }

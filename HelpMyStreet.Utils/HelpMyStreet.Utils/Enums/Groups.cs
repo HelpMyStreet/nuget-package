@@ -22,6 +22,7 @@ namespace HelpMyStreet.Utils.Enums
         SpilsbyPCN = -18,
         BostonPCN = -19,
         LincolnPCN = -20,
-        LincolnPortlandPCN= -21
+        LincolnPortlandPCN = -21,
+        Sandbox = -22,
     }
 }

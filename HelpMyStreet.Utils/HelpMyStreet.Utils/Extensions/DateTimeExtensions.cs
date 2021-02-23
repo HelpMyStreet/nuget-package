@@ -23,12 +23,31 @@ namespace HelpMyStreet.Utils.Extensions
 
         public static DateTime ToUKFromUTCTime(this DateTime dateTime)
         {
-            return TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.Utc, TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"));
+            try
+            {
+                var tz = TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.Utc, TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"));
+                return tz;
+               }
+            catch
+            {
+                var tz = TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.Utc, TimeZoneInfo.FindSystemTimeZoneById("GMT")); // macOS
+                return tz;
+            }   
+            
         }
 
         public static DateTime ToUTCFromUKTime(this DateTime dateTime)
         {
-            return TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"), TimeZoneInfo.Utc);
+            try
+            {
+                var tz = TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"), TimeZoneInfo.Utc);
+                return tz;
+            }
+            catch
+            {
+                var tz = TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.FindSystemTimeZoneById("GMT"), TimeZoneInfo.Utc); // macOS
+                return tz;
+            }
         }
 
         public static string FormatDate(this DateTime dateTime, DateTimeFormat dateTimeFormat, bool convertFromUTC = true)

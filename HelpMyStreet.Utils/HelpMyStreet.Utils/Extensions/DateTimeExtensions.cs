@@ -23,33 +23,13 @@ namespace HelpMyStreet.Utils.Extensions
 
         public static DateTime ToUKFromUTCTime(this DateTime dateTime)
         {
-            try
-            {
-                var tz = TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.Utc, TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"));
-                return tz;
-               }
-            catch
-            {
-                var tz = TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.Utc, TimeZoneInfo.FindSystemTimeZoneById("GMT")); // macOS
-                return tz;
-            }   
-            
+            return TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.Utc, GmtTimeZone);
         }
 
         public static DateTime ToUTCFromUKTime(this DateTime dateTime)
         {
-            try
-            {
-                var tz = TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"), TimeZoneInfo.Utc);
-                return tz;
-            }
-            catch
-            {
-                var tz = TimeZoneInfo.ConvertTime(dateTime, TimeZoneInfo.FindSystemTimeZoneById("GMT"), TimeZoneInfo.Utc); // macOS
-                return tz;
-            }
+            return TimeZoneInfo.ConvertTime(dateTime, GmtTimeZone, TimeZoneInfo.Utc);
         }
-
         public static string FormatDate(this DateTime dateTime, DateTimeFormat dateTimeFormat, bool convertFromUTC = true)
         {
             if (convertFromUTC)
@@ -79,6 +59,21 @@ namespace HelpMyStreet.Utils.Extensions
                     return $"{dateTime.ToString(shortDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower())} {dateTime.ToString(timeformat).Replace("xx", dateTime.Hour.ToAMPM())}";
                 default:
                     throw new Exception($"Unknown format {dateTimeFormat.ToString()}");
+            }
+        }
+
+        private static TimeZoneInfo GmtTimeZone
+        {
+            get
+            {
+                try
+                {
+                    return TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time");
+                }
+                catch (TimeZoneNotFoundException)
+                {
+                    return TimeZoneInfo.FindSystemTimeZoneById("GMT"); // macOS
+                }
             }
         }
     }

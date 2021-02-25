@@ -7,6 +7,6 @@ namespace HelpMyStreet.Contracts.RequestService.Request
 {
     public class RequestTypeRequest
     {
-        public RequestType? RequestType { get; set; }
+        public List<RequestType> RequestTypes { get; set; }
     }
 }

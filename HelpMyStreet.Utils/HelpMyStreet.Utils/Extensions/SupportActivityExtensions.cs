@@ -31,6 +31,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.MealsToYourDoor => "meals on to your door",
                 SupportActivities.VolunteerSupport => "volunteer support",
                 SupportActivities.VaccineSupport => "vaccine programme support",
+                SupportActivities.EmergencySupport => "emergency support",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -60,6 +61,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.MealtimeCompanion => "Mealtime Companion",
                 SupportActivities.VolunteerSupport => "Volunteer Support",
                 SupportActivities.VaccineSupport => "Vaccine Support",
+                SupportActivities.EmergencySupport => "Emergency Support",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -90,7 +92,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.MealsToYourDoor => "1 meal delivered",
                     SupportActivities.VolunteerSupport => "1 volunteer support task completed",
                     SupportActivities.VaccineSupport => "1 vaccination support shift completed",
-
+                    SupportActivities.EmergencySupport => "1 emergency support task completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -118,6 +120,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.MealsToYourDoor => $"{count} meals delivered",
                     SupportActivities.VolunteerSupport => $"{count} volunteer support tasks completed",
                     SupportActivities.VaccineSupport => $"{count} vaccination support shifts completed",
+                    SupportActivities.EmergencySupport => $"{count} emergency support tasks completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }

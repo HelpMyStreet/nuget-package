@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using HelpMyStreet.Utils.Extensions;
 
 namespace HelpMyStreet.Utils.Models
 {
@@ -11,6 +14,51 @@ namespace HelpMyStreet.Utils.Models
         public Address Address { get; set; }
         public string MobileNumber { get; set; }
         public string OtherNumber { get; set; }
+
+
+        public IEnumerable<string> PhoneNumbers()
+        {
+            return (new[] { MobileNumber, OtherNumber }).Where(a => !string.IsNullOrEmpty(a));
+        }
+
+        public string CommaSeparatedAddress()
+        {
+            if (Address != null)
+            {
+                string[] elements = new[]
+                {
+                Address.AddressLine1,
+                Address.AddressLine2,
+                Address.AddressLine3,
+                Address.Locality.ToTitleCase(),
+                Address.Postcode
+            };
+
+                return string.Join(", ", elements.Where(e => !string.IsNullOrEmpty(e)));
+            } else
+            {
+                return "";
+            }
+        }
+
+        public string LocationSummary()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (!string.IsNullOrEmpty(Address.Locality))
+            {
+                sb.Append(Address.Locality.ToTitleCase());
+            }
+
+            if (!string.IsNullOrEmpty(Address.Postcode))
+            {
+                sb.Append(" (");
+                sb.Append(Address.Postcode.Split(' ').First().ToUpper());
+                sb.Append(")");
+            }
+
+            return sb.ToString().Trim();
+        }
 
         public string GetDPSafeName(List<Enums.DataPrivacyOptions> dataPrivacyOptions)
         {

@@ -10,9 +10,9 @@ namespace HelpMyStreet.UnitTests
         [Test]
         public void LimitOneFeedbackPerRequest_AllValuesCovered()
         {
-            foreach (var val in Enum.GetValues(typeof(RequestRoles)))
+            foreach (RequestRoles val in Enum.GetValues(typeof(RequestRoles)))
             {
-                _ = ((RequestRoles)val).LimitOneFeedbackPerRequest();
+                _ = val.LimitOneFeedbackPerRequest();
             }
         }
     }

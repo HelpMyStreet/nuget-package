@@ -26,5 +26,39 @@ namespace HelpMyStreet.Utils.Models
 
         // Supplied in registration step 3
         public bool? UnderlyingMedicalCondition { get; set; }
+
+        public string GetDPSafeName(List<Enums.DataPrivacyOptions> dataPrivacyOptions, bool displayNameOnly)
+        {
+            if (displayNameOnly)
+            {
+                return $"{DisplayName}";
+            }
+
+            if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.FirstName) && dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.LastName))
+            {
+                return $"{FirstName} {LastName}";
+            } else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.FirstName))
+            {
+                return $"{FirstName}";
+            } else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.LastName))
+            {
+                return $"{LastName}";
+            }
+
+            return $"";
+        }
+
+        public Address GetDPSafeAddress(List<Enums.DataPrivacyOptions> dataPrivacyOptions)
+        {
+            if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Address) && dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Postcode))
+            {
+                return Address;
+            } else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Postcode)) {
+                return new Address() { Postcode = Address.Postcode };
+            } else
+            {
+                return new Address() { Locality = Address.Locality };
+            }
+        }
     }
 }

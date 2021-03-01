@@ -41,6 +41,22 @@ namespace HelpMyStreet.Utils.Models
             }
         }
 
+        public string FullName(bool lastnameFirst = false)
+        {
+            if (!String.IsNullOrEmpty(FirstName) && !String.IsNullOrEmpty(LastName))
+            {
+                
+                return lastnameFirst ? $"{LastName}, {FirstName}" : $"{FirstName} {LastName}";
+            }
+            else if (!String.IsNullOrEmpty(FirstName) )
+            {
+                return FirstName;
+            } else
+            {
+                return LastName;
+            }
+        }
+
         public string LocationSummary()
         {
             StringBuilder sb = new StringBuilder();

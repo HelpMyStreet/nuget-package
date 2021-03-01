@@ -1,4 +1,5 @@
-﻿using HelpMyStreet.Utils.Enums;
+﻿using System;
+using HelpMyStreet.Utils.Enums;
 using HelpMyStreet.Utils.Extensions;
 using NUnit.Framework;
 
@@ -37,15 +38,33 @@ namespace HelpMyStreet.UnitTests
         }
 
         [Test]
-        public void InComplete_Cancelled()
+        public void Incomplete_Cancelled()
         {
             Assert.AreEqual(false, JobStatuses.Cancelled.Incomplete());
         }
 
         [Test]
-        public void InComplete_Open()
+        public void Incomplete_Open()
         {
             Assert.AreEqual(true, JobStatuses.Open.Incomplete());
+        }
+
+        [Test]
+        public void Incomplete_AllValuesCovered()
+        {
+            foreach (var val in Enum.GetValues(typeof(JobStatuses)))
+            {
+                _ = ((JobStatuses)val).Incomplete();
+            }
+        }
+
+        [Test]
+        public void Complete_AllValuesCovered()
+        {
+            foreach (var val in Enum.GetValues(typeof(JobStatuses)))
+            {
+                _ = ((JobStatuses)val).Complete();
+            }
         }
     }
 }

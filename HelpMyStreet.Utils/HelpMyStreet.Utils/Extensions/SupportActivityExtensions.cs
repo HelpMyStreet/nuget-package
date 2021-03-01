@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using HelpMyStreet.Utils.Enums;
 
 namespace HelpMyStreet.Utils.Extensions
@@ -120,6 +121,40 @@ namespace HelpMyStreet.Utils.Extensions
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
+        }
+
+        public static List<DataPrivacyOptions> DataPrivacyOptions(this SupportActivities activity)
+        {
+            var allData = new List<DataPrivacyOptions>() {
+                Enums.DataPrivacyOptions.Address,
+                Enums.DataPrivacyOptions.Postcode,
+                Enums.DataPrivacyOptions.Email,
+                Enums.DataPrivacyOptions.Phone,
+                Enums.DataPrivacyOptions.FirstName,
+                Enums.DataPrivacyOptions.LastName
+            };
+            var reducedData = new List<DataPrivacyOptions>() {
+                Enums.DataPrivacyOptions.Address,
+                Enums.DataPrivacyOptions.Email,
+                Enums.DataPrivacyOptions.Phone,
+                Enums.DataPrivacyOptions.FirstName,
+            };
+            var remoteActivity = new List<DataPrivacyOptions>() {
+                Enums.DataPrivacyOptions.Phone,
+                Enums.DataPrivacyOptions.Email,
+                Enums.DataPrivacyOptions.FirstName,
+            };
+
+            return activity switch
+            {
+                SupportActivities.CollectingPrescriptions => allData,
+                SupportActivities.PhoneCalls_Friendly => remoteActivity,
+                SupportActivities.PhoneCalls_Anxious => remoteActivity,
+                SupportActivities.HomeworkSupport => remoteActivity,
+                SupportActivities.VaccineSupport => allData,
+                SupportActivities.CommunityConnector => remoteActivity,
+                _ => reducedData
+            };
         }
 
         public static RequestType RequestType(this SupportActivities activity)

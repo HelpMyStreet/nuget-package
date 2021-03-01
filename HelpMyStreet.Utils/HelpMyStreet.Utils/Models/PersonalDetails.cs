@@ -100,6 +100,10 @@ namespace HelpMyStreet.Utils.Models
             {
                 return Address;
             }
+            else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Address))
+            {
+                return new Address() { AddressLine1 = Address.AddressLine1, AddressLine2 = Address.AddressLine2, AddressLine3 = Address.AddressLine3, Locality = Address.Locality };
+            }
             else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Postcode))
             {
                 return new Address() { Postcode = Address.Postcode };

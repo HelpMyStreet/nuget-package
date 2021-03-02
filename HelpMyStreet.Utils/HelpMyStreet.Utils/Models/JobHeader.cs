@@ -6,8 +6,7 @@ namespace HelpMyStreet.Utils.Models
     public class JobHeader : JobBasic
     {
         public DateTime DateRequested { get; set; }
-        public DateTime DateStatusLastChanged { get; set; }
-        public double DistanceInMiles { get; set; }
+        public DateTime DateStatusLastChanged { get; set; }        
         public string PostCode { get; set; }
         public bool IsHealthCritical { get; set; }
         public DateTime DueDate { get; set; }

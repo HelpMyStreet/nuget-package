@@ -11,5 +11,6 @@ namespace HelpMyStreet.Utils.Models
         public int? VolunteerUserID { get; set; }
         public SupportActivities SupportActivity { get; set; }
         public JobStatuses JobStatus { get; set; }
+        public double DistanceInMiles { get; set; }
     }
 }

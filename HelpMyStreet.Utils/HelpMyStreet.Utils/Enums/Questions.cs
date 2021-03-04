@@ -18,6 +18,7 @@
        SensitiveInformation = 14,
        SpecialDietaryRequirements = 15,
        Location = 16,
-       NumberOfSlots = 17
+       NumberOfSlots = 17,
+       RecipientAge = 18,
     }
 }

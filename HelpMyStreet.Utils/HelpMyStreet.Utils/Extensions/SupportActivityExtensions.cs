@@ -33,6 +33,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.VaccineSupport => "vaccine programme support",
                 SupportActivities.EmergencySupport => "emergency support",
                 SupportActivities.InPersonBefriending => "in-person befriending",
+                SupportActivities.PracticalSupport => "practical support",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -63,6 +64,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.VaccineSupport => "Vaccine Support",
                 SupportActivities.EmergencySupport => "Emergency Support",
                 SupportActivities.InPersonBefriending => "In-Person Befriending",
+                SupportActivities.PracticalSupport => "Practical Support",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -95,6 +97,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.VaccineSupport => "1 vaccination support shift completed",
                     SupportActivities.EmergencySupport => "1 emergency support task completed",
                     SupportActivities.InPersonBefriending => "1 befriending session completed",
+                    SupportActivities.PracticalSupport => "1 person supported",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -124,6 +127,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.VaccineSupport => $"{count} vaccination support shifts completed",
                     SupportActivities.EmergencySupport => $"{count} emergency support tasks completed",
                     SupportActivities.InPersonBefriending => $"{count} befriending sessions completed",
+                    SupportActivities.PracticalSupport => $"{count} people supported",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }

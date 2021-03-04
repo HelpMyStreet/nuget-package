@@ -32,6 +32,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.VolunteerSupport => "volunteer support",
                 SupportActivities.VaccineSupport => "vaccine programme support",
                 SupportActivities.EmergencySupport => "emergency support",
+                SupportActivities.InPersonBefriending => "in-person befriending",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -61,6 +62,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.VolunteerSupport => "Volunteer Support",
                 SupportActivities.VaccineSupport => "Vaccine Support",
                 SupportActivities.EmergencySupport => "Emergency Support",
+                SupportActivities.InPersonBefriending => "In-Person Befriending",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -92,6 +94,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.VolunteerSupport => "1 volunteer support task completed",
                     SupportActivities.VaccineSupport => "1 vaccination support shift completed",
                     SupportActivities.EmergencySupport => "1 emergency support task completed",
+                    SupportActivities.InPersonBefriending => "1 befriending session completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -120,6 +123,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.VolunteerSupport => $"{count} volunteer support tasks completed",
                     SupportActivities.VaccineSupport => $"{count} vaccination support shifts completed",
                     SupportActivities.EmergencySupport => $"{count} emergency support tasks completed",
+                    SupportActivities.InPersonBefriending => $"{count} befriending sessions completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }

@@ -4,6 +4,7 @@
     {
         IdentityVerification = 1,
         ThirdPartyCheck = 2,
-        Training = 3
+        Training = 3,
+        References = 4
     }
 }

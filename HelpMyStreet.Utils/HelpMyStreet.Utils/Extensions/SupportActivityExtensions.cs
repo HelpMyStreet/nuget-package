@@ -133,7 +133,7 @@ namespace HelpMyStreet.Utils.Extensions
             }
         }
 
-        public static List<DataPrivacyOptions> DataPrivacyOptions(this SupportActivities activity, RequestRoles roleType)
+        public static List<DataPrivacyOptions> DataPrivacyOptions(this SupportActivities activity, RequestRoles roleType, bool isAdmin = false)
         {
 
             var allData = new List<DataPrivacyOptions>() {
@@ -152,26 +152,26 @@ namespace HelpMyStreet.Utils.Extensions
                 Enums.DataPrivacyOptions.LastName
             };
 
-            switch (roleType)
+            if (isAdmin)
             {
-                case RequestRoles.GroupAdmin:
-                    return allData;
-                case RequestRoles.Requestor:
-                    return reducedData;
-                case RequestRoles.Recipient:
-                    return activity switch
-                    {
-                        SupportActivities.CollectingPrescriptions => allData,
-                        SupportActivities.PhoneCalls_Friendly => reducedData,
-                        SupportActivities.PhoneCalls_Anxious => reducedData,
-                        SupportActivities.HomeworkSupport => reducedData,
-                        SupportActivities.VaccineSupport => allData,
-                        SupportActivities.CommunityConnector => reducedData,
-                        _ => reducedData
-                    };
-                default:
-                    throw new Exception($"Unspecied RequestRole Type: {roleType}");
-            };
+                return allData;
+            } else if (roleType == RequestRoles.Requestor)
+            {
+                return reducedData;
+            } else
+            {
+                return activity switch
+                {
+                    SupportActivities.CollectingPrescriptions => allData,
+                    SupportActivities.PhoneCalls_Friendly => reducedData,
+                    SupportActivities.PhoneCalls_Anxious => reducedData,
+                    SupportActivities.HomeworkSupport => reducedData,
+                    SupportActivities.VaccineSupport => allData,
+                    SupportActivities.CommunityConnector => reducedData,
+                    _ => reducedData
+                };
+            }
+
         }
 
 

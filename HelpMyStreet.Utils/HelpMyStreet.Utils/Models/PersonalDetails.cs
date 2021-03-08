@@ -108,9 +108,12 @@ namespace HelpMyStreet.Utils.Models
             {
                 return new Address() { Postcode = Address.Postcode };
             }
-            else
+            else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Locality))
             {
                 return new Address() { Locality = Address.Locality };
+            } else
+            {
+                return null;
             }
         }
 

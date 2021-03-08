@@ -154,11 +154,26 @@ namespace HelpMyStreet.Utils.Extensions
 
             if (isAdmin)
             {
-                return allData;
-            } else if (roleType == RequestRoles.Requestor)
+                if (roleType == RequestRoles.Volunteer)
+                {
+                    return new List<DataPrivacyOptions>() {
+                            Enums.DataPrivacyOptions.Email,
+                            Enums.DataPrivacyOptions.Phone,
+                            Enums.DataPrivacyOptions.FirstName,
+                            Enums.DataPrivacyOptions.LastName,
+                            Enums.DataPrivacyOptions.Locality
+                            };
+                }
+                else
+                {
+                    return allData;
+                }
+            }
+            else if (roleType == RequestRoles.Requestor)
             {
                 return reducedData;
-            } else
+            }
+            else
             {
                 return activity switch
                 {

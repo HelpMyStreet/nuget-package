@@ -9,6 +9,6 @@ namespace HelpMyStreet.Utils.Enums
         Postcode,
         FirstName,
         LastName,
-        Distance
+        Locality
     }
 }

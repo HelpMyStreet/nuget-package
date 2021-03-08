@@ -125,8 +125,9 @@ namespace HelpMyStreet.Utils.Extensions
             }
         }
 
-        public static List<DataPrivacyOptions> DataPrivacyOptions(this SupportActivities activity)
+        public static List<DataPrivacyOptions> DataPrivacyOptions(this SupportActivities activity, RequestRoles roleType)
         {
+
             var allData = new List<DataPrivacyOptions>() {
                 Enums.DataPrivacyOptions.Address,
                 Enums.DataPrivacyOptions.Postcode,
@@ -135,29 +136,36 @@ namespace HelpMyStreet.Utils.Extensions
                 Enums.DataPrivacyOptions.FirstName,
                 Enums.DataPrivacyOptions.LastName
             };
+
             var reducedData = new List<DataPrivacyOptions>() {
-                Enums.DataPrivacyOptions.Address,
                 Enums.DataPrivacyOptions.Email,
                 Enums.DataPrivacyOptions.Phone,
                 Enums.DataPrivacyOptions.FirstName,
-            };
-            var remoteActivity = new List<DataPrivacyOptions>() {
-                Enums.DataPrivacyOptions.Phone,
-                Enums.DataPrivacyOptions.Email,
-                Enums.DataPrivacyOptions.FirstName,
+                Enums.DataPrivacyOptions.LastName
             };
 
-            return activity switch
+            switch (roleType)
             {
-                SupportActivities.CollectingPrescriptions => allData,
-                SupportActivities.PhoneCalls_Friendly => remoteActivity,
-                SupportActivities.PhoneCalls_Anxious => remoteActivity,
-                SupportActivities.HomeworkSupport => remoteActivity,
-                SupportActivities.VaccineSupport => allData,
-                SupportActivities.CommunityConnector => remoteActivity,
-                _ => reducedData
+                case RequestRoles.GroupAdmin:
+                    return allData;
+                case RequestRoles.Requestor:
+                    return reducedData;
+                case RequestRoles.Recipient:
+                    return activity switch
+                    {
+                        SupportActivities.CollectingPrescriptions => allData,
+                        SupportActivities.PhoneCalls_Friendly => reducedData,
+                        SupportActivities.PhoneCalls_Anxious => reducedData,
+                        SupportActivities.HomeworkSupport => reducedData,
+                        SupportActivities.VaccineSupport => allData,
+                        SupportActivities.CommunityConnector => reducedData,
+                        _ => reducedData
+                    };
+                default:
+                    throw new Exception($"Unspecied RequestRole Type: {roleType}");
             };
         }
+
 
         public static RequestType RequestType(this SupportActivities activity)
         {

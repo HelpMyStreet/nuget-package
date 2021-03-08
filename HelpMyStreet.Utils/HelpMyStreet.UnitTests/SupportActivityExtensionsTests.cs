@@ -10,27 +10,27 @@ namespace HelpMyStreet.UnitTests
         [Test]
         public void FriendlyNameForEmail_AllValuesCovered()
         {
-            foreach (var val in Enum.GetValues(typeof(SupportActivities)))
+            foreach (SupportActivities val in Enum.GetValues(typeof(SupportActivities)))
             {
-                _ = ((SupportActivities)val).FriendlyNameForEmail();
+                _ = val.FriendlyNameForEmail();
             }
         }
 
         [Test]
         public void FriendlyNameShort_AllValuesCovered()
         {
-            foreach (var val in Enum.GetValues(typeof(SupportActivities)))
+            foreach (SupportActivities val in Enum.GetValues(typeof(SupportActivities)))
             {
-                _ = ((SupportActivities)val).FriendlyNameShort();
+                _ = val.FriendlyNameShort();
             }
         }
 
         [Test]
         public void PerfectTense_Singular_AllValuesCovered()
         {
-            foreach (var val in Enum.GetValues(typeof(SupportActivities)))
+            foreach (SupportActivities val in Enum.GetValues(typeof(SupportActivities)))
             {
-                string s = ((SupportActivities)val).PerfectTense(1);
+                string s = val.PerfectTense(1);
                 Assert.AreEqual(true, s.Contains("1"));
             }
         }
@@ -38,9 +38,9 @@ namespace HelpMyStreet.UnitTests
         [Test]
         public void PerfectTense_Plural_AllValuesCovered()
         {
-            foreach (var val in Enum.GetValues(typeof(SupportActivities)))
+            foreach (SupportActivities val in Enum.GetValues(typeof(SupportActivities)))
             {
-                string s = ((SupportActivities)val).PerfectTense(2);
+                string s = val.PerfectTense(2);
                 Assert.AreEqual(true, s.Contains("2"));
             }
         }

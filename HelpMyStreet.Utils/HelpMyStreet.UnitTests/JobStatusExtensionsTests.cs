@@ -52,18 +52,18 @@ namespace HelpMyStreet.UnitTests
         [Test]
         public void Incomplete_AllValuesCovered()
         {
-            foreach (var val in Enum.GetValues(typeof(JobStatuses)))
+            foreach (JobStatuses val in Enum.GetValues(typeof(JobStatuses)))
             {
-                _ = ((JobStatuses)val).Incomplete();
+                _ = val.Incomplete();
             }
         }
 
         [Test]
         public void Complete_AllValuesCovered()
         {
-            foreach (var val in Enum.GetValues(typeof(JobStatuses)))
+            foreach (JobStatuses val in Enum.GetValues(typeof(JobStatuses)))
             {
-                _ = ((JobStatuses)val).Complete();
+                _ = val.Complete();
             }
         }
     }

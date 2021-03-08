@@ -68,5 +68,9 @@ namespace HelpMyStreet.Utils.Enums
 
         EmergencySupport = 25,
         //EmergencySupport
+
+        InPersonBefriending = 26,
+
+        PracticalSupport = 27,
     }
 }

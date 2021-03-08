@@ -133,6 +133,18 @@ namespace HelpMyStreet.Utils.Extensions
             }
         }
 
+        public static bool IsRemoteActivity(this SupportActivities activity)
+        {
+            return activity switch
+            {
+                SupportActivities.PhoneCalls_Friendly => true,
+                SupportActivities.PhoneCalls_Anxious => true,
+                SupportActivities.HomeworkSupport => true,
+                SupportActivities.CommunityConnector => true,
+                _ => false
+            };
+        }
+
         public static List<DataPrivacyOptions> DataPrivacyOptions(this SupportActivities activity, RequestRoles roleType, bool isAdmin = false)
         {
 
@@ -175,16 +187,7 @@ namespace HelpMyStreet.Utils.Extensions
             }
             else
             {
-                return activity switch
-                {
-                    SupportActivities.CollectingPrescriptions => allData,
-                    SupportActivities.PhoneCalls_Friendly => reducedData,
-                    SupportActivities.PhoneCalls_Anxious => reducedData,
-                    SupportActivities.HomeworkSupport => reducedData,
-                    SupportActivities.VaccineSupport => allData,
-                    SupportActivities.CommunityConnector => reducedData,
-                    _ => reducedData
-                };
+                return activity.IsRemoteActivity() ? reducedData : allData;
             }
 
         }

@@ -19,5 +19,7 @@ namespace HelpMyStreet.Utils.Models
         public DueDateType DueDateType { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public Frequency RepeatFrequency { get; set; }
+        public int NumberOfRepeats { get; set; }
     }
 }

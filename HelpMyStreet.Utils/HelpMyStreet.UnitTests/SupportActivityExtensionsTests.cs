@@ -44,5 +44,14 @@ namespace HelpMyStreet.UnitTests
                 Assert.AreEqual(true, s.Contains("2"));
             }
         }
+
+        [Test]
+        public void AllowRepeatRequests_AllValuesCovered()
+        {
+            foreach (SupportActivities val in Enum.GetValues(typeof(SupportActivities)))
+            {
+               _ = val.AllowRepeatRequests();
+            }
+        }
     }
 }

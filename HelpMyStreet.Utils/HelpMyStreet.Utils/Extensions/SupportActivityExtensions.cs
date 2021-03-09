@@ -133,6 +133,39 @@ namespace HelpMyStreet.Utils.Extensions
             }
         }
 
+        public static bool AllowRepeatRequests(this SupportActivities activity)
+        {
+            return activity switch
+            {
+                SupportActivities.Shopping => true,
+                SupportActivities.CollectingPrescriptions => true,
+                SupportActivities.Errands => true,
+                SupportActivities.DogWalking => true,
+                SupportActivities.MealPreparation => true,
+                SupportActivities.PhoneCalls_Friendly => true,
+                SupportActivities.Other => true,
+                SupportActivities.Transport => true,
+                SupportActivities.MealsToYourDoor => true,
+                SupportActivities.VolunteerSupport => true,
+                SupportActivities.MealtimeCompanion => true,
+                SupportActivities.VaccineSupport => true,
+
+                SupportActivities.FaceMask => false,
+                SupportActivities.CheckingIn => false,
+                SupportActivities.PhoneCalls_Anxious => false,
+                SupportActivities.WellbeingPackage => false,
+                SupportActivities.MedicalAppointmentTransport => false,
+                SupportActivities.ColdWeatherArmy => false,
+                SupportActivities.InPersonBefriending => false,
+                SupportActivities.PracticalSupport => false,
+                SupportActivities.HomeworkSupport => false,
+                SupportActivities.CommunityConnector => false,
+                SupportActivities.EmergencySupport => false,
+
+                _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
+            };
+        }
+
         public static bool IsRemoteActivity(this SupportActivities activity)
         {
             return activity switch

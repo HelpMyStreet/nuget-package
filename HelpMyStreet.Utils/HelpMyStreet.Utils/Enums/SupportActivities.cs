@@ -72,5 +72,7 @@ namespace HelpMyStreet.Utils.Enums
         InPersonBefriending = 26,
 
         PracticalSupport = 27,
+
+        VolunteerInduction = 28
     }
 }

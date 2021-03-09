@@ -34,6 +34,12 @@
         AgeUKFANDS_Transport = 30,
         AgeUKFANDS_VolunteerSupport = 31,
         AgeUKFANDS_Other = 32,
-        HMS_EmergencySupport = 33
+        HMS_EmergencySupport = 33,
+        AgeConnectCardiff_VolunteerSupport = 34,
+        AgeConnectCardiff_PracticalSupport = 35,
+        AgeConnectCardiff_InPersonBefriending = 36,
+        AgeConnectCardiff_Other = 37,
+        AgeConnectCardiff_Transport = 38,
+        AgeConnectCardiff_VolunteerInduction = 39
     }
 }

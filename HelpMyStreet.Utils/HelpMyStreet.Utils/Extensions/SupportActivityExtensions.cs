@@ -34,6 +34,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.EmergencySupport => "emergency support",
                 SupportActivities.InPersonBefriending => "in-person befriending",
                 SupportActivities.PracticalSupport => "practical support",
+                SupportActivities.VolunteerInduction => "volunteer induction",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -65,6 +66,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.EmergencySupport => "Emergency Support",
                 SupportActivities.InPersonBefriending => "In-Person Befriending",
                 SupportActivities.PracticalSupport => "Practical Support",
+                SupportActivities.VolunteerInduction => "Volunteer Induction",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -98,6 +100,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.EmergencySupport => "1 emergency support task completed",
                     SupportActivities.InPersonBefriending => "1 befriending session completed",
                     SupportActivities.PracticalSupport => "1 person supported",
+                    SupportActivities.VolunteerInduction => "1 volunteer induction completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -128,6 +131,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.EmergencySupport => $"{count} emergency support tasks completed",
                     SupportActivities.InPersonBefriending => $"{count} befriending sessions completed",
                     SupportActivities.PracticalSupport => $"{count} people supported",
+                    SupportActivities.VolunteerInduction => $"{count} volunteer inductions completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -149,7 +153,6 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.VolunteerSupport => true,
                 SupportActivities.MealtimeCompanion => true,
                 SupportActivities.VaccineSupport => true,
-
                 SupportActivities.FaceMask => false,
                 SupportActivities.CheckingIn => false,
                 SupportActivities.PhoneCalls_Anxious => false,
@@ -161,7 +164,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.HomeworkSupport => false,
                 SupportActivities.CommunityConnector => false,
                 SupportActivities.EmergencySupport => false,
-
+                SupportActivities.VolunteerInduction => false,
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }

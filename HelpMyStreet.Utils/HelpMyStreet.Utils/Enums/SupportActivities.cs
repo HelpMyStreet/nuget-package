@@ -73,6 +73,12 @@ namespace HelpMyStreet.Utils.Enums
 
         PracticalSupport = 27,
 
-        VolunteerInduction = 28
+        VolunteerInduction = 28,
+
+        DigitalSupport = 29,
+
+        BinDayAssistance = 30,
+
+        Covid19Help = 31
     }
 }

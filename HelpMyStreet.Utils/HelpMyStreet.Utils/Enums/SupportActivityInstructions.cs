@@ -40,6 +40,7 @@
         AgeConnectCardiff_InPersonBefriending = 36,
         AgeConnectCardiff_Other = 37,
         AgeConnectCardiff_Transport = 38,
-        AgeConnectCardiff_VolunteerInduction = 39
+        AgeConnectCardiff_VolunteerInduction = 39,
+        HMS_BinDayAssistance = 40
     }
 }

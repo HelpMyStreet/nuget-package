@@ -23,5 +23,7 @@
         Sandbox_RequestSubmitter = 19,
         AgeConnectsCardiff_RequestSubmitter = 20,
         AgeConnectsCardiff_Public = 21,
+        MeadowsCommunityHelpers_Public = 22,
+        MeadowsCommunityHelpers_RequestSubmitter = 23
     }
 }

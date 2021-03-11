@@ -35,6 +35,9 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.InPersonBefriending => "in-person befriending",
                 SupportActivities.PracticalSupport => "practical support",
                 SupportActivities.VolunteerInduction => "volunteer induction",
+                SupportActivities.BinDayAssistance => "bin day assistance",
+                SupportActivities.Covid19Help => "covid 19 help",
+                SupportActivities.DigitalSupport => "digital support",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -67,6 +70,9 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.InPersonBefriending => "In-Person Befriending",
                 SupportActivities.PracticalSupport => "Practical Support",
                 SupportActivities.VolunteerInduction => "Volunteer Induction",
+                SupportActivities.BinDayAssistance => "Bin Day Assistance",
+                SupportActivities.Covid19Help => "Covid 19 Help",
+                SupportActivities.DigitalSupport => "Digital Support",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -101,6 +107,9 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.InPersonBefriending => "1 befriending session completed",
                     SupportActivities.PracticalSupport => "1 person supported",
                     SupportActivities.VolunteerInduction => "1 volunteer induction completed",
+                    SupportActivities.BinDayAssistance => "1 bin day assistance completed",
+                    SupportActivities.Covid19Help => "1 covid 19 help completed",
+                    SupportActivities.DigitalSupport => "1 digital support completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -132,6 +141,9 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.InPersonBefriending => $"{count} befriending sessions completed",
                     SupportActivities.PracticalSupport => $"{count} people supported",
                     SupportActivities.VolunteerInduction => $"{count} volunteer inductions completed",
+                    SupportActivities.BinDayAssistance => $"{count} bin day assistance completed",
+                    SupportActivities.Covid19Help => $"{count} covid 19 help completed",
+                    SupportActivities.DigitalSupport => $"{count} digital support completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -165,6 +177,9 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.CommunityConnector => false,
                 SupportActivities.EmergencySupport => false,
                 SupportActivities.VolunteerInduction => false,
+                SupportActivities.BinDayAssistance => false,
+                SupportActivities.Covid19Help => false,
+                SupportActivities.DigitalSupport => false,
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }

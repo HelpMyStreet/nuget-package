@@ -76,17 +76,17 @@ namespace HelpMyStreet.Utils.Models
             return sb.ToString().Trim();
         }
 
-        public string GetDPSafeName(List<Enums.DataPrivacyOptions> dataPrivacyOptions)
+        public string GetDPSafeName(List<Enums.PersonalDetailsComponent> dataPrivacyOptions)
         {
-            if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.FirstName) && dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.LastName))
+            if (dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.FirstName) && dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.LastName))
             {
                 return $"{FirstName} {LastName}";
             }
-            else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.FirstName))
+            else if (dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.FirstName))
             {
                 return $"{FirstName}";
             }
-            else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.LastName))
+            else if (dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.LastName))
             {
                 return $"{LastName}";
             }
@@ -94,21 +94,21 @@ namespace HelpMyStreet.Utils.Models
             return $"";
         }
 
-        public Address GetDPSafeAddress(List<Enums.DataPrivacyOptions> dataPrivacyOptions)
+        public Address GetDPSafeAddress(List<Enums.PersonalDetailsComponent> dataPrivacyOptions)
         {
-            if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Address) && dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Postcode))
+            if (dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.Address) && dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.Postcode))
             {
                 return Address;
             }
-            else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Address))
+            else if (dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.Address))
             {
                 return new Address() { AddressLine1 = Address.AddressLine1, AddressLine2 = Address.AddressLine2, AddressLine3 = Address.AddressLine3, Locality = Address.Locality };
             }
-            else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Postcode))
+            else if (dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.Postcode))
             {
                 return new Address() { Postcode = Address.Postcode };
             }
-            else if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Locality))
+            else if (dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.Locality))
             {
                 return new Address() { Locality = Address.Locality };
             } else
@@ -117,9 +117,9 @@ namespace HelpMyStreet.Utils.Models
             }
         }
 
-        public string GetDPSafeMobileNumber(List<Enums.DataPrivacyOptions> dataPrivacyOptions)
+        public string GetDPSafeMobileNumber(List<Enums.PersonalDetailsComponent> dataPrivacyOptions)
         {
-            if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Phone))
+            if (dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.Phone))
             {
                 return MobileNumber;
             }
@@ -129,9 +129,9 @@ namespace HelpMyStreet.Utils.Models
             }
         }
 
-        public string GetDPSafeOtherNumber(List<Enums.DataPrivacyOptions> dataPrivacyOptions)
+        public string GetDPSafeOtherNumber(List<Enums.PersonalDetailsComponent> dataPrivacyOptions)
         {
-            if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Phone))
+            if (dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.Phone))
             {
                 return OtherNumber;
             }
@@ -141,9 +141,9 @@ namespace HelpMyStreet.Utils.Models
             }
         }
 
-        public string GetDPSafeEmail(List<Enums.DataPrivacyOptions> dataPrivacyOptions)
+        public string GetDPSafeEmail(List<Enums.PersonalDetailsComponent> dataPrivacyOptions)
         {
-            if (dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.Email))
+            if (dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.Email))
             {
                 return EmailAddress;
             }
@@ -153,14 +153,14 @@ namespace HelpMyStreet.Utils.Models
             }
         }
 
-        public PersonalDetails GetDPSafePersonalDetails(List<Enums.DataPrivacyOptions> dataPrivacyOptions)
+        public PersonalDetails GetDPSafePersonalDetails(List<Enums.PersonalDetailsComponent> dataPrivacyOptions)
         {
             return new PersonalDetails()
             {
                 Address = GetDPSafeAddress(dataPrivacyOptions),
                 EmailAddress = GetDPSafeEmail(dataPrivacyOptions),
-                FirstName = dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.FirstName) ? FirstName : "",
-                LastName = dataPrivacyOptions.Contains(Enums.DataPrivacyOptions.LastName) ? LastName : "",
+                FirstName = dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.FirstName) ? FirstName : "",
+                LastName = dataPrivacyOptions.Contains(Enums.PersonalDetailsComponent.LastName) ? LastName : "",
                 MobileNumber = GetDPSafeMobileNumber(dataPrivacyOptions),
                 OtherNumber = GetDPSafeOtherNumber(dataPrivacyOptions),
             };

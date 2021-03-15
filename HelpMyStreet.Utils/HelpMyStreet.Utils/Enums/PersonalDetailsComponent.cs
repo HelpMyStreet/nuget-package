@@ -1,7 +1,7 @@
 ﻿using System;
 namespace HelpMyStreet.Utils.Enums
 {
-    public enum DataPrivacyOptions
+    public enum PersonalDetailsComponent
     {
         Email,
         Phone,

@@ -18,9 +18,9 @@ namespace HelpMyStreet.Utils.Models
         // Supplied in registration step 3
         public bool? UnderlyingMedicalCondition { get; set; }
 
-        public UserPersonalDetails GetDPSafeUserPersonalDetails (List<Enums.DataPrivacyOptions> dataPrivacyOptions)
+        public UserPersonalDetails GetDPSafeUserPersonalDetails (List<Enums.PersonalDetailsComponent> personalDetailsComponents)
         {
-            var pDetails = GetDPSafePersonalDetails(dataPrivacyOptions);
+            var pDetails = GetDPSafePersonalDetails(personalDetailsComponents);
             return new UserPersonalDetails()
             {
                 Address = pDetails.Address,

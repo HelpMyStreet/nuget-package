@@ -20,5 +20,6 @@
        Location = 16,
        NumberOfSlots = 17,
        RecipientAge = 18,
+       PersonalDetailsByRequest = 19,
     }
 }

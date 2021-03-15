@@ -196,35 +196,35 @@ namespace HelpMyStreet.Utils.Extensions
             };
         }
 
-        public static List<DataPrivacyOptions> DataPrivacyOptions(this SupportActivities activity, RequestRoles roleType, bool isAdmin = false)
+        public static List<PersonalDetailsComponent> PersonalDetailsComponent(this SupportActivities activity, RequestRoles roleType, bool isAdmin = false)
         {
 
-            var allData = new List<DataPrivacyOptions>() {
-                Enums.DataPrivacyOptions.Address,
-                Enums.DataPrivacyOptions.Postcode,
-                Enums.DataPrivacyOptions.Email,
-                Enums.DataPrivacyOptions.Phone,
-                Enums.DataPrivacyOptions.FirstName,
-                Enums.DataPrivacyOptions.LastName
+            var allData = new List<PersonalDetailsComponent>() {
+                Enums.PersonalDetailsComponent.Address,
+                Enums.PersonalDetailsComponent.Postcode,
+                Enums.PersonalDetailsComponent.Email,
+                Enums.PersonalDetailsComponent.Phone,
+                Enums.PersonalDetailsComponent.FirstName,
+                Enums.PersonalDetailsComponent.LastName
             };
 
-            var reducedData = new List<DataPrivacyOptions>() {
-                Enums.DataPrivacyOptions.Email,
-                Enums.DataPrivacyOptions.Phone,
-                Enums.DataPrivacyOptions.FirstName,
-                Enums.DataPrivacyOptions.LastName
+            var reducedData = new List<PersonalDetailsComponent>() {
+                Enums.PersonalDetailsComponent.Email,
+                Enums.PersonalDetailsComponent.Phone,
+                Enums.PersonalDetailsComponent.FirstName,
+                Enums.PersonalDetailsComponent.LastName
             };
 
             if (isAdmin)
             {
                 if (roleType == RequestRoles.Volunteer)
                 {
-                    return new List<DataPrivacyOptions>() {
-                            Enums.DataPrivacyOptions.Email,
-                            Enums.DataPrivacyOptions.Phone,
-                            Enums.DataPrivacyOptions.FirstName,
-                            Enums.DataPrivacyOptions.LastName,
-                            Enums.DataPrivacyOptions.Locality
+                    return new List<PersonalDetailsComponent>() {
+                            Enums.PersonalDetailsComponent.Email,
+                            Enums.PersonalDetailsComponent.Phone,
+                            Enums.PersonalDetailsComponent.FirstName,
+                            Enums.PersonalDetailsComponent.LastName,
+                            Enums.PersonalDetailsComponent.Locality
                             };
                 }
                 else

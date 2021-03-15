@@ -17,5 +17,6 @@ namespace HelpMyStreet.Utils.Models
         public double DistanceInMiles { get; set; }
         public DateTime DueDate { get; set; }
         public bool Archive { get; set; }
+        public string HmsReference { get; set; }
     }
 }

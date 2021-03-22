@@ -24,5 +24,6 @@ namespace HelpMyStreet.Utils.Models
         public int ReferringGroupID { get; set; }
         public DateTime DateRequested { get; set; }
         public string PostCode { get; set; }
+        public bool? SuppressRecipientPersonalDetail { get; set; }
     }
 }

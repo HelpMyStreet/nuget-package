@@ -19,6 +19,7 @@ namespace HelpMyStreet.Utils.Models
         public DateTime DueDate { get; set; }
         public bool Archive { get; set; }
         public string HmsReference { get => GetHmsReference(); }
+        public bool? SuppressRecipientPersonalDetail { get; set; }
 
         private string GetHmsReference()
         {

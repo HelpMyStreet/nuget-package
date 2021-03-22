@@ -1,7 +1,9 @@
 ﻿using System;
 using HelpMyStreet.Utils.Enums;
 using HelpMyStreet.Utils.Extensions;
+using System.Linq;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace HelpMyStreet.UnitTests
 {
@@ -14,6 +16,17 @@ namespace HelpMyStreet.UnitTests
             {
                 _ = val.GroupIdentifier();
             }
+        }
+
+        [Test]
+        public void GroupReference_IsUnique()
+        {
+            var listOfIdentifiers = new List<string>();
+            foreach (Groups val in Enum.GetValues(typeof(Groups)))
+            {
+                listOfIdentifiers.Add(val.GroupIdentifier());
+            }
+            Assert.Equals(listOfIdentifiers.Distinct().Count(), listOfIdentifiers.Count());
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using HelpMyStreet.Utils.Enums;
+using HelpMyStreet.Utils.Extensions;
 using System;
 
 namespace HelpMyStreet.Utils.Models
@@ -17,6 +18,14 @@ namespace HelpMyStreet.Utils.Models
         public double DistanceInMiles { get; set; }
         public DateTime DueDate { get; set; }
         public bool Archive { get; set; }
-        public string HmsReference { get; set; }
+        public string HmsReference { get => GetHmsReference(); }
+
+        private string GetHmsReference()
+        {
+            Groups thisGroup = (Groups)ReferringGroupID;
+
+            return $"{thisGroup.GroupIdentifier()}-{DateRequested:yyMMdd}-{RequestID % 1000}-{JobID % 1000}";
+
+        }
     }
 }

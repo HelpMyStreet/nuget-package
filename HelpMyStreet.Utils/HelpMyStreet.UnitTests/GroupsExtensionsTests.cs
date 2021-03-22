@@ -26,7 +26,7 @@ namespace HelpMyStreet.UnitTests
             {
                 listOfIdentifiers.Add(val.GroupIdentifier());
             }
-            Assert.Equals(listOfIdentifiers.Distinct().Count(), listOfIdentifiers.Count());
+            Assert.AreEqual(listOfIdentifiers.Distinct().Count(), listOfIdentifiers.Count());
         }
 
     }

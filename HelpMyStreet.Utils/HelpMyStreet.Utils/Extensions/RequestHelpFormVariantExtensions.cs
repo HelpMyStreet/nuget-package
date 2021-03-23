@@ -13,9 +13,10 @@ namespace HelpMyStreet.Utils.Extensions
                 RequestHelpFormVariant.AgeUKNorthWestKent_RequestSubmitter => false,
                 RequestHelpFormVariant.AgeUKFavershamAndSittingbourne_RequestSubmitter => false,
                 RequestHelpFormVariant.AgeUKSouthKentCoast_RequestSubmitter => false,
-                RequestHelpFormVariant.HLP_CommunityConnector => false,
                 RequestHelpFormVariant.AgeConnectsCardiff_RequestSubmitter=> false,
                 RequestHelpFormVariant.MeadowsCommunityHelpers_RequestSubmitter => false,
+                RequestHelpFormVariant.Sandbox_RequestSubmitter => false,
+                RequestHelpFormVariant.VitalsForVeterans => false,
                 _ => true
             };
         }

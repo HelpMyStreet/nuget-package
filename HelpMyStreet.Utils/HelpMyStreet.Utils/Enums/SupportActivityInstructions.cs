@@ -46,5 +46,13 @@
         AgeConnectCardiff_Shopping = 42,
         AgeConnectCardiff_FriendlyChat = 43,
         AgeConnectCardiff_Prescriptions = 44,
+        AgeUKNottsBalderton_Shopping = 45,
+        AgeUKNottsBalderton_Prescriptions = 46,
+        AgeUKNottsBalderton_FriendlyChat = 47,
+        AgeUKNottsBalderton_DogWalking = 48,
+        AgeUKNottsNorthMuskham_Shopping = 49,
+        AgeUKNottsNorthMuskham_Prescriptions = 50,
+        AgeUKNottsNorthMuskham_FriendlyChat = 51,
+        AgeUKNottsNorthMuskham_DogWalking = 52
     }
 }

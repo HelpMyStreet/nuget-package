@@ -5,18 +5,18 @@ namespace HelpMyStreet.Utils.Extensions
 {
     public static class JobSummaryQuestionExtensions
     {
-        public static bool ShowOnTaskManagement(this Question question, bool showSensitiveData)
+        public static bool ShowOnTaskManagement(this Question question, bool userIsAdmin, bool userIsAllocatedToTask)
         {
             return question.Id switch
             {
-                (int)Questions.SensitiveInformation => showSensitiveData,
+                (int)Questions.SensitiveInformation => userIsAdmin || userIsAllocatedToTask,
                 (int)Questions.IsHealthCritical => false,
                 (int)Questions.WillYouCompleteYourself => false,
                 (int)Questions.FtlosDonationInformation => false,
                 (int)Questions.AgeUKReference => false,
                 (int)Questions.Location => false,
                 (int)Questions.NumberOfSlots => false,
-                (int)Questions.RecipientAge => showSensitiveData,
+                (int)Questions.RecipientAge => userIsAdmin,
                 _ => true
             };
         }

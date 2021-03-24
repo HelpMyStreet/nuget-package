@@ -32,6 +32,7 @@ namespace HelpMyStreet.Utils.Extensions
                 (int)Questions.Shopping_List => "Shopping List",
                 (int)Questions.Prescription_PharmacyAddress => "Pharmacy Address",
                 (int)Questions.SensitiveInformation => "Further Details",
+                (int)Questions.RecipientAge => "Recipient Age",
                 _ => question.Name
             };
         }

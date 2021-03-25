@@ -7,9 +7,7 @@ namespace HelpMyStreet.Utils.Models
     {
         public string PostCode { get; set; }
         public bool IsHealthCritical { get; set; }
-        
         public string Reference { get; set; }
-        public DueDateType DueDateType { get; set; }
         public bool RequestorDefinedByGroup { get; set; }
     }
 }

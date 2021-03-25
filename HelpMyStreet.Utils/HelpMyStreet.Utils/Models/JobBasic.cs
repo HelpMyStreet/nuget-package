@@ -17,6 +17,8 @@ namespace HelpMyStreet.Utils.Models
         public JobStatuses JobStatus { get; set; }
         public double DistanceInMiles { get; set; }
         public DateTime DueDate { get; set; }
+        public DueDateType DueDateType { get; set; }
+        public DateTime? NotBeforeDate { get; set; }
         public bool Archive { get; set; }
         public string HmsReference { get => GetHmsReference(); }
         public bool? SuppressRecipientPersonalDetail { get; set; }

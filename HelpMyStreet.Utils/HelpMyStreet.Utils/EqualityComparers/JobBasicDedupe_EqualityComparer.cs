@@ -10,19 +10,14 @@ namespace HelpMyStreet.Utils.EqualityComparers
     {
         public bool Equals(JobBasic a, JobBasic b)
         {
-            return a.RequestID == b.RequestID 
-                && a.SupportActivity == b.SupportActivity
-                && a.DueDateType == b.DueDateType
-                && a.DueDate == b.DueDate;
-
+            return a.RequestID == b.RequestID
+                && a.SupportActivity == b.SupportActivity;
         }
 
         public int GetHashCode(JobBasic obj)
         {
-            return obj.RequestID.GetHashCode() 
-                + obj.SupportActivity.GetHashCode()
-                + obj.DueDateType.GetHashCode()
-                + obj.DueDate.GetHashCode();
+            return obj.RequestID.GetHashCode()
+                + obj.SupportActivity.GetHashCode();
         }
     }
 }

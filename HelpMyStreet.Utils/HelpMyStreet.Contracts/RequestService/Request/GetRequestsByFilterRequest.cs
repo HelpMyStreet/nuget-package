@@ -54,12 +54,6 @@ namespace HelpMyStreet.Contracts.RequestService.Request
         // If supplied, returns requests available to those groups
         public GroupRequest Groups { get; set; }
 
-        // If supplied, returns jobs **ending** after the specified datetime
-        public DateTime? DateFrom { get; set; }
-
-        // If supplied, returns jobs **starting** before the specified datetime
-        public DateTime? DateTo { get; set; }
-
         public RequestTypeRequest RequestType { get; set; }
     }
 }

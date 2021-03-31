@@ -25,5 +25,7 @@ namespace HelpMyStreet.Utils.Models
         public DateTime DateRequested { get; set; }
         public string PostCode { get; set; }
         public bool? SuppressRecipientPersonalDetail { get; set; }
+        public bool MultiVolunteer { get; set; }
+        public bool Repeat { get; set; }
     }
 }

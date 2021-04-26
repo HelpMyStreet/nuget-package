@@ -53,6 +53,7 @@
         AgeUKNottsNorthMuskham_Shopping = 49,
         AgeUKNottsNorthMuskham_Prescriptions = 50,
         AgeUKNottsNorthMuskham_FriendlyChat = 51,
-        AgeUKNottsNorthMuskham_DogWalking = 52
+        AgeUKNottsNorthMuskham_DogWalking = 52,
+        Lincoln_Stamford_VaccineSupport = 53,
     }
 }

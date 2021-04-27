@@ -11,12 +11,11 @@ namespace HelpMyStreet.Utils.Models
         public int AuthorisedByUserID { get; set; }
         public int UserId { get; set; }
         public int GroupId { get; set; }
-        public int RoleId { get; set; }
+        public GroupRoles Role { get; set; }
         public DateTime DateRequested { get; set; }
-        public byte ActionId { get; set; }
+        public GroupAction Action { get; set; }
         public bool Success { get; set; }
     }
-
 }
 
 

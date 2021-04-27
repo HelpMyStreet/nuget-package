@@ -1,4 +1,5 @@
 ﻿using HelpMyStreet.Utils.Enums;
+using HelpMyStreet.Utils.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace HelpMyStreet.Utils.Models
             get
             {
                 return JobSummaries.Cast<JobBasic>()
-                    .Concat(ShiftJobs.Cast<JobBasic>()).ToList();                    
+                    .Concat(ShiftJobs.Cast<JobBasic>()).ToList();
             }
         }
         public int RequestID { get; set; }
@@ -28,5 +29,18 @@ namespace HelpMyStreet.Utils.Models
         public bool? SuppressRecipientPersonalDetail { get; set; }
         public bool MultiVolunteer { get; set; }
         public bool Repeat { get; set; }
+
+        public string HMSReference { get => GetHMSReference(); }
+
+        public string GetHMSReference (){
+            if (JobSummaries.Count() > 0)
+            {
+                Groups thisGroup = (Groups)JobSummaries.First().ReferringGroupID; 
+                return $"{thisGroup.GroupIdentifier()}-{DateRequested:yyMMdd}-{RequestID % 1000}";
+            } else
+            {
+                return "";
+            }
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace HelpMyStreet.Utils.Extensions
                 RequestHelpFormVariant.AgeConnectsCardiff_RequestSubmitter=> false,
                 RequestHelpFormVariant.MeadowsCommunityHelpers_RequestSubmitter => false,
                 RequestHelpFormVariant.Sandbox_RequestSubmitter => false,
+                RequestHelpFormVariant.AgeUKWirral => false,
                 RequestHelpFormVariant.VitalsForVeterans => false,
                 _ => true
             };

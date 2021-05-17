@@ -27,7 +27,7 @@ namespace HelpMyStreet.Utils.Models
         {
             Groups thisGroup = (Groups)ReferringGroupID;
 
-            return $"{thisGroup.GroupIdentifier()}-{DateRequested:yyMMdd}-{RequestID % 1000}-{JobID % 1000}";
+            return $"{thisGroup.GroupIdentifier()}-{DateRequested:yyMMdd}-{RequestID % 1000}";
 
         }
     }

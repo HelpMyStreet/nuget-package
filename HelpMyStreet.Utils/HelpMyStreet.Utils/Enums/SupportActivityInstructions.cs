@@ -55,5 +55,6 @@
         AgeUKNottsNorthMuskham_FriendlyChat = 51,
         AgeUKNottsNorthMuskham_DogWalking = 52,
         Lincoln_Stamford_VaccineSupport = 53,
+        MansfieldCVS_VaccineSupport = 54
     }
 }

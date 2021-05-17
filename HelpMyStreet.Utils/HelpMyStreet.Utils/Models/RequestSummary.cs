@@ -32,13 +32,17 @@ namespace HelpMyStreet.Utils.Models
 
         public string HMSReference { get => GetHMSReference(); }
 
-        public string GetHMSReference (){
+        private string GetHMSReference (){
             if (JobSummaries.Count() > 0)
             {
                 Groups thisGroup = (Groups)JobSummaries.First().ReferringGroupID; 
                 return $"{thisGroup.GroupIdentifier()}-{DateRequested:yyMMdd}-{RequestID % 1000}";
-            } else
+            } else if (ShiftJobs.Count() > 0)
             {
+                Groups thisGroup = (Groups)ShiftJobs.First().ReferringGroupID;
+                return $"{thisGroup.GroupIdentifier()}-{DateRequested:yyMMdd}-{RequestID % 1000}";
+            }
+             else { 
                 return "";
             }
         }

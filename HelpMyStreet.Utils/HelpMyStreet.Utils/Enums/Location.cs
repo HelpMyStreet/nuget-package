@@ -11,6 +11,11 @@
         FranklinHallSpilsby = -7,
         SidingsMedicalPracticeBoston = -8,
         RustonsSportsAndSocialClubLincoln = -9,
-        PortlandMedicalPracticeLincoln = -10
+        PortlandMedicalPracticeLincoln = -10,
+        MansfieldWickesSite = 11,
+        GamstonCommunityHall = -12,
+        RichardHerrodCentre = -13,
+        KingsMeadowCampus = -14,
+        ForestRecreationGround = -15
     }
 }

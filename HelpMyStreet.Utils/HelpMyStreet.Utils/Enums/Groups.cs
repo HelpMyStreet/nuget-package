@@ -25,6 +25,12 @@ namespace HelpMyStreet.Utils.Enums
         LincolnPortlandPCN = -21,
         Sandbox = -22,
         AgeConnectsCardiff = -23,
-        MeadowsCommunityHelpers = -24
+        MeadowsCommunityHelpers = -24,
+        MansfieldCVS = -25,
+        MansfieldWickes = -26,
+        GamstonCommunityHall = -27,
+        RichardHerrodCentre = -28,
+        KingsMeadowCampus = -29,
+        ForestRecreationGround = -30
     }
 }

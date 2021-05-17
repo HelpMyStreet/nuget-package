@@ -34,6 +34,12 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.Sandbox => "TEST",
                 Groups.AgeConnectsCardiff => "ACC",
                 Groups.MeadowsCommunityHelpers => "MCC",
+                Groups.MansfieldCVS => "MAN",
+                Groups.MansfieldWickes => "WKS",
+                Groups.GamstonCommunityHall => "GMS",
+                Groups.RichardHerrodCentre => "RHC",
+                Groups.KingsMeadowCampus => "KMC",
+                Groups.ForestRecreationGround => "FRG",
                 _ => throw new ArgumentException(message: $"Unexpected Group: {groups}", paramName: nameof(groups))
             };
         }

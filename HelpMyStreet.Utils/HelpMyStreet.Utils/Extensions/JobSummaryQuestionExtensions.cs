@@ -16,6 +16,7 @@ namespace HelpMyStreet.Utils.Extensions
                 (int)Questions.AgeUKReference => false,
                 (int)Questions.Location => false,
                 (int)Questions.NumberOfSlots => false,
+                (int)Questions.SuppressRecipientPersonalDetails => userIsAdmin,
                 (int)Questions.RecipientAge => userIsAdmin,
                 _ => true
             };

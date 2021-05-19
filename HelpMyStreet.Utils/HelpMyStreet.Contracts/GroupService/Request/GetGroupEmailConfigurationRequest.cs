@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HelpMyStreet.Contracts.GroupService.Request
 {
-    public class GetEmailConfigurationRequest : IRequest<GetEmailConfigurationResponse>
+    public class GetGroupEmailConfigurationRequest : IRequest<GetGroupEmailConfigurationResponse>
     {
         public int GroupId { get; set; }
         public GroupEmailVariantType GroupEmailVariantType { get; set; }

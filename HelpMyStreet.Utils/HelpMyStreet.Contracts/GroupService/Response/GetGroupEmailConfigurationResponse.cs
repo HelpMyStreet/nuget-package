@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HelpMyStreet.Contracts.GroupService.Response
 {
-    public class GetEmailConfigurationResponse
+    public class GetGroupEmailConfigurationResponse
     {
         public List<KeyValuePair<string,string>> EmailConfigurations { get; set; }
     }

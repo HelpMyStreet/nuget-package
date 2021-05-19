@@ -19,6 +19,7 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         RequestorTaskConfirmation = 11,
         TaskDetail = 12,
         SendNewRequestNotification = 13,
-        SendShiftReminder = 14
+        SendShiftReminder = 14,
+        GroupWelcome = -15
     }
 }

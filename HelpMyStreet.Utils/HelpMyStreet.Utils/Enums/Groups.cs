@@ -31,6 +31,7 @@ namespace HelpMyStreet.Utils.Enums
         GamstonCommunityHall = -27,
         RichardHerrodCentre = -28,
         KingsMeadowCampus = -29,
-        ForestRecreationGround = -30
+        ForestRecreationGround = -30,
+        Southwell = -31
     }
 }

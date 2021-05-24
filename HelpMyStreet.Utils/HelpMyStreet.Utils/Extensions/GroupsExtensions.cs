@@ -40,6 +40,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.RichardHerrodCentre => "RHC",
                 Groups.KingsMeadowCampus => "KMC",
                 Groups.ForestRecreationGround => "FRG",
+                Groups.Southwell => "SW",
                 _ => throw new ArgumentException(message: $"Unexpected Group: {groups}", paramName: nameof(groups))
             };
         }

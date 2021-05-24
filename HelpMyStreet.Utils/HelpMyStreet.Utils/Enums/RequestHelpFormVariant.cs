@@ -25,6 +25,7 @@
         AgeConnectsCardiff_Public = 21,
         MeadowsCommunityHelpers_Public = 22,
         MeadowsCommunityHelpers_RequestSubmitter = 23,
-        Mansfield_CVS = 24
+        Mansfield_CVS = 24,
+        Soutwell_Public = 25,
     }
 }

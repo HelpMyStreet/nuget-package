@@ -15,7 +15,7 @@ namespace HelpMyStreet.Utils.Enums
         AgeUKSouthKentCoast = -11,
         AgeUKFavershamAndSittingbourne = -13,
         LincolnshireVolunteers = -12,
-        LouthPCN = -14,
+        EastLindseyPCN = -14,
         GranthamPCN = -15,
         SouthLincolnPCN = -16,
         StamfordPCN = -17,

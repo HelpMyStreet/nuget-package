@@ -23,7 +23,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.AgeUKSouthKentCoast => "SKC",
                 Groups.AgeUKFavershamAndSittingbourne => "FAS",
                 Groups.LincolnshireVolunteers => "LCN",
-                Groups.LouthPCN => "LTH",
+                Groups.EastLindseyPCN => "EL",
                 Groups.GranthamPCN => "GRA",
                 Groups.SouthLincolnPCN => "SLN",
                 Groups.StamfordPCN => "SFD",

@@ -13,5 +13,6 @@ namespace HelpMyStreet.Utils.Models
         public bool ShiftsEnabled { get; set; }
         public bool TasksEnabled { get; set; }
         public bool HomepageEnabled { get; set; }
+        public string GeographicName { get; set; }
     }
 }

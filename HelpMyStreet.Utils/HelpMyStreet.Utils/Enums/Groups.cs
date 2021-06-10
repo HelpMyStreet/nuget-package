@@ -32,6 +32,7 @@ namespace HelpMyStreet.Utils.Enums
         RichardHerrodCentre = -28,
         KingsMeadowCampus = -29,
         ForestRecreationGround = -30,
-        Southwell = -31
+        Southwell = -31,
+        ApexBankStaff = -32
     }
 }

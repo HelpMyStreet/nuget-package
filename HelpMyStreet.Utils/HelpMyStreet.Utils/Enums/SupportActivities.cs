@@ -79,6 +79,8 @@ namespace HelpMyStreet.Utils.Enums
 
         BinDayAssistance = 30,
 
-        Covid19Help = 31
+        Covid19Help = 31,
+
+        BankStaffVaccinator = 32
     }
 }

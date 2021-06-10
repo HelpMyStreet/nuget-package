@@ -41,6 +41,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.KingsMeadowCampus => "KMC",
                 Groups.ForestRecreationGround => "FRG",
                 Groups.Southwell => "SW",
+                Groups.ApexBankStaff => "ABS",
                 _ => throw new ArgumentException(message: $"Unexpected Group: {groups}", paramName: nameof(groups))
             };
         }

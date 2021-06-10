@@ -38,6 +38,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.BinDayAssistance => "bin day assistance",
                 SupportActivities.Covid19Help => "covid 19 help",
                 SupportActivities.DigitalSupport => "digital support",
+                SupportActivities.BankStaffVaccinator => "bank staff vaccinator",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -73,6 +74,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.BinDayAssistance => "Bin Day Assistance",
                 SupportActivities.Covid19Help => "Covid 19 Help",
                 SupportActivities.DigitalSupport => "Digital Support",
+                SupportActivities.BankStaffVaccinator => "Bank Staff Vaccinator",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -110,6 +112,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.BinDayAssistance => "1 bin day assistance completed",
                     SupportActivities.Covid19Help => "1 covid 19 help completed",
                     SupportActivities.DigitalSupport => "1 digital support completed",
+                    SupportActivities.BankStaffVaccinator => "1 bank staff vaccinator completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -144,6 +147,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.BinDayAssistance => $"{count} bin day assistance completed",
                     SupportActivities.Covid19Help => $"{count} covid 19 help completed",
                     SupportActivities.DigitalSupport => $"{count} digital support completed",
+                    SupportActivities.BankStaffVaccinator => $"{count} bank staff vaccinator completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -180,6 +184,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.BinDayAssistance => false,
                 SupportActivities.Covid19Help => false,
                 SupportActivities.DigitalSupport => false,
+                SupportActivities.BankStaffVaccinator => false,
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using HelpMyStreet.Utils.Enums;
 
 namespace HelpMyStreet.Utils.Extensions
@@ -254,6 +255,7 @@ namespace HelpMyStreet.Utils.Extensions
             return activity switch
             {
                 SupportActivities.VaccineSupport => Enums.RequestType.Shift,
+                SupportActivities.BankStaffVaccinator => Enums.RequestType.Shift,
                 _ => Enums.RequestType.Task
             };
         }   

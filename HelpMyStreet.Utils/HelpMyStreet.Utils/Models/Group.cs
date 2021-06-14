@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelpMyStreet.Utils.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,5 +15,6 @@ namespace HelpMyStreet.Utils.Models
         public bool TasksEnabled { get; set; }
         public bool HomepageEnabled { get; set; }
         public string GeographicName { get; set; }
+        public GroupTypes GroupType { get; set; }
     }
 }

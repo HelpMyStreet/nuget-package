@@ -11,5 +11,6 @@ namespace HelpMyStreet.Utils.Enums
         ParentGroup = 2,
         SiblingsAndParentGroup = 3,
         GenericGroup = 4,
+        ThisGroupAndGenericGroup = 5
     }
 }

@@ -8,6 +8,7 @@ namespace HelpMyStreet.Utils.Enums
     {
         Local = 0,
         Regional = 1,
-        National = 2
+        National = 2,
+        HelpMyStreet = 3
     }
 }

@@ -8,6 +8,7 @@ namespace HelpMyStreet.Utils.Models
     public class Group
     {
         public int GroupId { get; set; }
+        public string ShortName { get; set; }
         public string FriendlyName { get; set; }
         public string GroupName { get; set; }
         public string GroupKey { get; set; }

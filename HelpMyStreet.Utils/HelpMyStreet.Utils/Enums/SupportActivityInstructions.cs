@@ -57,6 +57,7 @@
         Lincoln_Stamford_VaccineSupport = 53,
         MansfieldCVS_VaccineSupport = 54,
         EastLindsey_VaccineSupport = 55,
-        APEXBank_BankStaffVaccinator = 56
+        APEXBank_BankStaffVaccinator = 56,
+        Southwell_Prescriptions = 57
     }
 }

@@ -20,6 +20,7 @@ namespace HelpMyStreet.Utils.Models
         public GroupTypes GroupType { get; set; }
         public List<MapDetails> Maps { get; set; }
         public string LinkURL { get; set; }
+        public string JoinGroupPopUpDetail { get; set; }
 
     }
 }

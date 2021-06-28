@@ -7,7 +7,6 @@
         DIY = 3,
         FtLOS = 4,
         FaceMasks = 5,
-        HLP_CommunityConnector = 6,
         Ruddington = 7,
         AgeUKWirral = 8,
         AgeUKNottsBalderton = 9,

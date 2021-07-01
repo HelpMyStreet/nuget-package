@@ -13,6 +13,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.Generic => "HMS",
                 Groups.FTLOS => "FTL",
                 Groups.AgeUKLSL => "LSL",
+                Groups.HLP => "HLP",
                 Groups.Tankersley => "TAP",
                 Groups.Ruddington => "RUD",
                 Groups.AgeUKWirral => "WIR",

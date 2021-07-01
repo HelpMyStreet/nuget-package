@@ -6,6 +6,7 @@
         ThirdPartyCheck = 2,
         Training = 3,
         References = 4,
-        PolicyAgreement = 5
+        PolicyAgreement = 5,
+        BankDetails = 6
     }
 }

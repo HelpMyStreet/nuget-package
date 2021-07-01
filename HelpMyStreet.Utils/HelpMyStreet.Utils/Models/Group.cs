@@ -21,8 +21,5 @@ namespace HelpMyStreet.Utils.Models
         public List<MapDetails> Maps { get; set; }
         public string LinkURL { get; set; }
         public string JoinGroupPopUpDetail { get; set; }
-        public int OpenShiftRadius { get; set; }
-        public int OpenRequestsRadius { get; set; }
-
     }
 }

@@ -2,8 +2,8 @@
 
 namespace HelpMyStreet.Contracts.RequestService.Response
 {
-    public class LogShowFullPostCodeResponse
+    public class LogRequestEventResponse
     {
-        public UpdateJobOutcome Outcome { get; set; }
+        public bool Success { get; set; }
     }
 }

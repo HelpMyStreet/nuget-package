@@ -6,10 +6,11 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.RequestService.Request
 {
-    public class LogShowFullPostCodeRequest : IRequest<LogShowFullPostCodeResponse>
+    public class LogRequestEventRequest : IRequest<LogRequestEventResponse>
     {
         public int UserID { get; set; }
-        public int JobID { get; set; }
-        public DateTime Timestamp { get; set; }
+        public int? JobID { get; set; }
+        public int RequestID { get; set; }
+        public RequestEventRequest RequestEventRequest { get; set; }
     }
 }

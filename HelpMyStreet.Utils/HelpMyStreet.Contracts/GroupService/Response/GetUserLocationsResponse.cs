@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using HelpMyStreet.Utils.Enums;
+using System.Collections.Generic;
 
 namespace HelpMyStreet.Contracts.GroupService.Response
 {
     public class GetUserLocationsResponse
     {
-        public List<int> Locations { get; set; }
+        public List<Location> Locations { get; set; }
     }
 }

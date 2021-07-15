@@ -18,5 +18,17 @@ namespace HelpMyStreet.Utils.Extensions
                 _ => throw new ArgumentException($"Unexpected RequestRoles value: {role}", nameof(role))
             };
         }
+
+        public static string FriendlyName(this RequestRoles role)
+        {
+            return role switch
+            {
+                RequestRoles.Recipient => "Recipient",
+                RequestRoles.Requestor => "Requestor",
+                RequestRoles.Volunteer => "Volunteer",
+                RequestRoles.GroupAdmin => "Group Admin",
+                _ => throw new ArgumentException($"Unexpected RequestRoles value: {role}", nameof(role))
+            };
+        }
     }
 }

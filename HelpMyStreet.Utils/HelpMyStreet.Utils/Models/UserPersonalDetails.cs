@@ -4,20 +4,11 @@ using System.Text;
 
 namespace HelpMyStreet.Utils.Models
 {
-    public class UserPersonalDetails
+    public class UserPersonalDetails : PersonalDetails
     {
         public User User { get; set; }
-
-        // Supplied in registration step 1
-        public string EmailAddress { get; set; }
-
-
-        // Supplied in registration step 2
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public Address Address { get; set; }
-        public string MobilePhone { get; set; }
-        public string OtherPhone { get; set; }
+        public string MobilePhone { get => MobileNumber; set => MobileNumber = value; }
+        public string OtherPhone { get => OtherNumber; set => OtherNumber = value; }
         public DateTime? DateOfBirth { get; set; }
 
         // Defaulted to FirstName following step 2
@@ -26,5 +17,23 @@ namespace HelpMyStreet.Utils.Models
 
         // Supplied in registration step 3
         public bool? UnderlyingMedicalCondition { get; set; }
+
+        public UserPersonalDetails GetDPSafeUserPersonalDetails (List<Enums.PersonalDetailsComponent> personalDetailsComponents)
+        {
+            var pDetails = GetDPSafePersonalDetails(personalDetailsComponents);
+            return new UserPersonalDetails()
+            {
+                Address = pDetails.Address,
+                EmailAddress = pDetails.EmailAddress,
+                DateOfBirth = DateOfBirth,
+                DisplayName = DisplayName,
+                FirstName = pDetails.FirstName,
+                LastName = pDetails.LastName,
+                MobileNumber = pDetails.MobileNumber,
+                OtherNumber = pDetails.OtherNumber,
+                UnderlyingMedicalCondition = UnderlyingMedicalCondition,
+                User = User
+            };
+        }
     }
 }

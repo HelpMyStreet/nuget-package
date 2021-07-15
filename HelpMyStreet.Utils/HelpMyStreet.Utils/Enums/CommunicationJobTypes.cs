@@ -18,5 +18,8 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         NewTaskPendingApprovalNotification = 10,
         RequestorTaskConfirmation = 11,
         TaskDetail = 12,
+        SendNewRequestNotification = 13,
+        SendShiftReminder = 14,
+        GroupWelcome = 15
     }
 }

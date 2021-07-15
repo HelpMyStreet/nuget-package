@@ -12,6 +12,7 @@ namespace HelpMyStreet.Utils.Models
         public float? SupportRadiusMiles { get; set; }
         public bool? SupportVolunteersByPhone { get; set; }
         public bool? UnderlyingMedicalCondition { get; set; }
+        public RegistrationFormVariant RegistrationFormVariant { get; set; }
 
     }
 }

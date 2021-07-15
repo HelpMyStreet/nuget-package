@@ -5,6 +5,7 @@
         Before = 1,
         On = 2,
         SpecificStartTime = 3,
-        SpecificStartAndEndTimes = 4
+        SpecificStartAndEndTimes = 4,
+        ASAP = 5,
     }
 }

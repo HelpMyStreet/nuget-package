@@ -15,7 +15,15 @@ namespace HelpMyStreet.Contracts.RequestService.Extensions
                 .OrderBy(j => j.DueDate.Date)
                 .ThenByDescending(j => j.IsHealthCritical)
                 .ThenBy(j => j.DistanceInMiles);
-        }  
+        }
 
+        public static IOrderedEnumerable<JobSummary> OrderOpenJobsForDisplay(this IEnumerable<JobSummary> input)
+        {
+            return
+              input
+                .OrderBy(j => j.DueDate.Date)
+                .ThenByDescending(j => j.IsHealthCritical)
+                .ThenBy(j => j.DistanceInMiles);
+        }
     }
 }

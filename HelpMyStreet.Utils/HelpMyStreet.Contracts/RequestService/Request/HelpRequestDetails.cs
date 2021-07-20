@@ -20,20 +20,18 @@ namespace HelpMyStreet.Contracts.RequestService.Request
             }
         }
 
-        public bool MultiVolunteer
+        public int VolunteerCount
         {
             get
             {
-                bool multi = false;
+                int count = 1;
                 var numberOfSlotsQuestion = NewJobsRequest.Jobs.First().Questions?.Where(x => x.Id == (int)Questions.NumberOfSlots).FirstOrDefault();
 
                 if (numberOfSlotsQuestion != null)
                 {
-                    int numberOfSlots = Convert.ToInt32(numberOfSlotsQuestion.Answer);
-
-                    multi = numberOfSlots > 1;
+                    count  = Convert.ToInt32(numberOfSlotsQuestion.Answer);
                 }
-                return multi;
+                return count;
                    
             }
         }

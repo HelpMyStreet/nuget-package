@@ -26,6 +26,8 @@
         MeadowsCommunityHelpers_RequestSubmitter = 23,
         Mansfield_CVS = 24,
         Soutwell_Public = 25,
-        ApexBankStaff_RequestSubmitter = 26
+        ApexBankStaff_RequestSubmitter = 26,
+        AgeUKMidMersey_Public = 27,
+        AgeUKMidMersey_RequestSubmitter = 28,
     }
 }

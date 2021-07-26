@@ -81,6 +81,8 @@ namespace HelpMyStreet.Utils.Enums
 
         Covid19Help = 31,
 
-        BankStaffVaccinator = 32
+        BankStaffVaccinator = 32,
+
+        SkillShare = 33
     }
 }

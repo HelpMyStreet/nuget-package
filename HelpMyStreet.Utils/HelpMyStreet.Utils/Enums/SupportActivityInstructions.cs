@@ -58,6 +58,8 @@
         MansfieldCVS_VaccineSupport = 54,
         EastLindsey_VaccineSupport = 55,
         APEXBank_BankStaffVaccinator = 56,
-        Southwell_Prescriptions = 57
+        Southwell_Prescriptions = 57,
+        AgeUKMidMersey_Befriending = 58,
+        AgeUKMidMersey_SkillShare = 59
     }
 }

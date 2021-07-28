@@ -18,6 +18,7 @@ namespace HelpMyStreet.Utils.Extensions
                 RequestHelpFormVariant.Sandbox_RequestSubmitter => false,
                 RequestHelpFormVariant.AgeUKWirral => false,
                 RequestHelpFormVariant.VitalsForVeterans => false,
+                RequestHelpFormVariant.AgeUKMidMersey_RequestSubmitter => false,
                 _ => true
             };
         }

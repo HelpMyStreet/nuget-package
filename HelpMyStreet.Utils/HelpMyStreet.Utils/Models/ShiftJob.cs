@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HelpMyStreet.Utils.Models
 {
-    public class ShiftJob : JobBasic
+    public class ShiftJob : JobBasic, IContainsLocation
     {
         public Location Location { get; set; }        
         public DateTime StartDate { get; set; }
@@ -16,6 +16,11 @@ namespace HelpMyStreet.Utils.Models
             {
                 return StartDate.AddMinutes(ShiftLength);
             }
+        }
+
+        public LocationDetails GetLocationDetails()
+        {
+            return new LocationDetails() { Location = Location };
         }
     }
 }

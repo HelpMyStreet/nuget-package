@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HelpMyStreet.Utils.Models
 {
-    public class LocationDetails
+    public class LocationDetails : IContainsLocation
     {
         public Location Location { get; set; }
         public string Name { get; set; }
@@ -14,5 +14,10 @@ namespace HelpMyStreet.Utils.Models
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
         public LocationInstructions LocationInstructions { get; set; }
+
+        public LocationDetails GetLocationDetails()
+        {
+            return this;
+        }
     }
 }

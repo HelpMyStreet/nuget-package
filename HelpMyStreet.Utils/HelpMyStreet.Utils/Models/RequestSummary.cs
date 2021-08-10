@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HelpMyStreet.Utils.Models
 {
-    public class RequestSummary
+    public class RequestSummary : IContainsLocation
     {
         public Shift Shift { get; set; }
         public List<JobSummary> JobSummaries { get; set; }
@@ -44,6 +44,22 @@ namespace HelpMyStreet.Utils.Models
             }
              else { 
                 return "";
+            }
+        }
+
+        public LocationDetails GetLocationDetails()
+        {
+            if (JobSummaries.Count() > 0)
+            {
+                return JobSummaries.First().GetLocationDetails();
+            }
+            else if (ShiftJobs.Count > 0)
+            {
+                return ShiftJobs.First().GetLocationDetails();
+            }
+            else
+            {
+                return new LocationDetails();
             }
         }
     }

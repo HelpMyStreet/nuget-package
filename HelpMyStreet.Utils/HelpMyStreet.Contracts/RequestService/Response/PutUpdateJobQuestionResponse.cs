@@ -4,6 +4,6 @@ namespace HelpMyStreet.Contracts.RequestService.Response
 {
     public class PutUpdateJobQuestionResponse
     {
-        public UpdateJobStatusOutcome Outcome { get; set; }
+        public UpdateJobOutcome Outcome { get; set; }
     }
 }

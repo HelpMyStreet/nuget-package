@@ -1,10 +1,18 @@
 ﻿using System;
 using HelpMyStreet.Utils.Models;
 using HelpMyStreet.Utils.Enums;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace HelpMyStreet.Utils.Extensions
 {
     public static class JobSummaryQuestionExtensions
     {
+        public static IEnumerable<Question> QuestionsToDisplay(this JobSummary jobSummary, bool userIsAdmin, bool userIsAllocatedToTask)
+        {
+            return jobSummary.Questions.Where(q => q.ShowOnTaskManagement(userIsAdmin, userIsAllocatedToTask));
+        }
+
         public static bool ShowOnTaskManagement(this Question question, bool userIsAdmin, bool userIsAllocatedToTask)
         {
             if (string.IsNullOrEmpty(question.Answer) && !userIsAdmin)

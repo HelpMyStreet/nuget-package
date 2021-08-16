@@ -7,6 +7,11 @@ namespace HelpMyStreet.Utils.Extensions
     {
         public static bool ShowOnTaskManagement(this Question question, bool userIsAdmin, bool userIsAllocatedToTask)
         {
+            if (string.IsNullOrEmpty(question.Answer) && !userIsAdmin)
+            {
+                return false;
+            }
+
             return question.Id switch
             {
                 (int)Questions.SensitiveInformation => userIsAdmin || userIsAllocatedToTask,

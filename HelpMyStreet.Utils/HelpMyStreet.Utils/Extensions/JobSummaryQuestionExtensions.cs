@@ -8,9 +8,9 @@ namespace HelpMyStreet.Utils.Extensions
 {
     public static class JobSummaryQuestionExtensions
     {
-        public static IEnumerable<Question> QuestionsToDisplay(this JobSummary jobSummary, bool userIsAdmin, bool userIsAllocatedToTask)
+        public static IOrderedEnumerable<Question> QuestionsToDisplay(this JobSummary jobSummary, bool userIsAdmin, bool userIsAllocatedToTask)
         {
-            return jobSummary.Questions.Where(q => q.ShowOnTaskManagement(userIsAdmin, userIsAllocatedToTask));
+            return jobSummary.Questions.Where(q => q.ShowOnTaskManagement(userIsAdmin, userIsAllocatedToTask)).OrderBy(q => q.TaskManagementDisplayOrder());
         }
 
         public static bool ShowOnTaskManagement(this Question question, bool userIsAdmin, bool userIsAllocatedToTask)

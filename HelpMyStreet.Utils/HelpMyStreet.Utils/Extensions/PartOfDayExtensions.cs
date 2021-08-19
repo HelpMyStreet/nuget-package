@@ -5,22 +5,15 @@ namespace HelpMyStreet.Utils.Extensions
 {
     public static class PartOfDayExtensions
     {
-        public static (int, int) GetStartTimeBetweenHours(this PartOfDay partOfDay)
+        public static bool CheckStartTimeWithin(this PartOfDay partOfDay, DateTime dateTime)
         {
             return partOfDay switch
             {
-                PartOfDay.Morning => (6, 11),
-                PartOfDay.Afternoon => (12, 18),
-                PartOfDay.Night => (18, 23),
+                PartOfDay.Morning => dateTime.Hour >= 4 && dateTime.Hour < 12,
+                PartOfDay.Afternoon => dateTime.Hour >= 12 && dateTime.Hour < 18,
+                PartOfDay.Night => dateTime.Hour < 4 || dateTime.Hour >= 18,
                 _ => throw new ArgumentException("Unexpected Part Of Day")
             };
         }
-
-        public static bool CheckStartTimeWithin(this PartOfDay partOfDay, DateTime dateTime)
-        {
-            var hours = partOfDay.GetStartTimeBetweenHours();
-            return hours.Item1 <= dateTime.Hour && hours.Item2 >= dateTime.Hour;
-        }
-        
     }
 }

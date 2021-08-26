@@ -158,34 +158,104 @@ namespace HelpMyStreet.UnitTests
             DateTime dateTimeDue = _systemClockMock.Object.UtcNow.DateTime.AddDays(12);
             string result = _classUnderTest.FriendlyPastDate(dateTimeDue);
 
-            Assert.AreEqual($"on {dateTimeDue:dd/MM/yyyy}", result);
+            Assert.AreEqual($"on {dateTimeDue:dd/MM/yy}", result);
         }
 
         [Test]
-        public void SuffixTest()
+        public void ToUKFromUTCTime_Summer()
         {
-            DateTime dateTime = new DateTime(2000, 01, 01);
-            string result = DateTimeExtensions.ToString(dateTime, "dnn", true);
-
-            Assert.AreEqual("1st", result);
+            DateTime dateTime = new DateTime(2000, 8, 1, 10, 0, 0);
+            DateTime result = dateTime.ToUKFromUTCTime();
+            Assert.AreEqual(dateTime.AddHours(1), result);
         }
 
         [Test]
-        public void SuffixTest_Capital()
+        public void ToUKFromUTCTime_Winter()
         {
-            DateTime dateTime = new DateTime(2000, 01, 22);
-            string result = DateTimeExtensions.ToString(dateTime, "dNN", true);
-
-            Assert.AreEqual("22ND", result);
+            DateTime dateTime = new DateTime(2000, 1, 1, 10, 0, 0);
+            DateTime result = dateTime.ToUKFromUTCTime();
+            Assert.AreEqual(dateTime, result);
         }
 
         [Test]
-        public void SuffixTest_11th()
+        public void ToUTCFromUKTime_Summer()
         {
-            DateTime dateTime = new DateTime(2009, 12, 11);
-            string result = DateTimeExtensions.ToString(dateTime, "ddnn MMMM yyyy", true);
+            DateTime dateTime = new DateTime(2000, 8, 1, 10, 0, 0);
+            DateTime result = dateTime.ToUTCFromUKTime();
+            Assert.AreEqual(dateTime.AddHours(-1), result);
+        }
 
-            Assert.AreEqual("11th December 2009", result);
+        [Test]
+        public void ToUTCFromUKTime_Winter()
+        {
+            DateTime dateTime = new DateTime(2000, 1, 1, 10, 0, 0);
+            DateTime result = dateTime.ToUTCFromUKTime();
+            Assert.AreEqual(dateTime, result);
+        }
+
+
+        [Test]
+        public void ToLongDate()
+        {
+            DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateFormat);
+            Assert.AreEqual("Friday, 1st January", result);
+        }
+
+        [Test]
+        public void ToLongDateMarkdown()
+        {
+            DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateHTMLFormat);
+            Assert.AreEqual("Friday, 1<sup>st</sup> January", result);
+        }
+
+        [Test]
+        public void ToShortDate()
+        {
+            DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.ShortDateFormat);
+            Assert.AreEqual("01/01/21", result);
+        }
+
+        [Test]
+        public void ToAMTime()
+        {
+            DateTime dateTime = new DateTime(2000, 1, 10, 11, 30, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.TimeFormat);
+            Assert.AreEqual("11:30 am", result);
+        }
+
+        [Test]
+        public void ToPMTime()
+        {
+            DateTime dateTime = new DateTime(2000, 1, 10, 14, 30, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.TimeFormat);
+            Assert.AreEqual("2:30 pm", result);
+        }
+
+        [Test]
+        public void ToLongDateTime()
+        {
+            DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateTimeFormat);
+            Assert.AreEqual("Friday, 1st January 10:00 am", result);
+        }
+
+        [Test]
+        public void ToLongDateTimeMarkdown()
+        {
+            DateTime dateTime = new DateTime(2021, 1, 2, 10, 0, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateTimeHTMLFormat);
+            Assert.AreEqual("Saturday, 2<sup>nd</sup> January 10:00 am", result);
+        }
+
+        [Test]
+        public void ToShortDateTime()
+        {
+            DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.ShortDateTimeFormat);
+            Assert.AreEqual("01/01/21 10:00 am", result);
         }
     }
 }

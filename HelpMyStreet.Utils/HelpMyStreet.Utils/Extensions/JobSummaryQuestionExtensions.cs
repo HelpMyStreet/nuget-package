@@ -1,25 +1,37 @@
 ﻿using System;
 using HelpMyStreet.Utils.Models;
 using HelpMyStreet.Utils.Enums;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace HelpMyStreet.Utils.Extensions
 {
     public static class JobSummaryQuestionExtensions
     {
-        public static bool ShowOnTaskManagement(this Question question, bool showSensitiveData)
+        public static IOrderedEnumerable<Question> QuestionsToDisplay(this JobSummary jobSummary, bool userIsAdmin, bool userIsAllocatedToTask)
         {
+            return jobSummary.Questions.Where(q => q.ShowOnTaskManagement(userIsAdmin, userIsAllocatedToTask)).OrderBy(q => q.TaskManagementDisplayOrder());
+        }
+
+        public static bool ShowOnTaskManagement(this Question question, bool userIsAdmin, bool userIsAllocatedToTask)
+        {
+            if (string.IsNullOrEmpty(question.Answer) && !userIsAdmin)
+            {
+                return false;
+            }
+
             return question.Id switch
             {
-                (int)Questions.FaceMask_Amount => true,
-                (int)Questions.FaceMask_Recipient => true,
-                (int)Questions.FaceMask_Cost => true,
-                (int)Questions.SupportRequesting => true,
-                (int)Questions.FaceMask_SpecificRequirements => true,
-                (int)Questions.CommunicationNeeds => true,
-                (int)Questions.AnythingElseToTellUs => true,
-                (int)Questions.Shopping_List => true,
-                (int)Questions.Prescription_PharmacyAddress => true,
-                (int)Questions.SensitiveInformation => showSensitiveData,
-                _ => false
+                (int)Questions.SensitiveInformation => userIsAdmin || userIsAllocatedToTask,
+                (int)Questions.IsHealthCritical => false,
+                (int)Questions.WillYouCompleteYourself => false,
+                (int)Questions.FtlosDonationInformation => false,
+                (int)Questions.AgeUKReference => false,
+                (int)Questions.Location => false,
+                (int)Questions.NumberOfSlots => false,
+                (int)Questions.SuppressRecipientPersonalDetails => userIsAdmin,
+                (int)Questions.RecipientAge => userIsAdmin,
+                _ => true
             };
         }
 
@@ -34,6 +46,7 @@ namespace HelpMyStreet.Utils.Extensions
                 (int)Questions.Shopping_List => "Shopping List",
                 (int)Questions.Prescription_PharmacyAddress => "Pharmacy Address",
                 (int)Questions.SensitiveInformation => "Further Details",
+                (int)Questions.RecipientAge => "Recipient Age",
                 _ => question.Name
             };
         }
@@ -52,7 +65,7 @@ namespace HelpMyStreet.Utils.Extensions
                 (int)Questions.CommunicationNeeds => 98,
                 (int)Questions.AnythingElseToTellUs => 99,
                 (int)Questions.SensitiveInformation => 100,
-                _ => 0
+                _ => 50
             };
         }
     }

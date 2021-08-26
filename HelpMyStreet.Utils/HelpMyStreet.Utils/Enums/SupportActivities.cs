@@ -52,19 +52,37 @@ namespace HelpMyStreet.Utils.Enums
         // Age UK Wirral - Getting help in an emergency during a cold snap
 
         Transport = 16,
-        //Transport Details,
+        //Transport Details,        
 
-        FrontOfHouseAdmin = 17,
-        //Front of House Admin,
+        MealsToYourDoor = 21,
+        //MealsToYourDoor,
 
-        BackOfficeAdmin = 18,
-        //Back Office Admin,
+        VolunteerSupport = 22,
+        //VolunteerSupport,
 
-        HealthcareAssistant = 19,
-        //Health care assistant,
+        MealtimeCompanion = 23,
+        //MealtimeCompanion,
 
-        Steward = 20,
-        //Steward,
+        VaccineSupport = 24,
+        //VaccineSupport
 
+        EmergencySupport = 25,
+        //EmergencySupport
+
+        InPersonBefriending = 26,
+
+        PracticalSupport = 27,
+
+        VolunteerInduction = 28,
+
+        DigitalSupport = 29,
+
+        BinDayAssistance = 30,
+
+        Covid19Help = 31,
+
+        BankStaffVaccinator = 32,
+
+        SkillShare = 33
     }
 }

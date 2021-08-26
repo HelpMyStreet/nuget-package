@@ -1,4 +1,5 @@
 ﻿using HelpMyStreet.Utils.Enums;
+using HelpMyStreet.Utils.Extensions;
 using Microsoft.Extensions.Internal;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace HelpMyStreet.Utils.Utils
                 int i when i <= 6 => $"on {dueDate.DayOfWeek}",
                 int i when i <= 13 => $"next {dueDate.DayOfWeek}",
                 int i when i >= 14 => $"in {i / 7} weeks",
-                _ => $"on {dateTimeDue:dd/MM/yyyy}"
+                _ => $"on {dateTimeDue.FormatDate(DateTimeFormat.ShortDateFormat, false)}"
             });
         }
 
@@ -50,7 +51,7 @@ namespace HelpMyStreet.Utils.Utils
                 int i when i < -1 => $"on {dueDate.DayOfWeek}",
                 -1 => "yesterday",
                 0 => "today",
-                _ => $"on {dateTimeDue:dd/MM/yyyy}"
+                _ => $"on {dateTimeDue.FormatDate(DateTimeFormat.ShortDateFormat, false)}"
             });
         }
 
@@ -65,7 +66,7 @@ namespace HelpMyStreet.Utils.Utils
 
             if (dueDateType == DueDateType.On)
             {
-                return $"Required on {dateTimeDue:dd/MM/yyyy}";
+                return $"Required on {dateTimeDue.FormatDate(DateTimeFormat.ShortDateFormat, false)}";
             }
             else
             {
@@ -73,7 +74,7 @@ namespace HelpMyStreet.Utils.Utils
                 {
                     int i when i < 14 => "Due soon",
                     int i when i >= 14 => $"Due in {i / 7} weeks",
-                    _ => $"Due on {dateTimeDue:dd/MM/yyyy}"
+                    _ => $"Due on {dateTimeDue.FormatDate(DateTimeFormat.ShortDateFormat, false)}"
                 });
             }
         }

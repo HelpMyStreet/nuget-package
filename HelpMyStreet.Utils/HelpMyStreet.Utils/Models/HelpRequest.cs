@@ -8,6 +8,8 @@ namespace HelpMyStreet.Utils.Models
 {
     public class HelpRequest
     {
+        public Guid? ParentGuid { get; set; }
+        public Guid Guid { get; set; }
         public RequestorType RequestorType { get; set; }
         public bool ReadPrivacyNotice { get; set; }
         public bool AcceptedTerms { get; set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace HelpMyStreet.Utils.Models
 {
-    public class JobSummary : JobHeader
+    public class JobSummary : JobHeader, IContainsLocation
     {     
         public string Details { get; set; }
         public List<Question> Questions { get; set; }

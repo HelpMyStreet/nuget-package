@@ -15,5 +15,15 @@ namespace HelpMyStreet.Utils.Extensions
                 _ => role.ToString()
             };
         }
+
+        public static bool IsAdmin(this GroupRoles role)
+        {
+            return role switch
+            {
+                GroupRoles.Member => false,
+                GroupRoles.Volunteer => false,
+                _ => true
+            };
+        }
     }
 }

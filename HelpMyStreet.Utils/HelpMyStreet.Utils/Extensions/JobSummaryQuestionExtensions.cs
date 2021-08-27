@@ -68,5 +68,18 @@ namespace HelpMyStreet.Utils.Extensions
                 _ => 50
             };
         }
+
+        public static bool AnswerMayBeEdited(this Question question)
+        {
+            return question.Id switch
+            {
+                (int)Questions.IsHealthCritical => false,
+                (int)Questions.Location => false,
+                (int)Questions.NumberOfSlots => false,
+                (int)Questions.SuppressRecipientPersonalDetails => false,
+                (int)Questions.WillYouCompleteYourself => false,
+                _ => true
+            };
+        }
     }
 }

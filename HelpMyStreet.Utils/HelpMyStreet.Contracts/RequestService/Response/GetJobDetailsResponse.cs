@@ -16,7 +16,7 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         public RequestPersonalDetails Recipient { get; set; }
         public List<StatusHistory> History { get; set; }
         public List<UpdateHistory> UpdateHistory { get; set; }
-        public int? LastUpdatedBy 
+        public int? LastUpdatedByUserID
         { 
             get
             {

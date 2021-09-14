@@ -34,6 +34,7 @@ namespace HelpMyStreet.Utils.Enums
         ForestRecreationGround = -30,
         Southwell = -31,
         ApexBankStaff = -32,
-        AgeUKMidMersey = -33
+        AgeUKMidMersey = -33,
+        BostonGNS = -34
     }
 }

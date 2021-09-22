@@ -29,5 +29,7 @@
         ApexBankStaff_RequestSubmitter = 26,
         AgeUKMidMersey_Public = 27,
         AgeUKMidMersey_RequestSubmitter = 28,
+        BostonGNS_Public = 29,
+        BostonGNS_RequestSubmitter = 30,
     }
 }

@@ -23,5 +23,7 @@ namespace HelpMyStreet.Utils.Models
         public int? VolunteerUserId { get; set; }
         public int ReferringGroupId { get; set; }
         public string Source { get; set; }
+        public string Language { get; set; }
+
     }
 }

@@ -47,5 +47,25 @@ namespace HelpMyStreet.Utils.Extensions
                 _ => throw new ArgumentException(message: $"Unexpected Group: {groups}", paramName: nameof(groups))
             };
         }
+
+        public static bool IsEnabled(this Groups groups)
+        {
+            return groups switch
+            {
+                Groups.GranthamPCN => false,
+                Groups.SouthLincolnPCN => false,
+                Groups.SpilsbyPCN => false,
+                Groups.BostonPCN => false,
+                Groups.LincolnPortlandPCN => false,
+                Groups.MeadowsCommunityHelpers => false,
+                Groups.MansfieldCVS => false,
+                Groups.MansfieldWickes => false,
+                Groups.GamstonCommunityHall => false,
+                Groups.RichardHerrodCentre => false,
+                Groups.KingsMeadowCampus => false,
+                Groups.ForestRecreationGround => false,
+                _ => true
+            };
+        }
     }
 }

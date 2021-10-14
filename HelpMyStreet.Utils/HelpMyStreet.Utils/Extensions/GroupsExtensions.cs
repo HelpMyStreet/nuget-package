@@ -52,6 +52,7 @@ namespace HelpMyStreet.Utils.Extensions
         {
             return groups switch
             {
+                Groups.HLP => false,
                 Groups.GranthamPCN => false,
                 Groups.SouthLincolnPCN => false,
                 Groups.SpilsbyPCN => false,

@@ -65,6 +65,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.RichardHerrodCentre => false,
                 Groups.KingsMeadowCampus => false,
                 Groups.ForestRecreationGround => false,
+                Groups.BostonGNS => false,
                 _ => true
             };
         }

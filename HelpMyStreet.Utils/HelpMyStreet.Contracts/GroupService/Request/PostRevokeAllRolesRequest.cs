@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HelpMyStreet.Contracts.GroupService.Request
 {
-    public class PostRevokeAllRolesRequest : IRequest<PostRevokeRoleResponse>
+    public class PostRevokeAllRolesRequest : IRequest<PostRevokeAllRolesResponse>
     {
         [Required]
         public int? GroupID { get; set; }

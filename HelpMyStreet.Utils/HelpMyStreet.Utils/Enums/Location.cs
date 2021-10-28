@@ -16,6 +16,7 @@
         GamstonCommunityHall = -12,
         RichardHerrodCentre = -13,
         KingsMeadowCampus = -14,
-        ForestRecreationGround = -15
+        ForestRecreationGround = -15,
+        RichmondMedicalCentre = -16
     }
 }

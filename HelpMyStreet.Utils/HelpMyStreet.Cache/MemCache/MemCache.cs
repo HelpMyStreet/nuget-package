@@ -38,7 +38,7 @@ namespace HelpMyStreet.Cache.MemCache
         }
 
         /// <inheritdoc />>
-        public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken, NotInCacheBehaviour notInCacheBehaviour, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
+        public async Task<CachedItemWrapper<T>> GetCachedDataInWrapperAsync(Func<CancellationToken, Task<T>> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken, NotInCacheBehaviour notInCacheBehaviour, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
         {
             whenDataIsStaleDelegate = whenDataIsStaleDelegate ?? _defaultWhenDataIsStaleDelegate;
 
@@ -65,7 +65,7 @@ namespace HelpMyStreet.Cache.MemCache
                     }
                 }
 
-                return memoryResultObject.Content;
+                return memoryResultObject;
             }
 
             if (notInCacheBehaviour == NotInCacheBehaviour.WaitForData)
@@ -79,10 +79,10 @@ namespace HelpMyStreet.Cache.MemCache
 #pragma warning restore 4014
             }
 
-            return default;
+            return new CachedItemWrapper<T>(default, DateTime.MinValue);
         }
 
-        private async Task<T> RecacheItemInMemoryCacheAsync(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
+        private async Task<CachedItemWrapper<T>> RecacheItemInMemoryCacheAsync(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
         {
             return await _collapserPolicy.ExecuteAsync(async (context, token) =>
             {
@@ -94,7 +94,7 @@ namespace HelpMyStreet.Cache.MemCache
                 catch (Exception ex)
                 {
                     _logger.LogError($"Error executing data getter for key: {key}", ex);
-                    return default(T);
+                    return default;
                 }
 
                 DateTimeOffset timeToReset = whenDataIsStaleDelegate.Invoke(_mockableDateTime.UtcNow);
@@ -104,7 +104,7 @@ namespace HelpMyStreet.Cache.MemCache
 
                 _pollySyncCacheProvider.Put(key, itemInWrapper, ttl);
 
-                return data;
+                return itemInWrapper;
 
 
             }, new Context(key), cancellationToken);
@@ -119,9 +119,17 @@ namespace HelpMyStreet.Cache.MemCache
             return false;
         }
 
+        /// <inheritdoc />>
         public async Task<T> RefreshDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
         {
-            return await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate ?? _defaultWhenDataIsStaleDelegate);
+            var itemInWrapper = await RecacheItemInMemoryCacheAsync(dataGetter, key, cancellationToken, whenDataIsStaleDelegate ?? _defaultWhenDataIsStaleDelegate);
+            return itemInWrapper.Content;
+        }
+
+        /// <inheritdoc />>
+        public CachedItemWrapper<T> GetCachedDataInWrapper(Func<CancellationToken, T> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken, NotInCacheBehaviour notInCacheBehaviour, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate)
+        {
+            return GetCachedDataInWrapperAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, refreshBehaviour, cancellationToken, notInCacheBehaviour, whenDataIsStaleDelegate).Result;
         }
 
         /// <inheritdoc />>
@@ -130,5 +138,11 @@ namespace HelpMyStreet.Cache.MemCache
             return GetCachedDataAsync(token => Task.FromResult(dataGetter.Invoke(token)), key, refreshBehaviour, cancellationToken, notInCacheBehaviour, whenDataIsStaleDelegate).Result;
         }
 
+        /// <inheritdoc />>
+        public async Task<T> GetCachedDataAsync(Func<CancellationToken, Task<T>> dataGetter, string key, RefreshBehaviour refreshBehaviour, CancellationToken cancellationToken, NotInCacheBehaviour notInCacheBehaviour = NotInCacheBehaviour.WaitForData, Func<DateTimeOffset, DateTimeOffset> whenDataIsStaleDelegate = null)
+        {
+            var itemInWrapper = await GetCachedDataInWrapperAsync(dataGetter, key, refreshBehaviour, cancellationToken, notInCacheBehaviour, whenDataIsStaleDelegate);
+            return itemInWrapper.Content;
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace HelpMyStreet.Contracts.CommunicationService.Response
 {
-    public class EmailHistory
+    public class EmailHistoryDetail
     {
         public int RecipientCount { get; set; }
         public string EmailType { get; set; }

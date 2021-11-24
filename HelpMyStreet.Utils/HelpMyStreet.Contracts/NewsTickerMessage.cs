@@ -4,6 +4,6 @@
     {
         public string Message { get; set; }
         public Utils.Enums.SupportActivities? SupportActivity { get; set; }
-        public double? Number { get; set; }
+        public double? Value { get; set; }
     }
 }

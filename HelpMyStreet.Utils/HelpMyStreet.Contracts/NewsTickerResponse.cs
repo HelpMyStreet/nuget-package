@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using HelpMyStreet.Utils.Models;
+using System.Collections.Generic;
 
 namespace HelpMyStreet.Contracts
 {

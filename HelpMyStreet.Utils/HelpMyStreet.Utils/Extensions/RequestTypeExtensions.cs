@@ -5,9 +5,9 @@ namespace HelpMyStreet.Utils.Extensions
 {
     public static class RequestTypeExtensions
     {
-        public static string PerfectTense(this RequestType requestType, int count)
+        public static string FriendlyName(this RequestType requestType, int count)
         {
-            if (count <= 1)
+            if (count == 1)
             {
                 return requestType switch
                 {

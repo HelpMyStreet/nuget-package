@@ -11,7 +11,7 @@ namespace HelpMyStreet.Utils.Extensions
             {
                 return requestType switch
                 {
-                    RequestType.Task => "task",
+                    RequestType.Task => "request",
                     RequestType.Shift => "shift",
                     _ => throw new ArgumentException(message: $"Unexpected RequestType: {requestType}")
                 };
@@ -20,7 +20,7 @@ namespace HelpMyStreet.Utils.Extensions
             {
                 return requestType switch
                 {
-                    RequestType.Task => "tasks",
+                    RequestType.Task => "requests",
                     RequestType.Shift => "shifts",
                     _ => throw new ArgumentException(message: $"Unexpected RequestType: {requestType}")
                 };

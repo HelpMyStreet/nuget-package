@@ -26,5 +26,13 @@ namespace HelpMyStreet.Contracts.RequestService.Response
                 return statusHistory.Concat(updateHistory).OrderByDescending(x => x.DateCreated).Select(x => x.CreatedByUserID).FirstOrDefault();   
             }
         }
+
+        public JobStatusChangeReasonCodes? LastJobStatusChangeReasonCode
+        {
+            get 
+            {
+                return History?.OrderByDescending(x => x.StatusDate).First().JobStatusChangeReasonCode;
+            }    
+        }
     }
 }

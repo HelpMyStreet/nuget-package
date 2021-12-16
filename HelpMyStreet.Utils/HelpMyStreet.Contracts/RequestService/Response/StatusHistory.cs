@@ -11,5 +11,6 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         public JobStatuses JobStatus { get; set; }
         public int? VolunteerUserID { get; set; }
         public int? CreatedByUserID { get; set; }
+        public JobStatusChangeReasonCodes? JobStatusChangeReasonCode { get; set; }
     }
 }

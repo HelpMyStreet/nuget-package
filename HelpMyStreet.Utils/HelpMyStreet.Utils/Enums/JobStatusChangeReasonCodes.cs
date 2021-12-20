@@ -5,7 +5,7 @@
         AutoProgressingOverdueRepeats = 1,
         AutoProgressingJobsPastDueDates = 2,
         AutoProgressingShifts = 3,
-        ManualChangeByVolunteer = 4,
+        UserChange = 4,
         AutoProgressNewToOpen = 5
     }
 }

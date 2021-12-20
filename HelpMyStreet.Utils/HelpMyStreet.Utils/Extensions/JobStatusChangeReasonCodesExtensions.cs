@@ -8,7 +8,7 @@ namespace HelpMyStreet.Utils.Extensions
         {
             return role switch
             {
-                JobStatusChangeReasonCodes.AutoProgressingOverdueRepeats => true,
+                JobStatusChangeReasonCodes.AutoProgressingOverdueRepeats => false,
                 JobStatusChangeReasonCodes.AutoProgressingJobsPastDueDates => true,
                 JobStatusChangeReasonCodes.AutoProgressingShifts => false,
                 JobStatusChangeReasonCodes.UserChange => true,

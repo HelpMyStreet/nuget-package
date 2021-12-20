@@ -21,6 +21,7 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         SendNewRequestNotification = 13,
         SendShiftReminder = 14,
         GroupWelcome = 15,
-        NewUserNotification = 16
+        NewUserNotification = 16,
+        InProgressReminder = 17
     }
 }

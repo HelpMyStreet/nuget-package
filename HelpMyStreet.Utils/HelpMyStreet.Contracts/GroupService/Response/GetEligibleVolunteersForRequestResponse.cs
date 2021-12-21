@@ -7,6 +7,6 @@ namespace HelpMyStreet.Contracts.GroupService.Response
 {
     public class GetEligibleVolunteersForRequestResponse
     {
-        public IEnumerable<int> Volunteers { get; set; }
+        public IEnumerable<VolunteerSummary> VolunteerSummaries { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace HelpMyStreet.Contracts.GroupService.Request
     public class GetEligibleVolunteersForRequestRequest : IRequest<GetEligibleVolunteersForRequestResponse>
     {
         public int ReferringGroupId { get; set; }
+        public string Source { get; set; }
         public SupportActivityType SupportActivityType { get; set; }
         public string PostCode { get; set; }
     }

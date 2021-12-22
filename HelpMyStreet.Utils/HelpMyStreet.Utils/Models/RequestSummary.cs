@@ -23,6 +23,7 @@ namespace HelpMyStreet.Utils.Models
         public int RequestID { get; set; }
         public RequestType RequestType { get; set; }
         public int ReferringGroupID { get; set; }
+        public string Source { get; set; }
         public DateTime DateRequested { get; set; }
         public string PostCode { get; set; }
         public double? DistanceInMiles { get; set; }

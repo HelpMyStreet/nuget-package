@@ -9,5 +9,6 @@ namespace HelpMyStreet.Contracts.GroupService.Response
     {
         public int MaxVolunteer { get; set; }
         public NewRequestNotificationStrategy NewRequestNotificationStrategy { get; set; }
+        public UrgentRequestNotificationStrategy? UrgentRequestNotificationStrategy { get; set; }
     }
 }

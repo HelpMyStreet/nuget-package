@@ -13,6 +13,7 @@ namespace HelpMyStreet.Utils.Enums
         Owner = 4,
         RequestSubmitter = 5,
         Volunteer = 6,
-        UserAdmin_ReadOnly = 7
+        UserAdmin_ReadOnly = 7,
+        ShowCharts = 8
     }
 }

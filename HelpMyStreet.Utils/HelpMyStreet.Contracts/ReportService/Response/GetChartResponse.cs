@@ -2,7 +2,7 @@
 
 namespace HelpMyStreet.Contracts.ReportService.Response
 {
-    public class GetChartsResponse
+    public class GetChartResponse
     {
         public List<Chart> Charts { get; set; }
     }

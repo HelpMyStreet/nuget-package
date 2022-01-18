@@ -18,8 +18,7 @@ namespace HelpMyStreet.Contracts.ReportService
             {
                 return ChartItems.OrderBy(x => x.XAxis)
                 .Select(x => x.XAxis)
-                .Distinct()
-                .ToList();
+                .Distinct();
             }
         }
         public List<ChartItem> ChartItems { get; set; }

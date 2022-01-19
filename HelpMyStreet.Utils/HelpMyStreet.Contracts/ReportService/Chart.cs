@@ -1,4 +1,5 @@
 ﻿using HelpMyStreet.Utils.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace HelpMyStreet.Contracts.ReportService
         public ChartTypes ChartType { get; set; }
         public string XAxisName { get; set; }
         public string YAxisName { get; set; }
+        public List<ChartItem> ChartItems { get; set; }
+
+        [JsonIgnore]
         public IEnumerable<string> Labels
         {
             get
@@ -21,6 +25,6 @@ namespace HelpMyStreet.Contracts.ReportService
                 .Distinct();
             }
         }
-        public List<ChartItem> ChartItems { get; set; }
+        
     }
 }

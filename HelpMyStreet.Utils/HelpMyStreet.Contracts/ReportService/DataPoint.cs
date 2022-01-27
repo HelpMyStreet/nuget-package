@@ -4,10 +4,10 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.ReportService
 {
-    public class DataItem
+    public class DataPoint
     {
         public string XAxis { get; set; }
-        public string Label { get; set; }
-        public int Count { get; set; }
+        public string Series { get; set; }
+        public double Value { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace HelpMyStreet.Contracts.ReportService
         public ChartTypes ChartType { get; set; }
         public string XAxisName { get; set; }
         public string YAxisName { get; set; }
-        public List<ChartItem> ChartItems { get; set; }
+        public List<DataItem> ChartItems { get; set; }
 
         [JsonIgnore]
         public IEnumerable<string> Labels

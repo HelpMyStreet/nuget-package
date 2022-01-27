@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HelpMyStreet.Contracts.ReportService
 {
-    public class ChartItem
+    public class DataItem
     {
         public string XAxis { get; set; }
         public string Label { get; set; }

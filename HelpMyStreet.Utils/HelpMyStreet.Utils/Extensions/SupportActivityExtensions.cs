@@ -83,8 +83,8 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.BankStaffVaccinator => "Bank Staff Vaccinator",
                 SupportActivities.SkillShare => "Skill Share",
                 SupportActivities.BreakfastVisit => "Breakfast Visit",
-                SupportActivities.LunchVisit => "Lunch visit",
-                SupportActivities.MedicationCheckIn => "Medication Checkin",
+                SupportActivities.LunchVisit => "Lunch Visit",
+                SupportActivities.MedicationCheckIn => "Medication Check In",
                 SupportActivities.WellBeingVisit => "Wellbeing Visit",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
@@ -127,7 +127,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.SkillShare => "1 skill shared",
                     SupportActivities.BreakfastVisit => "1 breakfast visit",
                     SupportActivities.LunchVisit => " 1 lunch visit",
-                    SupportActivities.MedicationCheckIn => "1 medication checkin",
+                    SupportActivities.MedicationCheckIn => "1 medication check-in",
                     SupportActivities.WellBeingVisit => "1 wellbeing visit",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
@@ -167,7 +167,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.SkillShare => $"{count} skills shared",
                     SupportActivities.BreakfastVisit => $"{count} breakfast visit completed",
                     SupportActivities.LunchVisit => $"{count} lunch visit completed",
-                    SupportActivities.MedicationCheckIn => $"{count} medication checkin completed",
+                    SupportActivities.MedicationCheckIn => $"{count} medication check-in completed",
                     SupportActivities.WellBeingVisit => $"{count} wellbeing visit completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };

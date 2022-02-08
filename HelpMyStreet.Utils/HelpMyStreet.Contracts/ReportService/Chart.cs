@@ -13,6 +13,18 @@ namespace HelpMyStreet.Contracts.ReportService
         public string YAxisName { get; set; }
         public List<DataPoint> DataPoints { get; set; }
 
+        public IEnumerable<string> Labels2
+        {
+            get
+            {
+                return DataPoints.Select((Value, Index) => (Value, Index)).OrderBy(x => x.Index)
+                        .Select(x => x.Value.XAxis)
+                        .Distinct();                
+            }
+        }
+
+        
+
         [JsonIgnore]
         public IEnumerable<string> Labels
         {

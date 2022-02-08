@@ -13,7 +13,8 @@ namespace HelpMyStreet.Contracts.ReportService
         public string YAxisName { get; set; }
         public List<DataPoint> DataPoints { get; set; }
 
-        public IEnumerable<string> Labels2
+        [JsonIgnore]
+        public IEnumerable<string> XAxisValues
         {
             get
             {
@@ -23,16 +24,14 @@ namespace HelpMyStreet.Contracts.ReportService
             }
         }
 
-        
-
         [JsonIgnore]
-        public IEnumerable<string> Labels
+        public IEnumerable<string> Legends
         {
             get
             {
-                return DataPoints.OrderBy(x => x.XAxis)
-                .Select(x => x.XAxis)
-                .Distinct();
+                return DataPoints.Select((Value, Index) => (Value, Index)).OrderBy(x => x.Index)
+                        .Select(x => x.Value.Series)
+                        .Distinct();
             }
         }
         

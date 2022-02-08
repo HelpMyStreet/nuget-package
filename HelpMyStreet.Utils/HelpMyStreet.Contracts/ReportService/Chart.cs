@@ -19,7 +19,7 @@ namespace HelpMyStreet.Contracts.ReportService
             get
             {
                 return DataPoints.Select((Value, Index) => (Value, Index)).OrderBy(x => x.Index)
-                        .Select(x => x.Value.XAxis)
+                        .Select(x => ConvertToFriendlyXAxisValue(x.Value.XAxis))
                         .Distinct();                
             }
         }
@@ -34,6 +34,21 @@ namespace HelpMyStreet.Contracts.ReportService
                         .Distinct();
             }
         }
-        
+
+        private string ConvertToFriendlyXAxisValue(string xAxis)
+        {
+            DateTime dt;
+
+            try
+            {
+                dt = DateTime.Parse(xAxis);
+                return $"{dt: MMM} '{dt:yy}";
+            }
+            catch (FormatException exc)
+            {
+                return xAxis;
+            }
+        }
+
     }
 }

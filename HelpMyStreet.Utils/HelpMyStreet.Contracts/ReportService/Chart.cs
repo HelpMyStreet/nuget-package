@@ -25,7 +25,7 @@ namespace HelpMyStreet.Contracts.ReportService
         }
 
         [JsonIgnore]
-        public IEnumerable<string> Legends
+        public IEnumerable<string> LegendItems
         {
             get
             {

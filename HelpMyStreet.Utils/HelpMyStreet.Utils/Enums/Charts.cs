@@ -6,6 +6,7 @@
         RequestVolumeByDueDateAndRecentStatus = 2,
         RequestVolumeByActivityType = 3,
         RecentlyActiveVolunteersByVolumeOfAcceptedRequests = 4,
-        VolumeOfUsersByType = 5
+        VolumeOfUsersByType = 5,
+        TotalGroupUsersByType = 6
     }
 }

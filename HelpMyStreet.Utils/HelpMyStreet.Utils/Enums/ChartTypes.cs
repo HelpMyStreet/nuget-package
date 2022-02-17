@@ -6,6 +6,7 @@
         Line = 2,
         Bubble = 3,
         Scatter = 4,
-        Pie = 5
+        Pie = 5,
+        DataTable = 6
     }
 }

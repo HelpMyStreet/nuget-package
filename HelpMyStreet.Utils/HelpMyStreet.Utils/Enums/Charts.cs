@@ -7,6 +7,7 @@
         RequestVolumeByActivityType = 3,
         RecentlyActiveVolunteersByVolumeOfAcceptedRequests = 4,
         VolumeOfUsersByType = 5,
-        TotalGroupUsersByType = 6
+        TotalGroupUsersByType = 6,
+        VolumeOfUsersLeavingByMonth = 7
     }
 }

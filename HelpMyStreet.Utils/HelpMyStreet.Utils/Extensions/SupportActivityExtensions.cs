@@ -41,6 +41,10 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.DigitalSupport => "digital support",
                 SupportActivities.BankStaffVaccinator => "bank staff vaccinator",
                 SupportActivities.SkillShare => "skill share",
+                SupportActivities.BreakfastVisit =>"breakfast visit",
+                SupportActivities.LunchVisit => "lunch visit",
+                SupportActivities.MedicationCheckIn => "medication checkin",
+                SupportActivities.WellBeingVisit => "wellbeing visit",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -78,6 +82,10 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.DigitalSupport => "Digital Support",
                 SupportActivities.BankStaffVaccinator => "Bank Staff Vaccinator",
                 SupportActivities.SkillShare => "Skill Share",
+                SupportActivities.BreakfastVisit => "Breakfast Visit",
+                SupportActivities.LunchVisit => "Lunch Visit",
+                SupportActivities.MedicationCheckIn => "Medication Check In",
+                SupportActivities.WellBeingVisit => "Wellbeing Visit",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -117,6 +125,10 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.DigitalSupport => "1 digital support completed",
                     SupportActivities.BankStaffVaccinator => "1 bank staff vaccinator completed",
                     SupportActivities.SkillShare => "1 skill shared",
+                    SupportActivities.BreakfastVisit => "1 breakfast visit",
+                    SupportActivities.LunchVisit => " 1 lunch visit",
+                    SupportActivities.MedicationCheckIn => "1 medication check-in",
+                    SupportActivities.WellBeingVisit => "1 wellbeing visit",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -153,6 +165,10 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.DigitalSupport => $"{count} digital support completed",
                     SupportActivities.BankStaffVaccinator => $"{count} bank staff vaccinator completed",
                     SupportActivities.SkillShare => $"{count} skills shared",
+                    SupportActivities.BreakfastVisit => $"{count} breakfast visit completed",
+                    SupportActivities.LunchVisit => $"{count} lunch visit completed",
+                    SupportActivities.MedicationCheckIn => $"{count} medication check-in completed",
+                    SupportActivities.WellBeingVisit => $"{count} wellbeing visit completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -191,6 +207,10 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.DigitalSupport => false,
                 SupportActivities.BankStaffVaccinator => false,
                 SupportActivities.SkillShare => false,
+                SupportActivities.BreakfastVisit => true,
+                SupportActivities.LunchVisit => true,
+                SupportActivities.MedicationCheckIn => true,
+                SupportActivities.WellBeingVisit => true,
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -263,6 +283,47 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.BankStaffVaccinator => Enums.RequestType.Shift,
                 _ => Enums.RequestType.Task
             };
-        }   
+        }
+
+        public static SupportActivityCategory Category(this SupportActivities activity)
+        {
+            return activity switch
+            {
+                SupportActivities.Shopping => SupportActivityCategory.General,
+                SupportActivities.CollectingPrescriptions => SupportActivityCategory.General,
+                SupportActivities.Errands => SupportActivityCategory.General,
+                SupportActivities.DogWalking => SupportActivityCategory.Specialist,
+                SupportActivities.MealPreparation => SupportActivityCategory.Specialist,
+                SupportActivities.PhoneCalls_Friendly => SupportActivityCategory.Befriending,
+                SupportActivities.Other => SupportActivityCategory.General,
+                SupportActivities.Transport => SupportActivityCategory.General,
+                SupportActivities.MealsToYourDoor => SupportActivityCategory.General,
+                SupportActivities.VolunteerSupport => SupportActivityCategory.Specialist,
+                SupportActivities.MealtimeCompanion => SupportActivityCategory.Befriending,
+                SupportActivities.VaccineSupport => SupportActivityCategory.Specialist,
+                SupportActivities.FaceMask => SupportActivityCategory.Specialist,
+                SupportActivities.CheckingIn => SupportActivityCategory.Befriending,
+                SupportActivities.PhoneCalls_Anxious => SupportActivityCategory.Befriending,
+                SupportActivities.WellbeingPackage => SupportActivityCategory.Specialist,
+                SupportActivities.MedicalAppointmentTransport => SupportActivityCategory.General,
+                SupportActivities.ColdWeatherArmy => SupportActivityCategory.Specialist,
+                SupportActivities.InPersonBefriending => SupportActivityCategory.Befriending,
+                SupportActivities.PracticalSupport => SupportActivityCategory.General,
+                SupportActivities.HomeworkSupport => SupportActivityCategory.Specialist,
+                SupportActivities.CommunityConnector => SupportActivityCategory.Befriending,
+                SupportActivities.EmergencySupport => SupportActivityCategory.Specialist,
+                SupportActivities.VolunteerInduction => SupportActivityCategory.Specialist,
+                SupportActivities.BinDayAssistance => SupportActivityCategory.Specialist,
+                SupportActivities.Covid19Help => SupportActivityCategory.Specialist,
+                SupportActivities.DigitalSupport => SupportActivityCategory.Specialist,
+                SupportActivities.BankStaffVaccinator => SupportActivityCategory.Specialist,
+                SupportActivities.SkillShare => SupportActivityCategory.Specialist,
+                SupportActivities.BreakfastVisit => SupportActivityCategory.Specialist,
+                SupportActivities.LunchVisit => SupportActivityCategory.Specialist,
+                SupportActivities.MedicationCheckIn => SupportActivityCategory.Specialist,
+                SupportActivities.WellBeingVisit => SupportActivityCategory.Specialist,
+                _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
+            };
+        }
     }
 }

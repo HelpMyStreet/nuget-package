@@ -83,6 +83,14 @@ namespace HelpMyStreet.Utils.Enums
 
         BankStaffVaccinator = 32,
 
-        SkillShare = 33
+        SkillShare = 33,
+
+        BreakfastVisit = 34,
+
+        LunchVisit = 35,
+
+        MedicationCheckIn = 36,
+
+        WellBeingVisit = 37
     }
 }

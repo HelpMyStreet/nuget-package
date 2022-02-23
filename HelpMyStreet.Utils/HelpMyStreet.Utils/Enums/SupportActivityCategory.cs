@@ -2,8 +2,9 @@
 {
     public enum SupportActivityCategory
     {
-        General = 1,
-        Specialist = 2,
-        Befriending = 3    
+        EverydayActivities = 1,
+        Befriending = 2,
+        CommunityVolunteering = 3,
+        AnythingElse = 4
     }
 }

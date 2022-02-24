@@ -25,6 +25,7 @@ namespace HelpMyStreet.Utils.Extensions
                 JobStatuses.InProgress => true,
                 JobStatuses.Done => false,
                 JobStatuses.Cancelled => false,
+                JobStatuses.AppliedFor => false,
                 _ => throw new ArgumentException($"Unexpected JobStatuses value {status}", nameof(status))
             };
         }

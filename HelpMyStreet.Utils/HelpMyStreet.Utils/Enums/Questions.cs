@@ -21,5 +21,7 @@
        NumberOfSlots = 17,
        RecipientAge = 18,
        SuppressRecipientPersonalDetails = 19,
+       SelectActivity = 20,
+       RequiresApplicationToAccept = 21
     }
 }

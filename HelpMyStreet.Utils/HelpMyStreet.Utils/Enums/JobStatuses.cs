@@ -11,6 +11,7 @@ namespace HelpMyStreet.Utils.Enums
         Done = 3,
         Cancelled = 4,
         New = 5,
-        Accepted = 6
+        Accepted = 6,
+        AppliedFor = 7
     }
 }

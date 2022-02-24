@@ -22,6 +22,6 @@
        RecipientAge = 18,
        SuppressRecipientPersonalDetails = 19,
        SelectActivity = 20,
-       RequiresAdminApproval = 21
+       RequiresApplicationToAccept = 21
     }
 }

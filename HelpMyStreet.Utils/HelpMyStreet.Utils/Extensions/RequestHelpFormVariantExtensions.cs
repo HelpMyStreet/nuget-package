@@ -23,5 +23,14 @@ namespace HelpMyStreet.Utils.Extensions
                 _ => true
             };
         }
+
+        public static bool UseAppliedForStatusIfApplicable(this RequestHelpFormVariant requestHelpFormVariant)
+        {
+            return requestHelpFormVariant switch
+            {
+                RequestHelpFormVariant.LincolnshireVolunteersRequests_RequestSubmitter => true,
+                _ => false
+            };
+        }
     }
 }

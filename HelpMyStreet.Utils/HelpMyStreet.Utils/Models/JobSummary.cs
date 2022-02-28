@@ -1,6 +1,9 @@
 ﻿using HelpMyStreet.Utils.Enums;
+using HelpMyStreet.Utils.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace HelpMyStreet.Utils.Models
 {
@@ -13,5 +16,28 @@ namespace HelpMyStreet.Utils.Models
         public int DueDays { get; set; }
         public bool ConsentForContact { get; set; }
         public RequestorType RequestorType { get; set; }
+
+        public string GetSupportActivityName
+        {
+            get
+            {
+                switch (SupportActivity)
+                {
+                    case SupportActivities.Other:
+                        var otherAnswer = Questions.Where(x => x.Id == (int)Enums.Questions.SelectActivity).Select(x => x.Answer).FirstOrDefault();
+                        if(otherAnswer!=null)
+                        {
+                            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                            return ti.ToTitleCase(otherAnswer);
+                        }
+                        else
+                        {
+                            return SupportActivity.FriendlyNameShort();
+                        }
+                    default:
+                        return SupportActivity.FriendlyNameShort();
+                };
+            }
+        }
     }
 }

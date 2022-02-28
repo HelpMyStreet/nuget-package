@@ -2,6 +2,7 @@
 using HelpMyStreet.Utils.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace HelpMyStreet.Utils.Models
@@ -26,7 +27,8 @@ namespace HelpMyStreet.Utils.Models
                         var otherAnswer = Questions.Where(x => x.Id == (int)Enums.Questions.SelectActivity).Select(x => x.Answer).FirstOrDefault();
                         if(otherAnswer!=null)
                         {
-                            return otherAnswer;
+                            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                            return ti.ToTitleCase(otherAnswer);
                         }
                         else
                         {

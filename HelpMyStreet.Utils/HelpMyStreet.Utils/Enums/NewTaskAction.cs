@@ -12,5 +12,6 @@ namespace HelpMyStreet.Utils.Enums
         NotifyGroupAdmins = 4,
         SetStatusToOpen = 5,
         SendRequestorConfirmation = 6,
+        SetStatusToAppliedFor = 7
     }
 }

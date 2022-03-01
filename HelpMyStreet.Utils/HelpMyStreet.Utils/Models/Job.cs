@@ -22,5 +22,6 @@ namespace HelpMyStreet.Utils.Models
         public DateTime? NotBeforeDate { get; set; }
         public Frequency RepeatFrequency { get; set; }
         public int NumberOfRepeats { get; set; }
+        public string SpecificSupportActivity { get; set; }
     }
 }

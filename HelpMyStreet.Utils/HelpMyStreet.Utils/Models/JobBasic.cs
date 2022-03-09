@@ -1,6 +1,7 @@
 ﻿using HelpMyStreet.Utils.Enums;
 using HelpMyStreet.Utils.Extensions;
 using System;
+using System.Globalization;
 
 namespace HelpMyStreet.Utils.Models
 {
@@ -23,6 +24,7 @@ namespace HelpMyStreet.Utils.Models
         public bool Archive { get; set; }
         public string HmsReference { get => GetHmsReference(); }
         public bool? SuppressRecipientPersonalDetail { get; set; }
+        public string SpecificSupportActivity { get; set; }
 
         private string GetHmsReference()
         {
@@ -30,6 +32,28 @@ namespace HelpMyStreet.Utils.Models
 
             return $"{thisGroup.GroupIdentifier()}-{DateRequested:yyMMdd}-{RequestID % 1000}";
 
+        }
+
+        public string GetSupportActivityName
+        {
+            get
+            {
+                switch (SupportActivity)
+                {
+                    case SupportActivities.Other:
+                        if (!string.IsNullOrEmpty(SpecificSupportActivity))
+                        {
+                            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                            return ti.ToTitleCase(SpecificSupportActivity);
+                        }
+                        else
+                        {
+                            return SupportActivity.FriendlyNameShort();
+                        }
+                    default:
+                        return SupportActivity.FriendlyNameShort();
+                };
+            }
         }
 
     }

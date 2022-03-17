@@ -44,7 +44,6 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.ApexBankStaff => "ABS",
                 Groups.AgeUKMidMersey => "MDM",
                 Groups.BostonGNS => "GNS",
-                Groups.ArroweParkHospital => "APH",
                 _ => throw new ArgumentException(message: $"Unexpected Group: {groups}", paramName: nameof(groups))
             };
         }

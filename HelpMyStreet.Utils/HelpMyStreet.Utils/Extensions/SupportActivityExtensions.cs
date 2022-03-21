@@ -40,11 +40,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.Covid19Help => "covid 19 help",
                 SupportActivities.DigitalSupport => "digital support",
                 SupportActivities.BankStaffVaccinator => "bank staff vaccinator",
-                SupportActivities.SkillShare => "skill share",
-                SupportActivities.BreakfastVisit =>"breakfast visit",
-                SupportActivities.LunchVisit => "lunch visit",
-                SupportActivities.MedicationCheckIn => "medication checkin",
-                SupportActivities.WellBeingVisit => "wellbeing visit",
+                SupportActivities.SkillShare => "skill share",                
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -82,10 +78,6 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.DigitalSupport => "Digital Support",
                 SupportActivities.BankStaffVaccinator => "Bank Staff Vaccinator",
                 SupportActivities.SkillShare => "Skill Share",
-                SupportActivities.BreakfastVisit => "Breakfast Visit",
-                SupportActivities.LunchVisit => "Lunch Visit",
-                SupportActivities.MedicationCheckIn => "Medication Check In",
-                SupportActivities.WellBeingVisit => "Wellbeing Visit",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -125,10 +117,6 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.DigitalSupport => "1 digital support completed",
                     SupportActivities.BankStaffVaccinator => "1 bank staff vaccinator completed",
                     SupportActivities.SkillShare => "1 skill shared",
-                    SupportActivities.BreakfastVisit => "1 breakfast visit",
-                    SupportActivities.LunchVisit => " 1 lunch visit",
-                    SupportActivities.MedicationCheckIn => "1 medication check-in",
-                    SupportActivities.WellBeingVisit => "1 wellbeing visit",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -165,10 +153,6 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.DigitalSupport => $"{count} digital support completed",
                     SupportActivities.BankStaffVaccinator => $"{count} bank staff vaccinator completed",
                     SupportActivities.SkillShare => $"{count} skills shared",
-                    SupportActivities.BreakfastVisit => $"{count} breakfast visit completed",
-                    SupportActivities.LunchVisit => $"{count} lunch visit completed",
-                    SupportActivities.MedicationCheckIn => $"{count} medication check-in completed",
-                    SupportActivities.WellBeingVisit => $"{count} wellbeing visit completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -207,10 +191,6 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.DigitalSupport => false,
                 SupportActivities.BankStaffVaccinator => false,
                 SupportActivities.SkillShare => false,
-                SupportActivities.BreakfastVisit => true,
-                SupportActivities.LunchVisit => true,
-                SupportActivities.MedicationCheckIn => true,
-                SupportActivities.WellBeingVisit => true,
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }

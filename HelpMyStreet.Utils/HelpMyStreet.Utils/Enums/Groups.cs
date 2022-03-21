@@ -35,7 +35,6 @@ namespace HelpMyStreet.Utils.Enums
         Southwell = -31,
         ApexBankStaff = -32,
         AgeUKMidMersey = -33,
-        BostonGNS = -34,
-        ArroweParkHospital = -35
+        BostonGNS = -34
     }
 }

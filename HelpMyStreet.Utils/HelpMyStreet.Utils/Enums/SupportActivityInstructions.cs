@@ -64,6 +64,7 @@
         APH_BreakfastVisit = 60,
         APH_LunchVisit = 61,
         APH_MedicationCheckIn = 62,
-        APH_WellBeingVisit = 63
+        APH_WellBeingVisit = 63,
+        UKRANIAN_Accomodation = 64
     }
 }

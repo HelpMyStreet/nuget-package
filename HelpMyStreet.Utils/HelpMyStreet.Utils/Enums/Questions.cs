@@ -22,6 +22,11 @@
        RecipientAge = 18,
        SuppressRecipientPersonalDetails = 19,
        SelectActivity = 20,
-       RequiresApplicationToAccept = 21
+       RequiresApplicationToAccept = 21,
+       GroupSizeAdults = 22,
+       GroupSizeChildren = 23,
+       GroupSizePets = 24,
+       PreferredLanguage = 25,
+       PreferredLocation = 26
     }
 }

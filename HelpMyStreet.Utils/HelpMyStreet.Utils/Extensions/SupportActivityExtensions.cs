@@ -119,7 +119,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.DigitalSupport => "1 digital support completed",
                     SupportActivities.BankStaffVaccinator => "1 bank staff vaccinator completed",
                     SupportActivities.SkillShare => "1 skill shared",
-                    SupportActivities.Accommodation => "1 accommodation completed",
+                    SupportActivities.Accommodation => "1 group accommodated",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -156,7 +156,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.DigitalSupport => $"{count} digital support completed",
                     SupportActivities.BankStaffVaccinator => $"{count} bank staff vaccinator completed",
                     SupportActivities.SkillShare => $"{count} skills shared",
-                    SupportActivities.Accommodation => $"{count} accommodation completed",
+                    SupportActivities.Accommodation => $"{count} groups accommodated",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }

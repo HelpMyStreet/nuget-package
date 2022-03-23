@@ -41,7 +41,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.DigitalSupport => "digital support",
                 SupportActivities.BankStaffVaccinator => "bank staff vaccinator",
                 SupportActivities.SkillShare => "skill share",
-                SupportActivities.Accommodation => "accomodation",
+                SupportActivities.Accommodation => "accommodation",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -79,7 +79,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.DigitalSupport => "Digital Support",
                 SupportActivities.BankStaffVaccinator => "Bank Staff Vaccinator",
                 SupportActivities.SkillShare => "Skill Share",
-                SupportActivities.Accommodation => "Accomodation",
+                SupportActivities.Accommodation => "Accommodation",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -119,7 +119,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.DigitalSupport => "1 digital support completed",
                     SupportActivities.BankStaffVaccinator => "1 bank staff vaccinator completed",
                     SupportActivities.SkillShare => "1 skill shared",
-                    SupportActivities.Accommodation => "1 accomodation completed",
+                    SupportActivities.Accommodation => "1 accommodation completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -156,7 +156,7 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.DigitalSupport => $"{count} digital support completed",
                     SupportActivities.BankStaffVaccinator => $"{count} bank staff vaccinator completed",
                     SupportActivities.SkillShare => $"{count} skills shared",
-                    SupportActivities.Accommodation => $"{count} accomodation completed",
+                    SupportActivities.Accommodation => $"{count} accommodation completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }

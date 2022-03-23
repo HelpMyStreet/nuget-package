@@ -20,6 +20,7 @@ namespace HelpMyStreet.Utils.Extensions
                 RequestHelpFormVariant.VitalsForVeterans => false,
                 RequestHelpFormVariant.AgeUKMidMersey_RequestSubmitter => false,
                 RequestHelpFormVariant.BostonGNS_RequestSubmitter => false,
+                RequestHelpFormVariant.UkraineRefugees_RequestSubmitter => false,
                 _ => true
             };
         }

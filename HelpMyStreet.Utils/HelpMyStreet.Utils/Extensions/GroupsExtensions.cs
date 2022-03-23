@@ -44,6 +44,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.ApexBankStaff => "ABS",
                 Groups.AgeUKMidMersey => "MDM",
                 Groups.BostonGNS => "GNS",
+                Groups.UkraineRefugees => "UKR",
                 _ => throw new ArgumentException(message: $"Unexpected Group: {groups}", paramName: nameof(groups))
             };
         }
@@ -66,6 +67,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.KingsMeadowCampus => false,
                 Groups.ForestRecreationGround => false,
                 Groups.BostonGNS => false,
+                Groups.UkraineRefugees => false,
                 _ => true
             };
         }

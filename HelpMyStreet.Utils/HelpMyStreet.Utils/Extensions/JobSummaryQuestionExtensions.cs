@@ -80,6 +80,9 @@ namespace HelpMyStreet.Utils.Extensions
                 (int)Questions.SuppressRecipientPersonalDetails => false,
                 (int)Questions.WillYouCompleteYourself => false,
                 (int)Questions.SelectActivity => false,
+                (int)Questions.GroupSizeAdults => false,
+                (int)Questions.GroupSizeChildren => false,
+                (int)Questions.GroupSizePets => false,
                 _ => true
             };
         }

@@ -45,6 +45,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.AgeUKMidMersey => "MDM",
                 Groups.BostonGNS => "GNS",
                 Groups.UkraineRefugees => "UKR",
+                Groups.HelpUkraineSheffield=>"HUS",
                 _ => throw new ArgumentException(message: $"Unexpected Group: {groups}", paramName: nameof(groups))
             };
         }
@@ -68,6 +69,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.ForestRecreationGround => false,
                 Groups.BostonGNS => false,
                 Groups.UkraineRefugees => false,
+                Groups.HelpUkraineSheffield => false,
                 _ => true
             };
         }

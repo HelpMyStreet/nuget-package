@@ -212,6 +212,15 @@ namespace HelpMyStreet.Utils.Extensions
             };
         }
 
+        public static bool AddressIsArbitrary(this SupportActivities activity)
+        {
+            return activity switch
+            {
+                SupportActivities.Accommodation => true,
+                _ => false
+            };
+        }
+
         public static List<PersonalDetailsComponent> PersonalDetailsComponent(this SupportActivities activity, RequestRoles roleType, bool isAdmin = false)
         {
 
@@ -243,6 +252,10 @@ namespace HelpMyStreet.Utils.Extensions
                             Enums.PersonalDetailsComponent.Locality
                             };
                 }
+                else if (activity.AddressIsArbitrary())
+                {
+                    return reducedData;
+                }
                 else
                 {
                     return allData;
@@ -252,9 +265,13 @@ namespace HelpMyStreet.Utils.Extensions
             {
                 return reducedData;
             }
+            else if (activity.AddressIsArbitrary() || activity.IsRemoteActivity())
+            {
+                return reducedData;
+            }
             else
             {
-                return activity.IsRemoteActivity() ? reducedData : allData;
+                return allData;
             }
 
         }

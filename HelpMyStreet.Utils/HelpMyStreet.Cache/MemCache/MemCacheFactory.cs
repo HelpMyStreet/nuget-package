@@ -13,9 +13,9 @@ namespace HelpMyStreet.Cache.MemCache
 
         public MemCacheFactory(ISyncCacheProvider pollySyncCacheProvider, ISystemClock mockableDateTime, ILoggerWrapper<MemCache<T>> logger)
         {
-            _pollySyncCacheProvider = pollySyncCacheProvider;
-            _mockableDateTime = mockableDateTime;
-            _logger = logger;
+            _pollySyncCacheProvider = pollySyncCacheProvider ?? throw new ArgumentNullException(nameof(pollySyncCacheProvider));
+            _mockableDateTime = mockableDateTime ?? throw new ArgumentNullException(nameof(mockableDateTime));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         /// <inheritdoc />>

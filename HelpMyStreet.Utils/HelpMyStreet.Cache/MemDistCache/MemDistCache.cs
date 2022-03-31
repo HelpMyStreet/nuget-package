@@ -35,13 +35,12 @@ namespace HelpMyStreet.Cache.MemDistCache
 
         public MemDistCache(ISyncCacheProvider pollySyncCacheProvider, IDistributedCacheWrapper distributedCacheWrapper, ISystemClock mockableDateTime, TimeSpan defaultCacheDuration, Func<DateTimeOffset, DateTimeOffset> defaultWhenDataIsStaleDelegate, ILoggerWrapper<MemDistCache<T>> logger)
         {
-            _pollySyncCacheProvider = pollySyncCacheProvider;
-            _distributedCacheWrapper = distributedCacheWrapper;
-            _mockableDateTime = mockableDateTime;
-
+            _pollySyncCacheProvider = pollySyncCacheProvider ?? throw new ArgumentNullException(nameof(pollySyncCacheProvider));
+            _distributedCacheWrapper = distributedCacheWrapper ?? throw new ArgumentNullException(nameof(distributedCacheWrapper));
+            _mockableDateTime = mockableDateTime ?? throw new ArgumentNullException(nameof(mockableDateTime));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _defaultCacheDuration = defaultCacheDuration;
-            _defaultWhenDataIsStaleDelegate = defaultWhenDataIsStaleDelegate;
-            _logger = logger;
+            _defaultWhenDataIsStaleDelegate = defaultWhenDataIsStaleDelegate ?? throw new ArgumentNullException(nameof(defaultWhenDataIsStaleDelegate));
         }
 
         /// <inheritdoc />>

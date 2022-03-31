@@ -14,10 +14,10 @@ namespace HelpMyStreet.Cache.MemDistCache
 
         public MemDistCacheFactory(ISyncCacheProvider pollySyncCacheProvider, IDistributedCacheWrapper distributedCacheWrapper, ISystemClock mockableDateTime, ILoggerWrapper<MemDistCache<T>> logger)
         {
-            _pollySyncCacheProvider = pollySyncCacheProvider;
-            _distributedCacheWrapper = distributedCacheWrapper;
-            _mockableDateTime = mockableDateTime;
-            _logger = logger;
+            _pollySyncCacheProvider = pollySyncCacheProvider ?? throw new ArgumentNullException(nameof(pollySyncCacheProvider));
+            _distributedCacheWrapper = distributedCacheWrapper ?? throw new ArgumentNullException(nameof(distributedCacheWrapper));
+            _mockableDateTime = mockableDateTime ?? throw new ArgumentNullException(nameof(mockableDateTime));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         /// <inheritdoc />>

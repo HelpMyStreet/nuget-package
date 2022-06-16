@@ -14,6 +14,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Frequency.Weekly => 7,
                 Frequency.Fortnightly => 14,
                 Frequency.EveryFourWeeks => 28,
+                Frequency.Ongoing => 0,
                 _ => throw new ArgumentException(message: $"Unexpected Frequency: {frequency}", paramName: nameof(frequency))
             };
         }
@@ -27,6 +28,7 @@ namespace HelpMyStreet.Utils.Extensions
                 Frequency.Weekly => 12,
                 Frequency.Fortnightly => 6,
                 Frequency.EveryFourWeeks => 3,
+                Frequency.Ongoing => 1,
                 _ => throw new ArgumentException($"Unexpected Frequency {frequency}", nameof(frequency))
             };
         }

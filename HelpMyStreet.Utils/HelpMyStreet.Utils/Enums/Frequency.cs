@@ -11,5 +11,6 @@ namespace HelpMyStreet.Utils.Enums
         Weekly = 30,
         Fortnightly = 40,
         EveryFourWeeks = 50,
+        Ongoing = 60
     }
 }

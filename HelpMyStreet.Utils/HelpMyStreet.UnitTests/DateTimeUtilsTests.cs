@@ -257,5 +257,15 @@ namespace HelpMyStreet.UnitTests
             string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.ShortDateTimeFormat);
             Assert.AreEqual("01/01/21 10:00 am", result);
         }
+
+        [Test]
+        public void WhenOpenUntilPassedIn_Then_MessageShouldContainOpenUntil()
+        {
+            DateTime dateTime = new DateTime(2023, 1, 1);
+
+            string  result = _classUnderTest.JobDueDate(dateTime, Utils.Enums.DueDateType.OpenUntil);
+
+            Assert.AreEqual($"Open until 01/01/23", result);
+        }
     }
 }

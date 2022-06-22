@@ -85,6 +85,8 @@ namespace HelpMyStreet.Utils.Enums
 
         SkillShare = 33,
         
-        Accommodation = 34
+        Accommodation = 34,
+
+        AdvertisingRoles = 35
     }
 }

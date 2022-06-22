@@ -45,6 +45,8 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.AgeUKMidMersey => "MDM",
                 Groups.BostonGNS => "GNS",
                 Groups.UkraineRefugees => "UKR",
+                Groups.LincolnshireVCS => "VCS",
+                Groups.LincolnshireLCVS=> "LCV",
                 _ => throw new ArgumentException(message: $"Unexpected Group: {groups}", paramName: nameof(groups))
             };
         }

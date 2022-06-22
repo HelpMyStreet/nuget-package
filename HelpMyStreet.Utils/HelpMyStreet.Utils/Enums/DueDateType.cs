@@ -7,5 +7,6 @@
         SpecificStartTime = 3,
         SpecificStartAndEndTimes = 4,
         ASAP = 5,
+        OpenUntil = 6
     }
 }

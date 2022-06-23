@@ -65,6 +65,7 @@
         APH_LunchVisit = 61,
         APH_MedicationCheckIn = 62,
         APH_WellBeingVisit = 63,
-        UKRANIAN_Accommodation = 64
+        UKRANIAN_Accommodation = 64,
+        Lincolnshire_AdvertisingRoles = 65
     }
 }

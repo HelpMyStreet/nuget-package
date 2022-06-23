@@ -42,7 +42,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.BankStaffVaccinator => "bank staff vaccinator",
                 SupportActivities.SkillShare => "skill share",
                 SupportActivities.Accommodation => "accommodation",
-                SupportActivities.AdvertisingRoles => "advertising roles",
+                SupportActivities.AdvertisingRoles => "roles",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -81,7 +81,7 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.BankStaffVaccinator => "Bank Staff Vaccinator",
                 SupportActivities.SkillShare => "Skill Share",
                 SupportActivities.Accommodation => "Accommodation",
-                SupportActivities.AdvertisingRoles => "Advertising Roles",
+                SupportActivities.AdvertisingRoles => "Roles",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }

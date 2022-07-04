@@ -38,6 +38,9 @@ namespace HelpMyStreet.Utils.Enums
         BostonGNS = -34,
         UkraineRefugees = -35,
         LincolnshireVCS = -36,
-        LincolnshireLCVS = -37
+        LincolnshireLCVS = -37,
+        NHSVRDemo=-38,
+        NottinghamshireCountyCouncil = -39,
+        NottinghamshireIntegratedCareBoard = -40
     }
 }

@@ -43,6 +43,10 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.SkillShare => "skill share",
                 SupportActivities.Accommodation => "accommodation",
                 SupportActivities.AdvertisingRoles => "roles",
+                SupportActivities.NHSTransport=> "transport",
+                SupportActivities.NHSSteward=> "steward",
+                SupportActivities.NHSCheckInAndChat=>"NHS check in and chat",
+                SupportActivities.NHSCheckInAndChatPlus=> "NHS check in and chat plus",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -82,6 +86,10 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.SkillShare => "Skill Share",
                 SupportActivities.Accommodation => "Accommodation",
                 SupportActivities.AdvertisingRoles => "Roles",
+                SupportActivities.NHSTransport => "Transport",
+                SupportActivities.NHSSteward => "Steward",
+                SupportActivities.NHSCheckInAndChat => "NHS check in and chat",
+                SupportActivities.NHSCheckInAndChatPlus => "NHS check in and chat plus",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -123,6 +131,10 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.SkillShare => "1 skill shared",
                     SupportActivities.Accommodation => "1 group accommodated",
                     SupportActivities.AdvertisingRoles => "1 role accepted",
+                    SupportActivities.NHSTransport => "1 transport completed",
+                    SupportActivities.NHSSteward => "1 steward completed",
+                    SupportActivities.NHSCheckInAndChat => "1 NHS check in and chat completed",
+                    SupportActivities.NHSCheckInAndChatPlus => "1 NHS check in and chat plus completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -161,6 +173,10 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.SkillShare => $"{count} skills shared",
                     SupportActivities.Accommodation => $"{count} groups accommodated",
                     SupportActivities.AdvertisingRoles => $"{count} roles accepted",
+                    SupportActivities.NHSTransport => $"{count} transport completed",
+                    SupportActivities.NHSSteward => $"{count} steward completed",
+                    SupportActivities.NHSCheckInAndChat => $"{count} NHS check in and chat completed",
+                    SupportActivities.NHSCheckInAndChatPlus => $"{count} NHS check in and chat plus completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -201,6 +217,10 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.SkillShare => false,
                 SupportActivities.Accommodation => true,
                 SupportActivities.AdvertisingRoles => false,
+                SupportActivities.NHSTransport => true,
+                SupportActivities.NHSSteward => true,
+                SupportActivities.NHSCheckInAndChat => true,
+                SupportActivities.NHSCheckInAndChatPlus => true,
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -326,6 +346,10 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.EmergencySupport => SupportActivityCategory.AnythingElse,
                 SupportActivities.VolunteerInduction => SupportActivityCategory.AnythingElse,
                 SupportActivities.AdvertisingRoles => SupportActivityCategory.AnythingElse,
+                SupportActivities.NHSTransport => SupportActivityCategory.AnythingElse,
+                SupportActivities.NHSSteward => SupportActivityCategory.AnythingElse,
+                SupportActivities.NHSCheckInAndChat => SupportActivityCategory.AnythingElse,
+                SupportActivities.NHSCheckInAndChatPlus => SupportActivityCategory.AnythingElse,
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }

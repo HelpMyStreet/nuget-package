@@ -308,6 +308,7 @@ namespace HelpMyStreet.Utils.Extensions
             {
                 SupportActivities.VaccineSupport => Enums.RequestType.Shift,
                 SupportActivities.BankStaffVaccinator => Enums.RequestType.Shift,
+                SupportActivities.NHSSteward => Enums.RequestType.Shift,
                 _ => Enums.RequestType.Task
             };
         }

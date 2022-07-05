@@ -131,8 +131,8 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.SkillShare => "1 skill shared",
                     SupportActivities.Accommodation => "1 group accommodated",
                     SupportActivities.AdvertisingRoles => "1 role accepted",
-                    SupportActivities.NHSTransport => "1 transport completed",
-                    SupportActivities.NHSSteward => "1 steward completed",
+                    SupportActivities.NHSTransport => "Transport provided once",
+                    SupportActivities.NHSSteward => "Stewarding completed once",
                     SupportActivities.NHSCheckInAndChat => "1 NHS check in and chat completed",
                     SupportActivities.NHSCheckInAndChatPlus => "1 NHS check in and chat plus completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
@@ -173,8 +173,8 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.SkillShare => $"{count} skills shared",
                     SupportActivities.Accommodation => $"{count} groups accommodated",
                     SupportActivities.AdvertisingRoles => $"{count} roles accepted",
-                    SupportActivities.NHSTransport => $"{count} transport completed",
-                    SupportActivities.NHSSteward => $"{count} steward completed",
+                    SupportActivities.NHSTransport => $"Transport provided {count} times",
+                    SupportActivities.NHSSteward => $"Stewarding completed {count} times",
                     SupportActivities.NHSCheckInAndChat => $"{count} NHS check in and chat completed",
                     SupportActivities.NHSCheckInAndChatPlus => $"{count} NHS check in and chat plus completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))

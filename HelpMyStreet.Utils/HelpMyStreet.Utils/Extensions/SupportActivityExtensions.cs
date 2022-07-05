@@ -86,10 +86,10 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.SkillShare => "Skill Share",
                 SupportActivities.Accommodation => "Accommodation",
                 SupportActivities.AdvertisingRoles => "Roles",
-                SupportActivities.NHSTransport => "Transport",
-                SupportActivities.NHSSteward => "Steward",
-                SupportActivities.NHSCheckInAndChat => "NHS check in and chat",
-                SupportActivities.NHSCheckInAndChatPlus => "NHS check in and chat plus",
+                SupportActivities.NHSTransport => "NHS Transport",
+                SupportActivities.NHSSteward => "NHS Steward",
+                SupportActivities.NHSCheckInAndChat => "NHS Check-In and Chat",
+                SupportActivities.NHSCheckInAndChatPlus => "NHS Check-In and Chat (PLUS)",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }

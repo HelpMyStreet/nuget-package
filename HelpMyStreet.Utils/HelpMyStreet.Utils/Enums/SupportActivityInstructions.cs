@@ -66,6 +66,10 @@
         APH_MedicationCheckIn = 62,
         APH_WellBeingVisit = 63,
         UKRANIAN_Accommodation = 64,
-        Lincolnshire_AdvertisingRoles = 65
+        Lincolnshire_AdvertisingRoles = 65,
+        NHSDemo_Transport = 66,
+        NHSDemo_Steward = 67,
+        NHSDemo_CheckInAndChat = 68,
+        NHSDemo_CheckInAndChatPlus = 69
     }
 }

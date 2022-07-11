@@ -40,6 +40,7 @@ namespace HelpMyStreet.Utils.Models
             {
                 switch (SupportActivity)
                 {
+                    case SupportActivities.AdvertisingRoles:
                     case SupportActivities.Other:
                         if (!string.IsNullOrEmpty(SpecificSupportActivity))
                         {

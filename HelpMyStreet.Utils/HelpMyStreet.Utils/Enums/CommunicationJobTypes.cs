@@ -26,6 +26,8 @@ namespace HelpMyStreet.Contracts.RequestService.Response
         JobsDueTomorrow = 18,
         TaskAppliedForNotification = 19,
         ImpendingUserDeletion = 20,
-        UserDeleted = 21
+        UserDeleted = 21,
+        RequestToHelpApproved = 22,
+        RequestToHelpDeclined = 23
     }
 }

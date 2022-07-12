@@ -211,6 +211,14 @@ namespace HelpMyStreet.UnitTests
         }
 
         [Test]
+        public void ToLongDateMarkdownWithYear()
+        {
+            DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);
+            string result = dateTime.FormatDate(Utils.Enums.DateTimeFormat.LongDateTimeHTMLFormatWithYear);
+            Assert.AreEqual("Friday, 1<sup>st</sup> January 2021", result);
+        }
+
+        [Test]
         public void ToShortDate()
         {
             DateTime dateTime = new DateTime(2021, 1, 1, 10, 0, 0);

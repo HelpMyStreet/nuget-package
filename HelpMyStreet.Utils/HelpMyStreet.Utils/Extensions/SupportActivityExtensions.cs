@@ -42,11 +42,6 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.BankStaffVaccinator => "bank staff vaccinator",
                 SupportActivities.SkillShare => "skill share",
                 SupportActivities.Accommodation => "accommodation",
-                SupportActivities.AdvertisingRoles => "roles",
-                SupportActivities.NHSTransport=> "transport",
-                SupportActivities.NHSSteward=> "steward",
-                SupportActivities.NHSCheckInAndChat=>"NHS check in and chat",
-                SupportActivities.NHSCheckInAndChatPlus=> "NHS check in and chat plus",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -85,11 +80,6 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.BankStaffVaccinator => "Bank Staff Vaccinator",
                 SupportActivities.SkillShare => "Skill Share",
                 SupportActivities.Accommodation => "Accommodation",
-                SupportActivities.AdvertisingRoles => "Roles",
-                SupportActivities.NHSTransport => "NHS Transport",
-                SupportActivities.NHSSteward => "NHS Steward",
-                SupportActivities.NHSCheckInAndChat => "NHS Check-In and Chat",
-                SupportActivities.NHSCheckInAndChatPlus => "NHS Check-In and Chat (PLUS)",
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -130,11 +120,6 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.BankStaffVaccinator => "1 bank staff vaccinator completed",
                     SupportActivities.SkillShare => "1 skill shared",
                     SupportActivities.Accommodation => "1 group accommodated",
-                    SupportActivities.AdvertisingRoles => "1 role accepted",
-                    SupportActivities.NHSTransport => "Transport provided once",
-                    SupportActivities.NHSSteward => "Stewarding completed once",
-                    SupportActivities.NHSCheckInAndChat => "1 NHS check in and chat completed",
-                    SupportActivities.NHSCheckInAndChatPlus => "1 NHS check in and chat plus completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -172,11 +157,6 @@ namespace HelpMyStreet.Utils.Extensions
                     SupportActivities.BankStaffVaccinator => $"{count} bank staff vaccinator completed",
                     SupportActivities.SkillShare => $"{count} skills shared",
                     SupportActivities.Accommodation => $"{count} groups accommodated",
-                    SupportActivities.AdvertisingRoles => $"{count} roles accepted",
-                    SupportActivities.NHSTransport => $"Transport provided {count} times",
-                    SupportActivities.NHSSteward => $"Stewarding completed {count} times",
-                    SupportActivities.NHSCheckInAndChat => $"{count} NHS check in and chat completed",
-                    SupportActivities.NHSCheckInAndChatPlus => $"{count} NHS check in and chat plus completed",
                     _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
                 };
             }
@@ -216,11 +196,6 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.BankStaffVaccinator => false,
                 SupportActivities.SkillShare => false,
                 SupportActivities.Accommodation => true,
-                SupportActivities.AdvertisingRoles => false,
-                SupportActivities.NHSTransport => true,
-                SupportActivities.NHSSteward => true,
-                SupportActivities.NHSCheckInAndChat => true,
-                SupportActivities.NHSCheckInAndChatPlus => true,
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }
@@ -308,7 +283,6 @@ namespace HelpMyStreet.Utils.Extensions
             {
                 SupportActivities.VaccineSupport => Enums.RequestType.Shift,
                 SupportActivities.BankStaffVaccinator => Enums.RequestType.Shift,
-                SupportActivities.NHSSteward => Enums.RequestType.Shift,
                 _ => Enums.RequestType.Task
             };
         }
@@ -346,11 +320,6 @@ namespace HelpMyStreet.Utils.Extensions
                 SupportActivities.CommunityConnector => SupportActivityCategory.Befriending,
                 SupportActivities.EmergencySupport => SupportActivityCategory.AnythingElse,
                 SupportActivities.VolunteerInduction => SupportActivityCategory.AnythingElse,
-                SupportActivities.AdvertisingRoles => SupportActivityCategory.AnythingElse,
-                SupportActivities.NHSTransport => SupportActivityCategory.AnythingElse,
-                SupportActivities.NHSSteward => SupportActivityCategory.AnythingElse,
-                SupportActivities.NHSCheckInAndChat => SupportActivityCategory.AnythingElse,
-                SupportActivities.NHSCheckInAndChatPlus => SupportActivityCategory.AnythingElse,
                 _ => throw new ArgumentException(message: $"Unexpected SupportActivity: {activity}", paramName: nameof(activity))
             };
         }

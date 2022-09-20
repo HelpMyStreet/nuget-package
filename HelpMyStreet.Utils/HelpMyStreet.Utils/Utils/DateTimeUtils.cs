@@ -68,10 +68,6 @@ namespace HelpMyStreet.Utils.Utils
             {
                 return $"Required on {dateTimeDue.FormatDate(DateTimeFormat.ShortDateFormat, false)}";
             }
-            else if(dueDateType == DueDateType.OpenUntil)
-            {
-                return $"Open until {dateTimeDue.FormatDate(DateTimeFormat.ShortDateFormat, false)}";
-            }
             else
             {
                 return (daysUntilDue switch

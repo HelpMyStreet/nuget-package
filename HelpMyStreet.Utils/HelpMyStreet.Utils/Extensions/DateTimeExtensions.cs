@@ -39,7 +39,6 @@ namespace HelpMyStreet.Utils.Extensions
 
             string shortDateFormat = "dd/MM/yy";
             string longDateFormat = "dddd, dnn MMMM";
-            string longDateFormatWithYear = "dddd, dnn MMMM yyyy";
             string timeformat = "h:mm xx";
 
             switch (dateTimeFormat)
@@ -48,8 +47,6 @@ namespace HelpMyStreet.Utils.Extensions
                     return dateTime.ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix().ToLower());
                 case DateTimeFormat.LongDateHTMLFormat:
                     return dateTime.ToString(longDateFormat).Replace("nn", dateTime.Day.ToOccurrenceSuffix(true).ToLower());
-                case DateTimeFormat.LongDateTimeHTMLFormatWithYear:
-                    return dateTime.ToString(longDateFormatWithYear).Replace("nn", dateTime.Day.ToOccurrenceSuffix(true).ToLower());
                 case DateTimeFormat.ShortDateFormat:
                     return dateTime.ToString(shortDateFormat);                    
                 case DateTimeFormat.TimeFormat:

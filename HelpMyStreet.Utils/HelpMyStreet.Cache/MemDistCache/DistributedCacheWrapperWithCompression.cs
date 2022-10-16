@@ -4,7 +4,6 @@ using Polly;
 using Polly.Caching;
 using Polly.Retry;
 using StackExchange.Redis;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Utf8Json.Resolvers;
@@ -19,7 +18,7 @@ namespace HelpMyStreet.Cache.MemDistCache
 
         public DistributedCacheWrapperWithCompression(IDistributedCache distributedCache, RetryPolicy retryPolicy = null)
         {
-            _distributedCache = distributedCache ?? throw new ArgumentException(nameof(distributedCache));
+            _distributedCache = distributedCache;
 
             if (retryPolicy == null)
             {

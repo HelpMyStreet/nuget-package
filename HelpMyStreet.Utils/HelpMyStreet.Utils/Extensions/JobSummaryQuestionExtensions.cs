@@ -29,7 +29,6 @@ namespace HelpMyStreet.Utils.Extensions
                 (int)Questions.AgeUKReference => false,
                 (int)Questions.Location => false,
                 (int)Questions.NumberOfSlots => false,
-                (int)Questions.SelectActivity => false,
                 (int)Questions.SuppressRecipientPersonalDetails => userIsAdmin,
                 (int)Questions.RecipientAge => userIsAdmin,
                 _ => true
@@ -79,10 +78,6 @@ namespace HelpMyStreet.Utils.Extensions
                 (int)Questions.NumberOfSlots => false,
                 (int)Questions.SuppressRecipientPersonalDetails => false,
                 (int)Questions.WillYouCompleteYourself => false,
-                (int)Questions.SelectActivity => false,
-                (int)Questions.GroupSizeAdults => false,
-                (int)Questions.GroupSizeChildren => false,
-                (int)Questions.GroupSizePets => false,
                 _ => true
             };
         }

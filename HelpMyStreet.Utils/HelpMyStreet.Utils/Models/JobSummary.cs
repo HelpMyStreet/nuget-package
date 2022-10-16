@@ -1,9 +1,6 @@
 ﻿using HelpMyStreet.Utils.Enums;
-using HelpMyStreet.Utils.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 
 namespace HelpMyStreet.Utils.Models
 {

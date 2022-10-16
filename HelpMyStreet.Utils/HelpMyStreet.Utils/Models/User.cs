@@ -38,8 +38,5 @@ namespace HelpMyStreet.Utils.Models
 
         public int? ReferringGroupId { get; set; }
         public string Source { get; set; }
-        public string Biography { get; set; }
-
-        public DateTime? DateLastLogin { get; set; }
     }
 }

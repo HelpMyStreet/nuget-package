@@ -44,12 +44,6 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.ApexBankStaff => "ABS",
                 Groups.AgeUKMidMersey => "MDM",
                 Groups.BostonGNS => "GNS",
-                Groups.UkraineRefugees => "UKR",
-                Groups.LincolnshireVCS => "VCS",
-                Groups.LincolnshireLCVS=> "LCV",
-                Groups.NHSVRDemo => "NHS",
-                Groups.NottinghamshireCountyCouncil=> "NCC",
-                Groups.NottinghamshireIntegratedCareBoard=>"ICB",
                 _ => throw new ArgumentException(message: $"Unexpected Group: {groups}", paramName: nameof(groups))
             };
         }
@@ -72,7 +66,6 @@ namespace HelpMyStreet.Utils.Extensions
                 Groups.KingsMeadowCampus => false,
                 Groups.ForestRecreationGround => false,
                 Groups.BostonGNS => false,
-                Groups.UkraineRefugees => false,
                 _ => true
             };
         }

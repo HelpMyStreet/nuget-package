@@ -30,11 +30,11 @@ namespace HelpMyStreet.Cache.MemCache
 
         public MemCache(ISyncCacheProvider pollySyncCacheProvider, ISystemClock mockableDateTime, TimeSpan defaultCacheDuration, Func<DateTimeOffset, DateTimeOffset> defaultWhenDataIsStaleDelegate, ILoggerWrapper<MemCache<T>> logger)
         {
-            _pollySyncCacheProvider = pollySyncCacheProvider ?? throw new ArgumentNullException(nameof(pollySyncCacheProvider));
-            _mockableDateTime = mockableDateTime ?? throw new ArgumentNullException(nameof(mockableDateTime));
+            _pollySyncCacheProvider = pollySyncCacheProvider;
+            _mockableDateTime = mockableDateTime;
             _defaultCacheDuration = defaultCacheDuration;
-            _defaultWhenDataIsStaleDelegate = defaultWhenDataIsStaleDelegate ?? throw new ArgumentNullException(nameof(defaultWhenDataIsStaleDelegate));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _defaultWhenDataIsStaleDelegate = defaultWhenDataIsStaleDelegate;
+            _logger = logger;
         }
 
         /// <inheritdoc />>

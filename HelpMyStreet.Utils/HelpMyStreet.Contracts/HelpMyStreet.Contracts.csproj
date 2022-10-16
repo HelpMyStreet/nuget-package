@@ -19,4 +19,8 @@
     <ProjectReference Include="..\HelpMyStreet.Utils\HelpMyStreet.Utils.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ReportService\Request\" />
+  </ItemGroup>
+
 </Project>

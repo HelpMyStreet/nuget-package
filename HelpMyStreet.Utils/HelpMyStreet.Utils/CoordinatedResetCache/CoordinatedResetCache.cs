@@ -27,7 +27,7 @@ namespace HelpMyStreet.Utils.CoordinatedResetCache
         [Obsolete("Use MemDistCache in HelpMyStreet.Cache package")]
         public async Task<T> GetCachedDataAsync<T>(Func<CancellationToken, Task<T>> dataGetter, string key, CancellationToken cancellationToken, CoordinatedResetCacheTime resetCacheTime = CoordinatedResetCacheTime.OnHour)
         {
-            TimeSpan timeToReset;
+            TimeSpan timeToReset = GetLengthOfTimeUntilNextHour();
 
             switch (resetCacheTime)
             {

@@ -11,7 +11,7 @@ namespace HelpMyStreet.Utils.Extensions
             {
                 JobStatuses.New => "Pending Approval",
                 JobStatuses.InProgress => "In Progress",
-                JobStatuses.AppliedFor => "Applied For",
+                JobStatuses.AppliedFor => "Enquired",
                 JobStatuses.Approved => "Approved",
                 JobStatuses.Rejected => "Rejected",
                 _ => status.ToString()

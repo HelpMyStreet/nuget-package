@@ -9,6 +9,5 @@
         ShortDateTimeFormat = 5,
         LongDateHTMLFormat = 6,
         LongDateTimeHTMLFormat = 7,
-        LongDateTimeHTMLFormatWithYear = 8,
     }
 }

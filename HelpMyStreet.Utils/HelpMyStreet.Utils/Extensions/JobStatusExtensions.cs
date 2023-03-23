@@ -11,9 +11,7 @@ namespace HelpMyStreet.Utils.Extensions
             {
                 JobStatuses.New => "Pending Approval",
                 JobStatuses.InProgress => "In Progress",
-                JobStatuses.AppliedFor => "Enquired",
-                JobStatuses.Approved => "Approved",
-                JobStatuses.Rejected => "Rejected",
+                JobStatuses.AppliedFor => "Applied For",
                 _ => status.ToString()
             };
         }
@@ -28,9 +26,7 @@ namespace HelpMyStreet.Utils.Extensions
                 JobStatuses.InProgress => true,
                 JobStatuses.Done => false,
                 JobStatuses.Cancelled => false,
-                JobStatuses.AppliedFor => true,
-                JobStatuses.Approved => true,
-                JobStatuses.Rejected => true,
+                JobStatuses.AppliedFor => false,
                 _ => throw new ArgumentException($"Unexpected JobStatuses value {status}", nameof(status))
             };
         }

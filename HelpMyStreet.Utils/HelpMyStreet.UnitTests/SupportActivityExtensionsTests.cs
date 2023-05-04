@@ -30,8 +30,8 @@ namespace HelpMyStreet.UnitTests
         {
             foreach (SupportActivities val in Enum.GetValues(typeof(SupportActivities)))
             {
-                string s = val.PerfectTense(1);                
-                Assert.AreEqual(true, s.Contains("1") || s.Contains("once"));
+                string s = val.PerfectTense(1);
+                Assert.AreEqual(true, s.Contains("1"));
             }
         }
 

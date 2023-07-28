@@ -10,17 +10,8 @@ namespace HelpMyStreet.Utils.Extensions
         {
             return requestHelpFormVariant switch
             {
-                RequestHelpFormVariant.AgeUKNorthWestKent_RequestSubmitter => false,
-                RequestHelpFormVariant.AgeUKFavershamAndSittingbourne_RequestSubmitter => false,
-                RequestHelpFormVariant.AgeUKSouthKentCoast_RequestSubmitter => false,
-                RequestHelpFormVariant.AgeConnectsCardiff_RequestSubmitter=> false,
-                RequestHelpFormVariant.MeadowsCommunityHelpers_RequestSubmitter => false,
                 RequestHelpFormVariant.Sandbox_RequestSubmitter => false,
                 RequestHelpFormVariant.AgeUKWirral => false,
-                RequestHelpFormVariant.VitalsForVeterans => false,
-                RequestHelpFormVariant.AgeUKMidMersey_RequestSubmitter => false,
-                RequestHelpFormVariant.BostonGNS_RequestSubmitter => false,
-                RequestHelpFormVariant.UkraineRefugees_RequestSubmitter => false,
                 _ => true
             };
         }
@@ -29,7 +20,6 @@ namespace HelpMyStreet.Utils.Extensions
         {
             return requestHelpFormVariant switch
             {
-                RequestHelpFormVariant.LincolnshireVolunteersRequests_RequestSubmitter => true,
                 _ => false
             };
         }

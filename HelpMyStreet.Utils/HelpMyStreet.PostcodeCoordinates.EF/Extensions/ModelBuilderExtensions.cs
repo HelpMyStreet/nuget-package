@@ -123,16 +123,16 @@ namespace HelpMyStreet.PostcodeCoordinates.EF.Extensions
         private static void SetupPostcodeDefaultIndexes<T>(EntityTypeBuilder<T> entity) where T : PostcodeEntityBase
         {
             entity.HasIndex(u => u.Postcode)
-                .HasName("UX_Postcode_Postcode")
+                .HasDatabaseName("UX_Postcode_Postcode")
                 .IsUnique();
 
             entity.HasIndex(u => new { u.Postcode, u.IsActive })
-                .HasName("IX_Postcode_Postcode_IsActive")
-                .ForSqlServerInclude(nameof(PostcodeEntityBase.Latitude), nameof(PostcodeEntityBase.Longitude));
+                .HasDatabaseName("IX_Postcode_Postcode_IsActive")
+                .IncludeProperties(nameof(PostcodeEntityBase.Latitude), nameof(PostcodeEntityBase.Longitude));
 
             entity.HasIndex(u => new { u.Latitude, u.Longitude, u.IsActive })
-                .ForSqlServerInclude(nameof(PostcodeEntityBase.Postcode))
-                .HasName("IX_Postcode_Latitude_Longitude_IsActive");
+                .HasDatabaseName("IX_Postcode_Latitude_Longitude_IsActive")
+                .IncludeProperties(nameof(PostcodeEntityBase.Postcode));
         }
 
     }

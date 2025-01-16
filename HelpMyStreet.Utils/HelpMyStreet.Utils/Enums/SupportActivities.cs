@@ -85,17 +85,6 @@ namespace HelpMyStreet.Utils.Enums
 
         SkillShare = 33,
         
-        Accommodation = 34,
-
-        AdvertisingRoles = 35,
-        
-        NHSSteward = 36,
-
-        NHSTransport = 37,
-
-        NHSCheckInAndChat = 38,
-
-        NHSCheckInAndChatPlus = 39
-
+        Accommodation = 34
     }
 }

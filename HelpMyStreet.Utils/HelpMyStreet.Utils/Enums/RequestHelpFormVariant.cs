@@ -32,7 +32,6 @@
         BostonGNS_Public = 29,
         BostonGNS_RequestSubmitter = 30,
         LincolnshireVolunteersRequests_RequestSubmitter = 32,
-        UkraineRefugees_RequestSubmitter = 33,
-        NHSVRDemo_RequestSubmitter = 34
+        UkraineRefugees_RequestSubmitter = 33
     }
 }

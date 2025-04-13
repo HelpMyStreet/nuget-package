@@ -36,11 +36,6 @@ namespace HelpMyStreet.Utils.Enums
         ApexBankStaff = -32,
         AgeUKMidMersey = -33,
         BostonGNS = -34,
-        UkraineRefugees = -35,
-        LincolnshireVCS = -36,
-        LincolnshireLCVS = -37,
-        NHSVRDemo=-38,
-        NottinghamshireCountyCouncil = -39,
-        NottinghamshireIntegratedCareBoard = -40
+        UkraineRefugees = -35
     }
 }
